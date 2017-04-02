@@ -14,8 +14,8 @@ public class Employee
 {
     private int id;
     private String name;
-    private  boolean manager;
-    private boolean validated;
+    private  boolean manager; //true if the user is a manager
+    private boolean validated; //set to true if user login is successful and member fields are set
     private final Database database;
     
     Employee() throws ClassNotFoundException, SQLException
