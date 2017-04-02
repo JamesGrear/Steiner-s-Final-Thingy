@@ -13,18 +13,20 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import java.sql.SQLException;
+import java.util.Scanner;
 
 public class DrugPharmacyTeam110 extends Application
 {
     // @param args the command line arguments
 
-    public static void main(String[] args) 
+    public static void main(String[] args) throws ClassNotFoundException, SQLException 
     {
         Application.launch(DrugPharmacyTeam110.class, (java.lang.String[])null);
     }
 
     @Override
-    public void start(Stage primaryStage)
+    public void start(Stage primaryStage) 
     {
         try
         {
