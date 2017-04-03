@@ -11,10 +11,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import java.sql.SQLException;
-import java.util.Scanner;
+
 
 public class DrugPharmacyTeam110 extends Application
 {

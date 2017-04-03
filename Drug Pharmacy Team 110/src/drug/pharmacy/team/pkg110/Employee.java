@@ -5,6 +5,7 @@
  */
 package drug.pharmacy.team.pkg110;
 
+import drug.pharmacy.team.pkg110.Database;
 import java.sql.SQLException;
 /**
  *
@@ -20,102 +21,89 @@ public class Employee
     
     Employee() throws ClassNotFoundException, SQLException
     {
-	database = new Database();
-	validated = false;
+		database = new Database();
+		validated = false;
     }
     //Post: sets member fields if login data matches database data
     void login(int id, String password) throws SQLException, ClassNotFoundException
     {
-	boolean validation = false;
+		boolean validation = validateEmployee(id, password);
 	
-	validation = validateEmployee(id, password);
-	
-	if (validation)
-	{
-	    this.validated = true;
-	    this.setID(id);
-	    this.setManager(this.readManager(id));
-	    this.setName(this.readName(id));
-	}
+		if (validation)
+		{
+	 	   this.validated = true;
+	 	   this.setID(id);
+	 	   this.setManager(this.readManager(id));
+	 	   this.setName(this.readName(id));
+		}
     }
+
     //Post: returns true if the username/password exist
     //	    otherwise returns false
-    boolean validateEmployee(int id, String passwordInput) throws SQLException 
+    boolean validateEmployee(int id, String passwordInput) throws SQLException
     { 
-	String actualPassword;
+		String actualPassword;
 	
-	database.result = database.statement.executeQuery("select password from employee where idemployee = '" + id + "'");
+		database.result = database.statement.executeQuery("select password from employee where idemployee = '" + id + "'");
 	
-	if (database.result.next())
-	{
-	    actualPassword = database.result.getString(1);
-	    
-	    if (actualPassword.equals(passwordInput))
-	    {
-		return true;
-	    }
-	    else
-	    {
-		return false;
-	    }
-	}
-	else 
-	{
-	    return false;
-	}
+		if (database.result.next())
+		{
+	    	actualPassword = database.result.getString(1);
+
+			return actualPassword.equals(passwordInput);
+		}
+
+		else
+	    	return false;
     }
+
     String readName(int id) throws SQLException
     {
-	database.result = database.statement.executeQuery("select name from employee where idemployee = '" + id + "'");
+		database.result = database.statement.executeQuery("select name from employee where idemployee = '" + id + "'");
 	
-	if (database.result.next())
-	{
-	    return database.result.getString(1);
-	}
-	else
-	{
-	    return null;
-	}
+		if (database.result.next())
+			return database.result.getString(1);
+
+		else
+	    	return null;
     }
+
     boolean readManager(int id) throws SQLException
     {
-	database.result = database.statement.executeQuery("select manager from employee where idemployee = '" + id + "'");
+		database.result = database.statement.executeQuery("select manager from employee where idemployee = '" + id + "'");
 	
-	if (database.result.next())
-	{
-	    return database.result.getBoolean(1);
-	}
-	else
-	{
-	    return false;
-	}
+		if (database.result.next())
+	    	return database.result.getBoolean(1);
+
+		else
+	    	return false;
     }
     void setID(int id)
     {
-	this.id = id;
+		this.id = id;
     }
     void setName(String name)
     {
-	this.name = name;
+		this.name = name;
     }
     void setManager(boolean manager)
     {
-	this.manager = manager;
+		this.manager = manager;
     }
     int getID()
     {
-	return id;
+		return id;
     }
     String getName()
     {
-	return name;
+		return name;
     }
     boolean getManager()
     {
-	return manager;
+		return manager;
     }
     boolean checkValidation()
     {
-	return validated;
+		return validated;
     }
 }
