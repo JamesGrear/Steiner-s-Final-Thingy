@@ -16,8 +16,10 @@ public class Tests
 {
     public static void main(String[] args) throws ClassNotFoundException, SQLException 
     {
-		//testEmployee();
-		testCustomer();
+	Database.setupDatabaseConnection(); //this NEEDS to be called in main program or the program will fail
+	//testEmployee();
+	//testCustomer();
+	testItem();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -62,7 +64,6 @@ public class Tests
 	    	System.out.println("Failed login");
 		}
     }
-
     static void testEmployee() throws SQLException, ClassNotFoundException
     {
 		int id;
@@ -85,5 +86,23 @@ public class Tests
 	    	System.out.println("Failed login");
 		}
 		
+    }
+    static void testItem() throws ClassNotFoundException, SQLException
+    {
+	Item item = new Item();
+	String name = "Tylenol";
+	int id = 2;
+	boolean registered;
+	
+	registered = item.registerNewItem(id, name, 0, 4.5);
+	
+	if (registered == true)
+	{
+	    System.out.println("Successfully created " + name + " with ID #" + id);
+	}
+	else
+	{
+	    System.out.println("Failed to create item. Item already exists.");
+	}
     }
 }

@@ -17,11 +17,9 @@ public class Employee
     private String name;
     private  boolean manager; //true if the user is a manager
     private boolean validated; //set to true if user login is successful and member fields are set
-    private final Database database;
     
     Employee() throws ClassNotFoundException, SQLException
     {
-		database = new Database();
 		validated = false;
     }
     //Post: sets member fields if login data matches database data
@@ -44,11 +42,11 @@ public class Employee
     { 
 		String actualPassword;
 	
-		database.result = database.statement.executeQuery("select password from employee where idemployee = '" + id + "'");
+		Database.result = Database.statement.executeQuery("select password from employee where idemployee = '" + id + "'");
 	
-		if (database.result.next())
+		if (Database.result.next())
 		{
-	    	actualPassword = database.result.getString(1);
+	    	actualPassword = Database.result.getString(1);
 
 			return actualPassword.equals(passwordInput);
 		}
@@ -59,10 +57,10 @@ public class Employee
 
     String readName(int id) throws SQLException
     {
-		database.result = database.statement.executeQuery("select name from employee where idemployee = '" + id + "'");
+		Database.result = Database.statement.executeQuery("select name from employee where idemployee = '" + id + "'");
 	
-		if (database.result.next())
-			return database.result.getString(1);
+		if (Database.result.next())
+			return Database.result.getString(1);
 
 		else
 	    	return null;
@@ -70,10 +68,10 @@ public class Employee
 
     boolean readManager(int id) throws SQLException
     {
-		database.result = database.statement.executeQuery("select manager from employee where idemployee = '" + id + "'");
+		Database.result = Database.statement.executeQuery("select manager from employee where idemployee = '" + id + "'");
 	
-		if (database.result.next())
-	    	return database.result.getBoolean(1);
+		if (Database.result.next())
+	    	return Database.result.getBoolean(1);
 
 		else
 	    	return false;

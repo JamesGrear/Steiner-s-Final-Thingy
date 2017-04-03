@@ -20,8 +20,9 @@ public class Login
     @FXML private PasswordField passwordBox; // Password Box for user to enter password
 
     // Public no-args constructor
-    public Login()
+    public Login() throws ClassNotFoundException, SQLException
     {
+	Database.setupDatabaseConnection();
     }
 
     @FXML private void handleCancelClick()

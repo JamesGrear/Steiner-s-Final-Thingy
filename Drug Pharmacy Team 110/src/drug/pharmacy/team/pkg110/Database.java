@@ -17,10 +17,10 @@ import java.sql.Statement;
  */
 public class Database 
 {
-    protected Statement statement;
-    protected ResultSet result;
+    protected static Statement statement ;
+    protected static ResultSet result;
     
-    Database() throws ClassNotFoundException, SQLException
+    static void setupDatabaseConnection() throws ClassNotFoundException, SQLException
     {
 	    Class.forName("com.mysql.jdbc.Driver");
 	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "junkpw");

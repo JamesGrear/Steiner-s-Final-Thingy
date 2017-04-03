@@ -17,29 +17,29 @@ public class Customer
     private String address;
     private int rewardPoints;
     private boolean validated;
-    private final Database database;
+    //private Database database;
     
     Customer() throws ClassNotFoundException, SQLException
     {
-		database = new Database();
-		validated = false;
+	//database = new Database();
+	validated = false;
     }
     // Pre: login is being processed with an ID
     //Post: sets member fields if login data matches database data
     void login(int id) throws SQLException, ClassNotFoundException
     {
-		boolean validation = false;
+	boolean validation = false;
 	
-		validation = validateCustomer(id);
+	validation = validateCustomer(id);
 	
-		if (validation)
-		{
-			this.validated = true;
-	    	this.setID(id);
-	    	this.setName(this.readName(id));
-	    	this.setAddress(this.readAddress(id));
-	    	this.setRewardPoints(this.readRewardPoints(id));
-		}
+	if (validation)
+	{
+	    this.validated = true;
+	    this.setID(id);
+	    this.setName(this.readName(id));
+	    this.setAddress(this.readAddress(id));
+	    this.setRewardPoints(this.readRewardPoints(id));
+	}
     }
     // Pre: login is being proccessed with a name and address
     //Post: sets member fields if login data matches database data
@@ -62,9 +62,9 @@ public class Customer
     //	    otherwise returns false
     boolean validateCustomer(int id) throws SQLException 
     { 	
-	database.result = database.statement.executeQuery("select idcustomer from customer where idcustomer = '" + id + "'"); //kind of redundent, but checks if the id exists
+	Database.result = Database.statement.executeQuery("select idcustomer from customer where idcustomer = '" + id + "'"); //kind of redundent, but checks if the id exists
 	
-	if (database.result.next())
+	if (Database.result.next())
 	{
 	    return true; //as long as the id exists, validation is true
 	}
@@ -79,9 +79,9 @@ public class Customer
     { 	
 	String dbAddress;
 	
-	database.result = database.statement.executeQuery("SELECT idcustomer FROM customer WHERE (name = '" + name + "') AND (address = '" + address + "')"); 
+	Database.result = Database.statement.executeQuery("SELECT idcustomer FROM customer WHERE (name = '" + name + "') AND (address = '" + address + "')"); 
 	
-	if (database.result.next())
+	if (Database.result.next())
 	{
 	    return true;
 	}
@@ -93,7 +93,7 @@ public class Customer
     //Post: Writes new data into the database for a new Customer
     void registerNewCustomer(String name, String address) throws SQLException
     {
-	database.statement.executeUpdate("insert into customer(name, address, rewardpoints)"
+	Database.statement.executeUpdate("insert into customer(name, address, rewardpoints)"
 			                + "VALUES('" + name + "','" + address + "','" + 0 + "')");
     }
     //Post: RewardPoints = points + RewardPoints
@@ -103,11 +103,11 @@ public class Customer
     }
     String readName(int id) throws SQLException
     {
-	database.result = database.statement.executeQuery("select name from customer where idcustomer = '" + id + "'");
+	Database.result = Database.statement.executeQuery("select name from customer where idcustomer = '" + id + "'");
 	
-	if (database.result.next())
+	if (Database.result.next())
 	{
-	    return database.result.getString(1);
+	    return Database.result.getString(1);
 	}
 	else
 	{
@@ -116,11 +116,11 @@ public class Customer
     }
     String readAddress(int id) throws SQLException
     {
-	database.result = database.statement.executeQuery("select address from customer where idcustomer = '" + id + "'");
+	Database.result = Database.statement.executeQuery("select address from customer where idcustomer = '" + id + "'");
 	
-	if (database.result.next())
+	if (Database.result.next())
 	{
-	    return database.result.getString(1);
+	    return Database.result.getString(1);
 	}
 	else
 	{
@@ -129,11 +129,11 @@ public class Customer
     }
     int readRewardPoints(int id) throws SQLException
     {
-	database.result = database.statement.executeQuery("select rewardpoints from customer where idcustomer = '" + id + "'");
+	Database.result = Database.statement.executeQuery("select rewardpoints from customer where idcustomer = '" + id + "'");
 	
-	if (database.result.next())
+	if (Database.result.next())
 	{
-	    return database.result.getInt(1);
+	    return Database.result.getInt(1);
 	}
 	else
 	{
@@ -142,11 +142,11 @@ public class Customer
     }
     int readID(String name, String address) throws SQLException
     {
-	database.result = database.statement.executeQuery("SELECT idcustomer FROM customer WHERE (name = '" + name + "') AND (address = '" + address + "')");
+	Database.result = Database.statement.executeQuery("SELECT idcustomer FROM customer WHERE (name = '" + name + "') AND (address = '" + address + "')");
 	
-	if (database.result.next())
+	if (Database.result.next())
 	{
-	    return database.result.getInt(1);
+	    return Database.result.getInt(1);
 	}
 	
 	else
