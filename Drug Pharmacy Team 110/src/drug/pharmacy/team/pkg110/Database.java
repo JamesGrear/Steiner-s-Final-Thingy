@@ -22,8 +22,8 @@ public class Database
     
     Database() throws ClassNotFoundException, SQLException
     {
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "junkpw");
-	statement = connection.createStatement();
+	    Class.forName("com.mysql.jdbc.Driver");
+	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "junkpw");
+	    statement = connection.createStatement();
     }
 }

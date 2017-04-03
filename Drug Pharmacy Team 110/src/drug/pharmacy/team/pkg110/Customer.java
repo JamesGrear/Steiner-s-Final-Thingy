@@ -21,25 +21,25 @@ public class Customer
     
     Customer() throws ClassNotFoundException, SQLException
     {
-	database = new Database();
-	validated = false;
+		database = new Database();
+		validated = false;
     }
     // Pre: login is being processed with an ID
     //Post: sets member fields if login data matches database data
     void login(int id) throws SQLException, ClassNotFoundException
     {
-	boolean validation = false;
+		boolean validation = false;
 	
-	validation = validateCustomer(id);
+		validation = validateCustomer(id);
 	
-	if (validation)
-	{
-	    this.validated = true;
-	    this.setID(id);
-	    this.setName(this.readName(id));
-	    this.setAddress(this.readAddress(id));
-	    this.setRewardPoints(this.readRewardPoints(id));
-	}
+		if (validation)
+		{
+			this.validated = true;
+	    	this.setID(id);
+	    	this.setName(this.readName(id));
+	    	this.setAddress(this.readAddress(id));
+	    	this.setRewardPoints(this.readRewardPoints(id));
+		}
     }
     // Pre: login is being proccessed with a name and address
     //Post: sets member fields if login data matches database data
