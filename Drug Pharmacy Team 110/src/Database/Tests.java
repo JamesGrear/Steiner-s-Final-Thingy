@@ -5,7 +5,6 @@
  */
 package Database;
 
-import Database.Customer;
 import java.sql.SQLException;
 import java.util.Scanner;
 
