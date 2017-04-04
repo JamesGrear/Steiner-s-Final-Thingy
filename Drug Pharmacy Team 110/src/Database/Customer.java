@@ -45,7 +45,7 @@ public class Customer
     //Post: sets member fields if login data matches database data
     public void login(String name, String address) throws SQLException
     {
-	boolean validation = false;
+	boolean validation;
 	
 	validation = validateCustomer(name, address);
 	
@@ -77,8 +77,6 @@ public class Customer
     //	    else returns false
     public boolean validateCustomer(String name, String address) throws SQLException 
     { 	
-	String dbAddress;
-	
 	Database.result = Database.statement.executeQuery("SELECT idcustomer FROM customer WHERE (name = '" + name + "') AND (address = '" + address + "')"); 
 	
 	if (Database.result.next())
@@ -91,10 +89,10 @@ public class Customer
 	}
     }
     //Post: Writes new data into the database for a new Customer
-    public void registerNewCustomer(String name, String address) throws SQLException
+    public void registerNewCustomer(Customer customer) throws SQLException
     {
-	Database.statement.executeUpdate("insert into customer(name, address, rewardpoints)"
-			                + "VALUES('" + name + "','" + address + "','" + 0 + "')");
+	Database.statement.executeUpdate("INSERT INTO customer(name, address, rewardpoints)"
+			                + "VALUES('" + customer.name + "','" + customer.address + "','" + 0 + "')");
     }
     //Post: RewardPoints = points + RewardPoints
     public void addRewardPoints(int points)
@@ -103,7 +101,7 @@ public class Customer
     }
     public String readName(int id) throws SQLException
     {
-	Database.result = Database.statement.executeQuery("select name from customer where idcustomer = '" + id + "'");
+	Database.result = Database.statement.executeQuery("SELECT name FROM customer WHERE idcustomer = '" + id + "'");
 	
 	if (Database.result.next())
 	{

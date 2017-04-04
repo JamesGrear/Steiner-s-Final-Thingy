@@ -29,6 +29,7 @@ public class Tests
 	Scanner input = new Scanner(System.in);
 	Customer customer = new Customer();
 	
+	System.out.println("******************STARTING CUSTOMER TEST***********************");
 	System.out.print("Enter ID: ");
 	id = input.nextInt();
 	
@@ -50,15 +51,18 @@ public class Tests
 	
 	customer = new Customer();
 	
-	customer.login(name, address);
+	customer.setName(name);
+	customer.setAddress(address);
 	
+	customer.login(name, address);
+
 	if(customer.checkValidation())
 	{
 	    System.out.println(customer.getID() + " " + customer.getName()+ " " + customer.getAddress() + " " + customer.getRewardPoints());
 	}
 	else
-	{
-	    customer.registerNewCustomer(name, address);
+	{   
+	    customer.registerNewCustomer(customer);
 	    System.out.println("Failed login");
 	}
     }
@@ -69,7 +73,10 @@ public class Tests
 	Scanner input = new Scanner(System.in);
         Employee employee = new Employee();
 	
+	System.out.println("******************STARTING EMPLOYEE TEST***********************");
+	System.out.print("Enter your ID: ");
 	id = input.nextInt();
+	System.out.print("Enter your password: ");
 	password = input.next();
 	
 	employee.login(id, password);
@@ -86,15 +93,26 @@ public class Tests
     static void testItem() throws ClassNotFoundException, SQLException
     {
 	Item item = new Item();
-	String name = "Tylenol";
-	int id = 2;
+	
+	item.setName("Tylenol");
+	item.setID(35);
+	item.setCost(3);
+	item.setWarning(5);
+	item.setDeliveryTime("1 week");
+	item.setDescription("This is medicine that does stuff, duh!");
+	item.setDosage(9001);
+	item.setReorderLevel(1);
+	item.setReorderQuantity(10000);
+	item.setVendor(3);
+	
 	boolean registered;
 	
-	registered = item.registerNewItem(id, name, 0, 4.5);
+	System.out.println("******************STARTING ITEM TEST***********************");
+	registered = item.registerNewItem(item);
 	
 	if (registered == true)
 	{
-	    System.out.println("Successfully created " + name + " with ID #" + id);
+	    System.out.println("Successfully created " + item.getName() + " with ID #" + item.getID());
 	}
 	else
 	{
