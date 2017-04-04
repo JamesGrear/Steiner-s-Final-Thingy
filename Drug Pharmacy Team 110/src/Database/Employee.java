@@ -5,12 +5,13 @@
  */
 package Database;
 
-import Database.Database;
 import java.sql.SQLException;
+
 /**
  *
  * @author Brian
  */
+
 public class Employee 
 {
     private int id;
