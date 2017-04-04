@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="219.0" prefWidth="307.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="71.0" layoutY="14.0" prefHeight="25.0" prefWidth="208.0" text="Enter customer name and address...." />
+      <Text layoutX="19.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Perscriptions:" />
+      <Text layoutX="20.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reward Points:" />
+      <Text layoutX="24.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search" />
+      <Button layoutX="16.0" layoutY="165.0" mnemonicParsing="false" text="Cancel" />
+      <Button layoutX="227.0" layoutY="165.0" mnemonicParsing="false" text="Search" />
+      <Text layoutX="20.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" />
+   </children>
+</AnchorPane>
