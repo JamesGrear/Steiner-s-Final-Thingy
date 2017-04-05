@@ -51,9 +51,6 @@ public class Tests
 	
 	customer = new Customer();
 	
-	customer.setName(name);
-	customer.setAddress(address);
-	
 	customer.login(name, address);
 
 	if(customer.checkValidation())
@@ -92,10 +89,10 @@ public class Tests
     }
     static void testItem() throws ClassNotFoundException, SQLException
     {
-	Item item = new Item();
+	Item item = new Item(500);
+	Item item2;
 	
 	item.setName("Tylenol");
-	item.setID(35);
 	item.setCost(3);
 	item.setWarning(5);
 	item.setDeliveryTime("1 week");
@@ -105,10 +102,12 @@ public class Tests
 	item.setReorderQuantity(10000);
 	item.setVendor(3);
 	
-	boolean registered;
+	boolean registered = false;
+	boolean deleted = false;
+	boolean updated = false;
 	
 	System.out.println("******************STARTING ITEM TEST***********************");
-	registered = item.registerNewItem(item);
+	registered = item.registerNewItem();
 	
 	if (registered == true)
 	{
@@ -117,6 +116,63 @@ public class Tests
 	else
 	{
 	    System.out.println("Failed to create item. Item already exists.");
+	}
+	
+	//deleted = item.deleteItem();
+		
+	if (deleted == true)
+	{
+	    System.out.println("Successfully deleted " + item.getName() + " with ID #" + item.getID());
+	}
+	else
+	{
+	    System.out.println("Failed to delete item. Item does not exist.");
+	}
+	
+	item.setName("Updated Name");
+	item.setCost(99);
+	item.setWarning(99);
+	item.setDeliveryTime("Updated Time");
+	item.setDescription("Updated Description");
+	item.setDosage(99);
+	item.setReorderLevel(99);
+	item.setReorderQuantity(99);
+	item.setVendor(99);
+	updated = item.updateItem();
+	
+	if (updated)
+	{
+	    System.out.println("Successfully updated item #" + item.getID() + " to be called " + item.getName());
+	}
+	else
+	{
+	    System.out.println("Failed to update item. Item does not exist.");
+	}
+
+	updated = item.updateItemID(103);
+	
+	if (updated)
+	{
+	    System.out.println("Successfully updated " + item.getName() + " to #" + item.getID());
+	}
+	else
+	{
+	    System.out.println("Failed to update item. Item does not exist or new ID already exists.");
+	}
+
+	item2 = Item.readItem(1031);
+	
+	if (item2 != null)
+	{
+	    System.out.println("Item 2:");
+	    System.out.println(item2.getID());
+	    System.out.println(item2.getName());
+	    System.out.println(item2.getCost());
+	    System.out.println(item2.getWarning()); 
+	}
+	else
+	{
+	    System.out.println("Item 2 does not exist in the database");
 	}
     }
 }

@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class Item 
 {
-    private int id;
+    private int id; //can only be changed by changing the id in the database. that way false data doesn't exist in item objects
     private String name;
     private String description;
     private int dosage;
@@ -24,20 +24,81 @@ public class Item
     private int vendor;
     private String deliveryTime;
     
-    public Item() throws ClassNotFoundException, SQLException
+    public Item(int id) throws ClassNotFoundException, SQLException
     {
+	this.id = id;
     }
     //Post: adds a new item into the database if the ID didn't already exist. 
     //	    if the ID already exists, returns false
-    public boolean registerNewItem(Item item) throws SQLException
+    public boolean registerNewItem() throws SQLException
     {
-	if(!verifyItem(item.id))
+	if(!verifyItem(id))
 	{
 	    Database.statement.executeUpdate
 				("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime)"
-			        + "VALUES('" + item.id + "','" + item.name + "','" + item.description + "','" + item.dosage + "','" + item.warning + "','" 
-				+ item.cost + "','" + item.reorderLevel + "','" + item.reorderQuantity + "','" + item.vendor + "','" + item.deliveryTime + "')");
+			        + "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','" 
+				+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + vendor + "','" + deliveryTime + "')");
 	    return true;
+	}
+	else
+	{
+	    return false;
+	}
+    }
+    //Post: deletes a pre existing item from the database if it existed and returns true
+    //	    if the ID did not exist, returns false
+    public boolean deleteItem() throws SQLException
+    {
+	if(verifyItem(id))
+	{	    
+	    Database.statement.executeUpdate("DELETE FROM item WHERE iditem = '" + id + "'");
+			        
+	    return true;
+	}
+	else
+	{
+	    return false;
+	}
+    }
+    //Post: updates all attributes of a pre-existing item (except id) if the item exists and returns true
+    //	    if the item did not exist, returns false
+    public boolean updateItem() throws SQLException
+    {
+	if(verifyItem(id))
+	{	    
+	    Database.statement.executeUpdate("Update item Set name = '" + name + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set description = '" + description + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set dosage = '" + dosage + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set warning = '" + warning + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set cost = '" + cost + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set reorderlevel = '" + reorderLevel + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set reorderquantity = '" + reorderQuantity + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set vendor = '" + vendor + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("Update item Set deliverytime = '" + deliveryTime + "' WHERE iditem = '" + id + "'");
+	            
+	    return true;
+	}
+	else
+	{
+	    return false;
+	}
+    }
+    //Post: updates the id of a pre-existing item to newID in the database and the objecty, returns true
+    //	    if the item did not exist or the newID already exists, returns false
+    public boolean updateItemID(int newID) throws SQLException
+    {
+	if(verifyItem(id))
+	{	    
+	    if (!verifyItem(newID))
+	    {
+		Database.statement.executeUpdate("UPDATE item SET iditem = '" + newID + "' WHERE iditem = '" + this.id + "'");
+		this.id = newID;
+		return true;
+	    }
+	    else
+	    {
+		return false;
+	    }
 	}
 	else
 	{
@@ -46,7 +107,7 @@ public class Item
     }
     //Pre : This is a static method. It can only be called from the class itself. Item.readID(id)
     //Post: Returns true if an item with the id exists, else returns false
-    public static boolean verifyItem(int id) throws SQLException
+    private static boolean verifyItem(int id) throws SQLException
     {
 	Database.result = Database.statement.executeQuery("select iditem from item where iditem = '" + id + "'"); //kind of redundent, but checks if the id exists
 	
@@ -58,6 +119,39 @@ public class Item
 	{
 	    return false;
 	}
+    }
+    //Pre : Static method, only called at class level. Returns an initialized item. Initializing item previously to calling this isn't necessary
+    //	    i.e. Item item = Item.readItem(id);
+    //Post: If an item with the passed in id exists in the database, an item object is returned with all fields set from database
+    //	    else a null object is returned;
+    public static Item readItem(int id) throws ClassNotFoundException, SQLException
+    {
+	Item item;
+	
+	if (verifyItem(id))
+	{
+	    Database.result = Database.statement.executeQuery("SELECT name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime"
+							+ " FROM item WHERE (iditem = '" + id + "')");
+	    
+	    if (Database.result.next())
+	    {
+		item = new Item(id);
+		
+		item.name = Database.result.getString(1);
+		item.description = Database.result.getString(2);
+		item.dosage = Database.result.getInt(3);
+		item.warning = Database.result.getInt(4);
+		item.cost = Database.result.getDouble(5);
+		item.reorderLevel = Database.result.getInt(6);
+		item.reorderQuantity = Database.result.getInt(7);
+		item.vendor = Database.result.getInt(8);
+		item.deliveryTime = Database.result.getString(9);
+		
+		return item;
+	    }
+	}
+	
+	return null; //if all else fails
     }
     public int getID()
     {
@@ -98,10 +192,6 @@ public class Item
     public int setVendor()
     {
 	return vendor;
-    }
-    public void setID(int id)
-    {
-	this.id = id;
     }
     public void setName(String name)
     {

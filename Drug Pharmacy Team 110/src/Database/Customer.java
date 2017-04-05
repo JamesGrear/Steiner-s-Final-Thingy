@@ -35,10 +35,10 @@ public class Customer
 	if (validation)
 	{
 	    this.validated = true;
-	    this.setID(id);
-	    this.setName(this.readName(id));
-	    this.setAddress(this.readAddress(id));
-	    this.setRewardPoints(this.readRewardPoints(id));
+	    this.id = id;
+	    this.name = readName(id);
+	    this.address = readAddress(id);
+	    this.rewardPoints = readRewardPoints(id);
 	}
     }
     // Pre: login is being proccessed with a name and address
@@ -51,11 +51,11 @@ public class Customer
 	
 	if (validation)
 	{
-	    this.validated = true;
-	    this.setName(name);
-	    this.setAddress(address);
-	    this.setID(this.readID(name, address));
-	    this.setRewardPoints(this.readRewardPoints(id));
+	    validated = true;
+	    this.name = name;
+	    this.address = address;
+	    this.id = readID(name, address);
+	    this.rewardPoints = readRewardPoints(id);
 	}
     }
     //Post: returns true if the id exists
@@ -155,22 +155,6 @@ public class Customer
     public boolean checkValidation()
     {
 	return validated;
-    }
-    public void setID(int id)
-    {
-	this.id = id;
-    }
-    public void setName(String name)
-    {
-	this.name = name;
-    }
-    public void setAddress(String address)
-    {
-	this.address = address;
-    }
-    public void setRewardPoints(int points)
-    {
-	this.rewardPoints = points;
     }
     public int getID()
     {
