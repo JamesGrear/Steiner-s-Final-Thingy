@@ -28,7 +28,7 @@ public class Item
     {
 	this.id = id;
     }
-    //Post: adds a new item into the database if the ID didn't already exist. 
+    //Post: if the ID doesn't exist, adds a new item into the database and returns true
     //	    if the ID already exists, returns false
     public boolean registerNewItem() throws SQLException
     {
@@ -45,7 +45,7 @@ public class Item
 	    return false;
 	}
     }
-    //Post: deletes a pre existing item from the database if it existed and returns true
+    //Post: if the ID exists, deletes the pre existing item from the database 
     //	    if the ID did not exist, returns false
     public boolean deleteItem() throws SQLException
     {
@@ -60,7 +60,7 @@ public class Item
 	    return false;
 	}
     }
-    //Post: updates all attributes of a pre-existing item (except id) if the item exists and returns true
+    //Post: if the item exists, updates all attributes of a pre-existing item (except id)and returns true
     //	    if the item did not exist, returns false
     public boolean updateItem() throws SQLException
     {
@@ -83,8 +83,8 @@ public class Item
 	    return false;
 	}
     }
-    //Post: updates the id of a pre-existing item to newID in the database and the objecty, returns true
-    //	    if the item did not exist or the newID already exists, returns false
+    //Post: if the id exists and newID doesn't, updates the id of a pre-existing item to newID in the database, updates object id to newID, returns true
+    //	    else, returns false
     public boolean updateItemID(int newID) throws SQLException
     {
 	if(verifyItem(id))
@@ -105,7 +105,7 @@ public class Item
 	    return false;
 	}
     }
-    //Pre : This is a static method. It can only be called from the class itself. Item.readID(id)
+    //Pre : This is a private static method. It is meant only for internal data verification
     //Post: Returns true if an item with the id exists, else returns false
     private static boolean verifyItem(int id) throws SQLException
     {

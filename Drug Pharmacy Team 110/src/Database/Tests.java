@@ -19,7 +19,8 @@ public class Tests
 	Database.setupDatabaseConnection(); //this NEEDS to be called in main program or the program will fail
 	//testEmployee();
 	//testCustomer();
-	testItem();
+	//testItem();
+	testStore();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -173,6 +174,105 @@ public class Tests
 	else
 	{
 	    System.out.println("Item 2 does not exist in the database");
+	}
+    }
+    static void testStore() throws SQLException, ClassNotFoundException
+    {
+	Store store = new Store(1);
+	Store store2;
+	boolean registered = false;
+	boolean deleted = false;
+	boolean updated = false;
+	StringBuilder fullAddress = new StringBuilder();
+	
+	System.out.println("******************STARTING STORE TEST***********************");
+	
+	store.setAddress("123 Main Street");
+	store.setCity("Dearborn");
+	store.setState("MI");
+	store.setPriority(1);
+	store.setZipcode(48128);
+	
+	registered = store.registerNewStore();
+	
+	if (registered)
+	{
+	    fullAddress
+		    .append(store.getCity())
+		    .append(", ")
+		    .append(store.getState())
+		    .append(", ")
+		    .append(store.getZipcode());
+	   
+	    System.out.println("Successfully created new Store at location: " + fullAddress);
+	}
+	else
+	{
+	    System.out.println("Could not create store. Store already exists");
+	}
+	
+	//deleted = store.deleteStore();
+		
+	if (deleted == true)
+	{
+	    System.out.println("Successfully deleted store at location:  " + fullAddress + " with ID #" + store.getID());
+	}
+	else
+	{
+	    System.out.println("Failed to delete store. Store does not exist.");
+	}
+	
+	store.setAddress("Updated Address");
+	store.setCity("Updated City");
+	store.setState("AA");
+	store.setZipcode(99999);
+	store.setPriority(9);
+	
+	updated = store.updateStore();
+	
+	if (updated)
+	{
+	    fullAddress = new StringBuilder();
+	    
+	    fullAddress.append(store.getCity())
+		    .append(", ")
+		    .append(store.getState())
+		    .append(", ")
+		    .append(store.getZipcode());
+	    
+	    System.out.println("Successfully updated Store #" + store.getID() + " to address " + fullAddress);
+	}
+	else
+	{
+	    System.out.println("Failed to update store. Store does not exist.");
+	}
+	
+	updated = store.updateStoreID(103);
+	
+	if (updated)
+	{
+	    System.out.println("Successfully updated store at " + fullAddress + " to #" + store.getID());
+	}
+	else
+	{
+	    System.out.println("Failed to update store. Store does not exist or new ID already exists.");
+	}
+	
+	store2 = Store.readStore(104);
+	
+	if (store2 != null)
+	{
+	    System.out.println("Store 2:");
+	    System.out.println(store2.getID());
+	    System.out.println(store2.getAddress());
+	    System.out.println(store2.getCity());
+	    System.out.println(store2.getState()); 
+	    System.out.println(store2.getZipcode());
+	    System.out.println(store2.getPriority());
+	}
+	else
+	{
+	    System.out.println("Store 2 does not exist in the database");
 	}
     }
 }
