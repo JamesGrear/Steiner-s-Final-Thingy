@@ -19,6 +19,7 @@ public class Tests
     public static void main(String[] args) throws ClassNotFoundException, SQLException 
     {
 	Database.setupDatabaseConnection(); //this NEEDS to be called in main program or the program will fail
+	Store.setCurrentStoreID(1); //sets current store
 	//testEmployee();
 	//testCustomer();
 	//testItem();
@@ -282,17 +283,24 @@ public class Tests
     static void testSales() throws ClassNotFoundException, SQLException
     {
 	Sales sale = new Sales();
-	Store.setCurrentStoreID(1);
 	ArrayList<Sales> sales;
 	    
-	sale.setItem(new Item(3));  
+	System.out.println("******************STARTING STORE TEST***********************");
+	
+	sale.setItem(Item.readItem(35));  
 	sale.setQuantity(5);
-	sale.setTotalPrice(10);
 	sale.setDate(new Date(117, 3, 7));
 	
 	sale.registerNewSale();
 	
-	sales = Sales.getAllSales(1);
-	System.out.println(sales.size());
+	sales = Sales.readAllSales(1);
+	
+	for (Sales x : sales)
+	{
+	    System.out.println("\nITEM: " + x.getItem().getName());
+	    System.out.println("QUANTITY: " + x.getQuantity());
+	    System.out.println("TOTAL COST: " + x.getTotalPrice());
+	    System.out.println("DATE: " + x.getDate());
+	}
     }
 }
