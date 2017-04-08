@@ -5,7 +5,9 @@
  */
 package Database;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,7 +22,8 @@ public class Tests
 	//testEmployee();
 	//testCustomer();
 	//testItem();
-	testStore();
+	//testStore();
+	testSales();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -274,5 +277,22 @@ public class Tests
 	{
 	    System.out.println("Store 2 does not exist in the database");
 	}
+    }
+    
+    static void testSales() throws ClassNotFoundException, SQLException
+    {
+	Sales sale = new Sales();
+	Store.setCurrentStoreID(1);
+	ArrayList<Sales> sales;
+	    
+	sale.setItem(new Item(3));  
+	sale.setQuantity(5);
+	sale.setTotalPrice(10);
+	sale.setDate(new Date(117, 3, 7));
+	
+	sale.registerNewSale();
+	
+	sales = Sales.getAllSales(1);
+	System.out.println(sales.size());
     }
 }

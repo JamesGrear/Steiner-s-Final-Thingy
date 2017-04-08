@@ -6,6 +6,7 @@
 package Database;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,16 +14,20 @@ import java.sql.SQLException;
  */
 public class Store 
 {
+    private static int currentStoreID;  //this is the ID of the store that the program is running for
+    private static ArrayList<Store> stores; //all stores that exist
+	    
     private int id;
     private int priority;
     private String address;
     private String city;
     private String state;
     private int zipcode;   
+   
 
     public Store(int id)
     {
-    this.id = id;
+	this.id = id;
     }
     //Post: if the ID doesn't exist, adds a new store into the database and returns true
     //      if the ID already exists, returns false
@@ -159,6 +164,10 @@ public class Store
     {
 	this.zipcode = zipcode;
     }
+    public static void setCurrentStoreID(int id)
+    {
+	currentStoreID = id;
+    }
     public int getID()
     {
 	return id;
@@ -182,5 +191,9 @@ public class Store
     public int getZipcode()
     {
 	return zipcode;
+    }
+    public static int getCurrentStoreID()
+    {
+	return currentStoreID;
     }
 }
