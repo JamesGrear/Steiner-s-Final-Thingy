@@ -31,9 +31,9 @@ public class Employee
 		if (validation)
 		{
 	 	   this.validated = true;
-	 	   this.setID(id);
-	 	   this.setManager(this.readManager(id));
-	 	   this.setName(this.readName(id));
+	 	   this.id = id;
+	 	   this.manager = readManager(id);
+	 	   this.name = readName(id);
 		}
     }
     //Post: returns true if the username/password exist
@@ -73,18 +73,6 @@ public class Employee
 
 		else
 	    	return false;
-    }
-    public void setID(int id)
-    {
-		this.id = id;
-    }
-    public void setName(String name)
-    {
-		this.name = name;
-    }
-    public void setManager(boolean manager)
-    {
-		this.manager = manager;
     }
     public int getID()
     {

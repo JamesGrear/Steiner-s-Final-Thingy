@@ -3,7 +3,6 @@
 
     JavaFX Control class for Login Screen.fxml
 */
-
 package Login;
 
 import Database.Employee;
