@@ -24,7 +24,8 @@ public class Tests
 	//testCustomer();
 	//testItem();
 	//testStore();
-	testSales();
+	//testSales();
+	testAutoRefills();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -279,19 +280,28 @@ public class Tests
 	    System.out.println("Store 2 does not exist in the database");
 	}
     }
-    
     static void testSales() throws ClassNotFoundException, SQLException
     {
 	Sales sale = new Sales();
+	int itemID = 1;
 	ArrayList<Sales> sales;
 	    
-	System.out.println("******************STARTING STORE TEST***********************");
+	System.out.println("******************STARTING SALES TEST***********************");
 	
-	sale.setItem(Item.readItem(35));  
-	sale.setQuantity(5);
-	sale.setDate(new Date(117, 3, 7));
+	sale.setItem(Item.readItem(itemID));  
 	
-	sale.registerNewSale();
+	if(sale.getItem() != null) //check if item was set, if it wasn't, id doesn't match database
+	{
+	    sale.setQuantity(5);
+	    sale.setDate(new Date(117, 3, 7));
+	
+	    sale.registerNewSale();
+	    System.out.println("Successfully registered new sale.");
+	}
+	else
+	{
+	    System.out.println("Could not find item with ID: " + itemID);
+	}
 	
 	sales = Sales.readAllSales(1);
 	
@@ -301,6 +311,31 @@ public class Tests
 	    System.out.println("QUANTITY: " + x.getQuantity());
 	    System.out.println("TOTAL COST: " + x.getTotalPrice());
 	    System.out.println("DATE: " + x.getDate());
+	}
+    }
+    static void testAutoRefills() throws ClassNotFoundException, SQLException
+    {
+	AutoRefills refill = new AutoRefills();
+	int itemID = 2;
+	Customer customer = new Customer();
+	customer.login(1);
+	ArrayList<AutoRefills> refills;
+	    
+	System.out.println("******************STARTING AUTO REFILL TEST***********************");
+	
+	refill.setItem(Item.readItem(itemID));  
+	refill.setCustomer(customer);
+	
+	if(refill.getItem() != null && refill.getCustomer() != null) //check if item was set, if it wasn't, id doesn't match database
+	{
+	    refill.setFrequency(30);
+	    refill.setDaysUntil(0);
+	    refill.setRemainingRefills(5);
+	    refill.registerNewAutoRefill();
+	}
+	else
+	{
+	    System.out.println("Could not register new Auto Refill");
 	}
     }
 }
