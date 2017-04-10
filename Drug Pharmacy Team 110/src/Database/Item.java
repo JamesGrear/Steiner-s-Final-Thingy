@@ -107,7 +107,7 @@ public class Item
     }
     //Pre : This is a private static method. It is meant only for internal data verification
     //Post: Returns true if an item with the id exists, else returns false
-    private static boolean verifyItem(int id) throws SQLException
+    public static boolean verifyItem(int id) throws SQLException
     {
 	Database.result = Database.statement.executeQuery("select iditem from item where iditem = '" + id + "'"); //kind of redundent, but checks if the id exists
 	
