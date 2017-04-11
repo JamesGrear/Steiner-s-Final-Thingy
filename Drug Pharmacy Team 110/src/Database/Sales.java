@@ -92,5 +92,3 @@ public class Sales
 	this.item = item;
     }
 }
-
-
