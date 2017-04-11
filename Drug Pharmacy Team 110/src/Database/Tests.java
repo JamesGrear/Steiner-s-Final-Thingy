@@ -24,8 +24,10 @@ public class Tests
 	//testCustomer();
 	//testItem();
 	//testStore();
+	testStoreInventory();
 	//testSales();
-	testAutoRefills();
+	//testAutoRefills();
+	//testWarehouse();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -280,6 +282,46 @@ public class Tests
 	    System.out.println("Store 2 does not exist in the database");
 	}
     }
+    static void testStoreInventory() throws ClassNotFoundException, SQLException
+    {
+	boolean registered = false;
+	boolean updated = false;
+	int quantity;
+	System.out.println("******************STARTING WAREHOUSE TEST***********************");
+	
+	registered = Store.registerNewInventory(1, 2, 5); 
+	
+	if(registered)
+	{
+	    System.out.println("Registered item and quantity into warehouse.");
+	}
+	else
+	{
+	    System.out.println("Could not register item into warehouse");
+	}
+	
+	updated = Store.updateInventory(1, 2, 500);
+	
+	if (updated)
+	{
+	    System.out.println("The item was updated");
+	}
+	else
+	{
+	    System.out.println("Could not update the item");
+	}
+	
+	quantity = Store.readInventory(1, 2);
+	
+	if(quantity >= 0)
+	{
+	    System.out.println("The quantity is " + quantity);
+	}
+	else
+	{
+	    System.out.println("That item does not exist");
+	}
+    }
     static void testSales() throws ClassNotFoundException, SQLException
     {
 	Sales sale = new Sales();
@@ -336,6 +378,46 @@ public class Tests
 	else
 	{
 	    System.out.println("Could not register new Auto Refill");
+	}
+    }
+    static void testWarehouse() throws ClassNotFoundException, SQLException
+    {
+	boolean registered = false;
+	boolean updated = false;
+	int quantity;
+	System.out.println("******************STARTING WAREHOUSE TEST***********************");
+	
+	registered = Warehouse.registerNewInventory(2, 5); 
+	
+	if(registered)
+	{
+	    System.out.println("Registered item and quantity into warehouse.");
+	}
+	else
+	{
+	    System.out.println("Could not register item into warehouse");
+	}
+	
+	updated = Warehouse.updateInventory(2, 500);
+	
+	if (updated)
+	{
+	    System.out.println("The item was updated");
+	}
+	else
+	{
+	    System.out.println("Could not update the item");
+	}
+	
+	quantity = Warehouse.readInventory(2);
+	
+	if(quantity >= 0)
+	{
+	    System.out.println("The quantity is " + quantity);
+	}
+	else
+	{
+	    System.out.println("That item does not exist");
 	}
     }
 }
