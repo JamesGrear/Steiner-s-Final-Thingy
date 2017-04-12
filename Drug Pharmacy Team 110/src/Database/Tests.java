@@ -24,10 +24,11 @@ public class Tests
 	//testCustomer();
 	//testItem();
 	//testStore();
-	testStoreInventory();
+	//testStoreInventory();
 	//testSales();
 	//testAutoRefills();
 	//testWarehouse();
+	testFileSequence();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -419,5 +420,21 @@ public class Tests
 	{
 	    System.out.println("That item does not exist");
 	}
+    }
+    static void testFileSequence() throws SQLException
+    {
+	FileSequence.incrementInventoryOrder();
+	FileSequence.incrementInventoryToStore();
+	FileSequence.incrementInventoryToWarehouse();
+	FileSequence.incrementItemUpdate();
+	FileSequence.incrementStoreCreateDelete();
+	FileSequence.incrementYearlySales();
+	
+	System.out.println(FileSequence.readInventoryOrder());
+	System.out.println(FileSequence.readInventoryToStore());
+	System.out.println(FileSequence.readInventoryToWarehouse());
+	System.out.println(FileSequence.readItemUpdate());
+	System.out.println(FileSequence.readStoreCreateDelete());
+	System.out.println(FileSequence.readYearlySales());
     }
 }
