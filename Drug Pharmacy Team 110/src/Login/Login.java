@@ -12,6 +12,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import java.sql.SQLException;
@@ -37,6 +39,25 @@ public class Login
     }
 
     @FXML private void handleEnterClick(ActionEvent event) throws ClassNotFoundException, SQLException
+    // Runs if the Enter button was clicked. Gets reference to the login window and passes it to try login
+    {
+        Window loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+
+        tryLogin(loginScreen); // try to log in with entered credentials
+    }
+
+    @FXML private void handleEnterKeyPressed(KeyEvent event) throws ClassNotFoundException, SQLException
+    // Runs if the Enter key on the keyboard was pressed. Gets reference to the login window and passes it to try login
+    {
+        if(event.getCode() == KeyCode.ENTER) // ignore other key presses aside from Enter key
+        {
+            Window loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+
+            tryLogin(loginScreen); // try to log in with entered credentials
+        }
+    }
+
+    private void tryLogin(Window loginScreen) throws ClassNotFoundException, SQLException
     // Gets UserID and password from TextBox and PasswordField
     // and checks them against values stored in DB
     {
@@ -52,23 +73,7 @@ public class Login
 
             if(user.checkValidation()) // User is successfully logged in - Load Main menu screen
             {
-                /*
-                Window loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
-
                 Menu.launchMenu(user, loginScreen); // launch the main menu interface, passing the user's information and the current window
-                */
-
-                // user is now logged in
-
-                // Test dialog for successful login
-
-                Alert Success = new Alert(Alert.AlertType.CONFIRMATION);
-                Success.initStyle(StageStyle.UTILITY);
-                Success.setTitle("YOU CAN HAZ ACCESS");
-                Success.setHeaderText("You are now logged in");
-                Success.setContentText("Good jorb.");
-
-                Success.showAndWait();
             }
 
             else // User ID and password don't match - Error Message
