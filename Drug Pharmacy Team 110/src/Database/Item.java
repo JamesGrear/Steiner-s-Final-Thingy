@@ -26,39 +26,39 @@ public class Item
     
     public Item(int id) throws ClassNotFoundException, SQLException
     {
-	this.id = id;
+		this.id = id;
     }
     //Post: if the ID doesn't exist, adds a new item into the database and returns true
     //	    if the ID already exists, returns false
     public boolean registerNewItem() throws SQLException
     {
-	if(!verifyItem(id))
-	{
-	    Database.statement.executeUpdate
-				("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime)"
-			        + "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','" 
-				+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + vendor + "','" + deliveryTime + "')");
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+		if(!verifyItem(id))
+		{
+			Database.statement.executeUpdate
+					("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime)"
+						+ "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','"
+					+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + vendor + "','" + deliveryTime + "')");
+			return true;
+		}
+		else
+		{
+			return false;
+		}
     }
     //Post: if the ID exists, deletes the pre existing item from the database 
     //	    if the ID did not exist, returns false
     public boolean deleteItem() throws SQLException
     {
-	if(verifyItem(id))
-	{	    
-	    Database.statement.executeUpdate("DELETE FROM item WHERE iditem = '" + id + "'");
-			        
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+		if(verifyItem(id))
+		{
+			Database.statement.executeUpdate("DELETE FROM item WHERE iditem = '" + id + "'");
+
+			return true;
+		}
+		else
+		{
+			return false;
+		}
     }
     //Post: if the item exists, updates all attributes of a pre-existing item (except id)and returns true
     //	    if the item did not exist, returns false
@@ -109,16 +109,16 @@ public class Item
     //Post: Returns true if an item with the id exists, else returns false
     public static boolean verifyItem(int id) throws SQLException
     {
-	Database.result = Database.statement.executeQuery("select iditem from item where iditem = '" + id + "'"); //kind of redundent, but checks if the id exists
-	
-	if(Database.result.next())
-	{
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+		Database.result = Database.statement.executeQuery("select iditem from item where iditem = '" + id + "'"); //kind of redundent, but checks if the id exists
+
+		if(Database.result.next())
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
     }
     //Pre : Static method, only called at class level. Returns an initialized item. Initializing item previously to calling this isn't necessary
     //	    i.e. Item item = Item.readItem(id);
@@ -126,32 +126,32 @@ public class Item
     //	    else a null object is returned;
     public static Item readItem(int id) throws ClassNotFoundException, SQLException
     {
-	Item item;
-	
-	if (verifyItem(id))
-	{
-	    Database.result = Database.statement.executeQuery("SELECT name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime"
-							+ " FROM item WHERE (iditem = '" + id + "')");
-	    
-	    if (Database.result.next())
-	    {
-		item = new Item(id);
-		
-		item.name = Database.result.getString(1);
-		item.description = Database.result.getString(2);
-		item.dosage = Database.result.getInt(3);
-		item.warning = Database.result.getInt(4);
-		item.cost = Database.result.getDouble(5);
-		item.reorderLevel = Database.result.getInt(6);
-		item.reorderQuantity = Database.result.getInt(7);
-		item.vendor = Database.result.getInt(8);
-		item.deliveryTime = Database.result.getString(9);
-		
-		return item;
-	    }
-	}
-	
-	return null; //if all else fails
+		Item item;
+
+		if (verifyItem(id))
+		{
+			Database.result = Database.statement.executeQuery("SELECT name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime"
+								+ " FROM item WHERE (iditem = '" + id + "')");
+
+			if (Database.result.next())
+			{
+				item = new Item(id);
+
+				item.name = Database.result.getString(1);
+				item.description = Database.result.getString(2);
+				item.dosage = Database.result.getInt(3);
+				item.warning = Database.result.getInt(4);
+				item.cost = Database.result.getDouble(5);
+				item.reorderLevel = Database.result.getInt(6);
+				item.reorderQuantity = Database.result.getInt(7);
+				item.vendor = Database.result.getInt(8);
+				item.deliveryTime = Database.result.getString(9);
+
+				return item;
+			}
+		}
+
+		return null; //if all else fails
     }
     public int getID()
     {

@@ -5,16 +5,19 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="376.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductLookup.Lookup">
    <children>
-      <TextField layoutX="115.0" layoutY="30.0" />
+      <TextField fx:id="productSearchBox" layoutX="114.0" layoutY="30.0" onKeyPressed="#handleEnterKeyPressed" promptText="Enter Item ID..." />
+      <TextField fx:id="productIDBox" editable="false" layoutX="114.0" layoutY="67.0" prefHeight="25.0" prefWidth="149.0" visible="false" />
+      <TextField fx:id="productNameBox" editable="false" layoutX="114.0" layoutY="106.0" prefHeight="25.0" prefWidth="149.0" visible="false" />
+      <TextField fx:id="productPriceBox" editable="false" layoutX="114.0" layoutY="146.0" prefHeight="10.0" prefWidth="149.0" visible="false" />
+      <TextField fx:id="productStockBox" editable="false" layoutX="114.0" layoutY="179.0" prefHeight="25.0" prefWidth="149.0" visible="false" />
       <Text layoutX="27.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Search" />
       <Text layoutX="27.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID:" />
-      <Text layoutX="27.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name:" />
-      <Text layoutX="27.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
-      <Text layoutX="27.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:" />
-      <Button layoutX="31.0" layoutY="215.0" mnemonicParsing="false" text="Cancel" />
-      <Button layoutX="287.0" layoutY="215.0" mnemonicParsing="false" text="Enter" />
+      <Text layoutX="27.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name:" />
+      <Text layoutX="26.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
+      <Text layoutX="25.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:" />
+      <Button cancelButton="true" layoutX="31.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleCancelClick" text="Cancel" />
+      <Button layoutX="287.0" layoutY="215.0" mnemonicParsing="false" onAction="#handleEnterClick" text="Enter" />
    </children>
 </AnchorPane>
