@@ -110,28 +110,110 @@ public class Store
     //	    else a null object is returned;
     public static Store readStore(int id) throws ClassNotFoundException, SQLException
     {
-		Item item;
+      	Item item;
+	
+	      if (verifyStore(id))
+	      {
+	        Database.result = Database.statement.executeQuery("SELECT address, city, state, priority, zipcode" + " FROM store WHERE (idstore = '" + id + "')");
+	    
+	        if (Database.result.next())
+	        {
+		        Store store = new Store(id);
+		
+		        store.address = Database.result.getString(1);
+		        store.city = Database.result.getString(2);
+		        store.state = Database.result.getString(3);
+		        store.priority = Database.result.getInt(4);
+		        store.zipcode = Database.result.getInt(5);	
+		
+            return store;
+	        }
+	      }
+      
+      return null; //if all else fails
+    }
+  
+    // Pre: The id of the item has already been registered into the Item table
+    //Post: if the item id exists in the item table but not the store_inventory table, the item and quantity are entered into the warehouse and returns true
+    //	    else returns false
+    public static boolean registerNewInventory(int storeID, int itemID, int quantity) throws ClassNotFoundException, SQLException
+    {
+      if(Item.verifyItem(itemID)) //item exists in item table
+      {	
+          if (!Store.verifyStoreInventory(storeID, itemID)) //item doesn't exist in warehouse table
+          {
+            Database.statement.executeUpdate("INSERT INTO store_inventory(idstore, iditem, itemquantity)"
+                      + "VALUES('" + storeID + "','" + itemID + "','" + quantity + "')");
+            
+              return true;
+            
+          }
+        
+          else
+          {
+            return false;
+          }
+      }
+  
+      else
+      {
+          return false;
+      }
+    }
+  
+    //Post: if the id exists, increases its inventory by updateAmount and returns true
+    //	    else returns false
+    //NOTE: Important to note that updateAmount is not the new value of quantity, it's the amount of change
+    //	    if updateAmount = -1, then 1 will be removed from the current inventory
+    public static boolean updateInventory(int storeID, int itemID, int updateAmount) throws SQLException
+    {
+      int currentAmount;
+      int newAmount;
 
-		if (verifyStore(id))
-		{
-			Database.result = Database.statement.executeQuery("SELECT address, city, state, priority, zipcode"
-								+ " FROM store WHERE (idstore = '" + id + "')");
+      Database.result = Database.statement.executeQuery("SELECT itemquantity FROM store_inventory WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID + "')");
+      if(Database.result.next())
+      {
+          currentAmount = Database.result.getInt(1);
+          newAmount = (currentAmount + updateAmount);
 
-			if (Database.result.next())
-			{
-			Store store = new Store(id);
+          Database.statement.executeUpdate("UPDATE store_inventory SET itemquantity = '" + newAmount + "' WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID + "')");
+          return true;
+      }
+      else
+      {
+          return false;
+      }
+    }
+  
+   //Post: if the id exists, returns the quantity of that item in the store with storeID
+   //	    else returns -1
+    public static int readInventory(int storeID, int itemID) throws SQLException
+    {
+      Database.result = Database.statement.executeQuery("SELECT itemquantity"
+                  + " FROM store_inventory WHERE (iditem = '" + itemID +  "'AND idstore = '" + storeID +"')");
 
-			store.address = Database.result.getString(1);
-			store.city = Database.result.getString(2);
-			store.state = Database.result.getString(3);
-			store.priority = Database.result.getInt(4);
-			store.zipcode = Database.result.getInt(5);
-			return store;
-			}
-		}
+      if(Database.result.next())
+      {
+          return Database.result.getInt(1);
+      }
+      
+      else
+      {
+          return -1;
+      }
+    }
+  
+  //Pre : This is a private static method. It is meant only for internal data verification
+  //Post: Returns true if a store with the id exists, else returns false
+  private static boolean verifyStore(int id) throws SQLException
+  {
+    Database.result = Database.statement.executeQuery("select idstore from store where idstore = '" + id + "'"); //kind of redundent, but checks if the id exists
 
-		return null; //if all else fails
-	}
+    if(Database.result.next())
+    {
+        return true;
+    }
+  }
 
 	//Pre : This is a private static method. It is meant only for internal data verification
 	//Post: Returns true if a store with the id exists, else returns false
@@ -143,62 +225,90 @@ public class Store
 		{
 			return true;
 		}
+    
 		else
 		{
 			return false;
 		}
 	}
+  
+ public static boolean verifyStoreInventory(int itemID, int storeID) throws SQLException
+  {
+    Database.result = Database.statement.executeQuery("SELECT iditem FROM store_inventory WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID +"')"); //kind of redundent, but checks if the id exists
 
-	public void setPriority(int priority)
+    if(Database.result.next())
+    {
+      return true;
+    }
+
+    else
+    {
+      return false;
+    }
+  }
+      
+  public void setPriority(int priority)
 	{
-	this.priority = priority;
+	  this.priority = priority;
 	}
+  
 	public void setAddress(String address)
 	{
-	this.address = address;
+	  this.address = address;
 	}
+  
 	public void setCity(String city)
 	{
-	this.city = city;
+	  this.city = city;
 	}
+  
 	public void setState(String state)
 	{
-	this.state = state;
+	  this.state = state;
 	}
+  
 	public void setZipcode(int zipcode)
 	{
-	this.zipcode = zipcode;
+	  this.zipcode = zipcode;
 	}
+  
 	public static void setCurrentStoreID(int id)
 	{
-	currentStoreID = id;
+	  currentStoreID = id;
 	}
+  
 	public int getID()
 	{
-	return id;
+	  return id;
 	}
+  
 	public int getPriority()
 	{
-	return priority;
+	  return priority;
 	}
+  
 	public String getAddress()
 	{
-	return address;
+	  return address;
 	}
+  
 	public String getCity()
 	{
-	return city;
+	  return city;
 	}
+  
 	public String getState()
 	{
-	return state;
+	  return state;
 	}
+  
 	public int getZipcode()
 	{
-	return zipcode;
+	  return zipcode;
 	}
+  
 	public static int getCurrentStoreID()
 	{
-	return currentStoreID;
+	  return currentStoreID;
 	}
 }
