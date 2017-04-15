@@ -23,12 +23,12 @@ public class Tests
 	//testEmployee();
 	//testCustomer();
 	//testItem();
-	//testStore();
+	testStore();
 	//testStoreInventory();
 	//testSales();
 	//testAutoRefills();
 	//testWarehouse();
-	testFileSequence();
+	//testFileSequence();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -195,11 +195,11 @@ public class Tests
 	
 	System.out.println("******************STARTING STORE TEST***********************");
 	
-	store.setAddress("123 Main Street");
+	store.setAddress("4901 Evergreen");
 	store.setCity("Dearborn");
 	store.setState("MI");
-	store.setPriority(1);
-	store.setZipcode(48128);
+	store.setPriority(2);
+	store.setZipcode(481269998);
 	
 	registered = store.registerNewStore();
 	
@@ -236,7 +236,7 @@ public class Tests
 	store.setZipcode(99999);
 	store.setPriority(9);
 	
-	updated = store.updateStore();
+	//updated = store.updateStore();
 	
 	if (updated)
 	{
@@ -255,7 +255,7 @@ public class Tests
 	    System.out.println("Failed to update store. Store does not exist.");
 	}
 	
-	updated = store.updateStoreID(103);
+	//updated = store.updateStoreID(103);
 	
 	if (updated)
 	{

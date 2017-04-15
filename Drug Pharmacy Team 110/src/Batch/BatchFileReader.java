@@ -5,10 +5,89 @@
  */
 package Batch;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author Brian
  */
-public class BatchFileReader {
+public abstract class BatchFileReader 
+{
+    final int BUFFER_SIZE = 1000;
+    boolean fileNotFound;
+    String fileName;
+    BufferedReader reader;
+    int sequenceNumber;
+    int rows;
     
+    BatchFileReader()
+    {
+	rows = 0;
+    }
+    public boolean readHeader()
+    {
+	String expected;
+	String[] line;
+	StringBuilder input = new StringBuilder();
+	
+	expected = "HD " + String.format("%04d", sequenceNumber);
+	
+	try
+	{
+	    line = reader.readLine().split(" "); //splits the line up into words seperated by a space
+	    
+	    input.append(line[0]) //appends the first and second word, putting the space back in
+		 .append(" ")
+	         .append(line[1]);
+	}
+	catch(IOException e)
+	{
+	    //WRITE TO ERROR LOG
+	}
+	
+	if (expected.equals(input.toString())) //only first 2 words of the header are read, the rest is ignored
+	{
+	    return true;
+	}
+	else
+	{
+	    return false;
+	}
+    }
+    public boolean readTrailer()
+    {
+	String expected;
+	String input = "";
+	
+	expected = "T " + String.format("%04d", rows);
+	
+	try
+	{
+	    input = reader.readLine();
+	}
+	catch (IOException e)
+	{
+	    //WRITE ERROR LOG
+	}
+	
+	if(input != null)
+	{
+	    if (expected.equals(input))
+	    {
+	     return true;
+	    }
+	    else
+	    {
+		return false;
+	    }
+	}
+	else
+	{
+	    //WRITE ERROR LOG STRING EMPTY
+	    return false;
+	}
+    }
 }
