@@ -31,6 +31,7 @@ public class BatchStoreUpdate extends BatchFileReader
 	
 	super();
 	fileName = "adddeletestore.txt";
+	error.writeHeader("ADD/DELETE STORE");
 	
 	try
 	{
@@ -38,7 +39,7 @@ public class BatchStoreUpdate extends BatchFileReader
 	}
 	catch(FileNotFoundException e)
 	{
-	    //DO SOMETHING HERE, PROBABLY WRITE TO ERROR LOG
+	    error.writeToLog(fileName + " FILE NOT FOUND");
 	    fileNotFound = true;
 	}
 	try
@@ -47,7 +48,8 @@ public class BatchStoreUpdate extends BatchFileReader
 	}
 	catch (SQLException e)
 	{
-	    //WRITE TO ERROR LOG AND STOP READING THIS FILE
+	    error.writeToLog("DATABASE ERROR. CHECK YOUR DATABASE AND TRY AGAIN.");
+	    fileNotFound = true; //not strictly true, but cancels the file reading
 	}
     }
     
@@ -93,6 +95,7 @@ public class BatchStoreUpdate extends BatchFileReader
 			{
 			    addItem(input, id);
 			}
+			input = reader.readLine();
 			rows++; //keep track of the I rows even if there was an error
 		    }
 		}
@@ -132,32 +135,26 @@ public class BatchStoreUpdate extends BatchFileReader
 		if (i <= 4) //store id = 5 chars
 		{
 			storeID[i] = chars[i];
-			System.out.println(storeID);
 		}
 		else if (i <= 24) //store id + address = 25 chars
 		{
 		    address[i - 5] = chars[i]; // subtract 5 to start at 0
-		    System.out.println(address);
 		}
 		else if (i <= 44) //previous + city = 45 chars
 		{
 		    city[i - 25] = chars[i]; // subtract 25 to start at 0
-		    System.out.println(city);
 		}
 		else if (i <= 46) //previous + state = 47 chars
 		{
 		    state[i-45] = chars[i];
-		    System.out.println(state);
 		}
 		else if (i <= 55) //previous + zipcode = 56 chars
 		{
 		    zipcode[i-47] = chars[i];
-		    System.out.println(zipcode);
 		}
 		else if (i <= 57) //previous + priority = 58 chars
 		{
 		    priority[i-56] = chars[i];
-		    System.out.println(priority);
 		}			       
 	    }
 		//******DONE READING CHARACTERS INTO VARIABLES*******
@@ -177,7 +174,7 @@ public class BatchStoreUpdate extends BatchFileReader
 		    
 		    if (!store.registerNewStore()) //store already exists
 		    {
-			//ERROR LOG
+			error.writeToLog("STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "' ALREADY EXISTS");
 		    }
 		    else
 		    {
@@ -186,12 +183,12 @@ public class BatchStoreUpdate extends BatchFileReader
 		}
 		catch(Exception e) //bad formating/values in file
 		{
-		    //ERROR LOG
+		    error.writeToLog("INCORRECT VALUES FOR ADD STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
 		}
 	}
 	else //bad file format
 	{
-	    //error log
+	    error.writeToLog("INCORRECT FORMATTING");
 	}
 	
 	return -1; //something went wrong, can't process further;
@@ -199,6 +196,15 @@ public class BatchStoreUpdate extends BatchFileReader
     void addItem(String input, int id)
     {
 	//write to file
+	try
+	{
+	input = reader.readLine();
+	System.out.println(input);
+	}
+	catch (Exception e)
+	{
+	    
+	}
     }
     void deleteStore(String input) throws ClassNotFoundException, SQLException
     {
@@ -217,32 +223,26 @@ public class BatchStoreUpdate extends BatchFileReader
 		if (i <= 4) //store id = 5 chars
 		{
 			storeID[i] = chars[i];
-			System.out.println(storeID);
 		}
 		else if (i <= 24) //store id + address = 25 chars
 		{
 		    address[i - 5] = chars[i]; // subtract 5 to start at 0
-		    System.out.println(address);
 		}
 		else if (i <= 44) //previous + city = 45 chars
 		{
 		    city[i - 25] = chars[i]; // subtract 25 to start at 0
-		    System.out.println(city);
 		}
 		else if (i <= 46) //previous + state = 47 chars
 		{
 		    state[i-45] = chars[i];
-		    System.out.println(state);
 		}
 		else if (i <= 55) //previous + zipcode = 56 chars
 		{
 		    zipcode[i-47] = chars[i];
-		    System.out.println(zipcode);
 		}
 		else if (i <= 57) //previous + priority = 58 chars
 		{
 		    priority[i-56] = chars[i];
-		    System.out.println(priority);
 		}
 	    }
 		//******DONE READING CHARACTERS INTO VARIABLES*******
@@ -272,23 +272,23 @@ public class BatchStoreUpdate extends BatchFileReader
 		    }
 		    else //Store doesn't exist, can't be deleted
 		    {
-		     //STORES DIDN'T MATCH, GO YELL AT ERROR LOG
+			error.writeToLog("MISMATCHED DATA WITH DATABASE FOR DELETE STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
 		    }
 		}
 		catch(Exception e) //bad formating in file
 		{
-		    //ERROR LOG
+		    error.writeToLog("INCORRECT VALUES FOR DELETE STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
 		}
 	    }
 	    else //store doesn't exist, can't be deleted
 	    {
-		//ERROR LOG
+		error.writeToLog("STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "' DOESN'T EXIST AND CAN'T BE DELETED");
 	    }
 	    //********DONE COMPARING FILE DATA TO DATABASE************
 	}
 	else //formatting of line was wrong, can't read it
 	{
-	    //WRITE TO ERROR LOG
+	    error.writeToLog("INCORRECT FORMATTING");
 	}
     }
 }

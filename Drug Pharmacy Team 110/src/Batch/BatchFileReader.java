@@ -6,8 +6,6 @@
 package Batch;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -20,12 +18,14 @@ public abstract class BatchFileReader
     boolean fileNotFound;
     String fileName;
     BufferedReader reader;
+    ErrorReport error;
     int sequenceNumber;
     int rows;
     
     BatchFileReader()
     {
 	rows = 0;
+	error = new ErrorReport();
     }
     public boolean readHeader()
     {
@@ -45,7 +45,7 @@ public abstract class BatchFileReader
 	}
 	catch(IOException e)
 	{
-	    //WRITE TO ERROR LOG
+	    error.writeToLog("FAILED TO READ HEADER");
 	}
 	
 	if (expected.equals(input.toString())) //only first 2 words of the header are read, the rest is ignored
@@ -70,7 +70,7 @@ public abstract class BatchFileReader
 	}
 	catch (IOException e)
 	{
-	    //WRITE ERROR LOG
+	    error.writeToLog("FAILED TO READ TRAILER");
 	}
 	
 	if(input != null)
@@ -81,12 +81,13 @@ public abstract class BatchFileReader
 	    }
 	    else
 	    {
+		error.writeToLog("INCORRECT TRAILER");
 		return false;
 	    }
 	}
 	else
 	{
-	    //WRITE ERROR LOG STRING EMPTY
+	    error.writeToLog("TRAILER LINE EMPTY");
 	    return false;
 	}
     }

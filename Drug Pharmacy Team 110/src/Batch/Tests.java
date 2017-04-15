@@ -18,6 +18,7 @@ public class Tests
      {
 	 Database.setupDatabaseConnection();
 	 testBatchStoreUpdate();
+	 //testErrorReport();
      }
     
     static void testBatchStoreUpdate() throws ClassNotFoundException, SQLException
@@ -25,5 +26,11 @@ public class Tests
 	BatchStoreUpdate store = new BatchStoreUpdate();
 	
 	store.ReadFile();
+    }
+    static void testErrorReport()
+    {
+	ErrorReport error = new ErrorReport();
+	
+	error.writeHeader("THIS IS HEADER FILE STUFF");
     }
 }
