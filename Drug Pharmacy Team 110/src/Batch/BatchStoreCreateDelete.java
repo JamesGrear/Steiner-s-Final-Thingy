@@ -16,7 +16,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -37,7 +40,6 @@ public class BatchStoreCreateDelete extends BatchFileReader
     
     BatchStoreCreateDelete() throws FileNotFoundException
     {
-	
 	super();
 	fileName = "adddeletestore.txt";
 	error.writeHeader("ADD/DELETE STORE");
@@ -72,10 +74,12 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	    fileNotFound = true; //not strictly true, but cancels the file reading
 	}
     }
-    
     boolean ReadFile() throws ClassNotFoundException, SQLException
     { 
 	String input;
+	
+	writeHeader(FileSequence.readInventoryToStore(), writer);
+	writeHeader(FileSequence.readDeletedStoreToWarehouseInventory(), writer2);
 	
 	if(fileNotFound)
 	{
@@ -144,6 +148,9 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	{
 	    System.out.println("Successfully read the Trailer");
 	}
+	
+	writeTrailer(writer);
+	writeTrailer(writer2);
 	
 	return true;
     }
@@ -292,7 +299,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
     }
     void reallocateStoreInventory(int id) throws SQLException //for deleted stores
     {
-	//try
+	try
 	{
 	    ArrayList<StoreInventory> deletedStores = StoreInventory.readAllInventory(id);
 	    
@@ -307,9 +314,22 @@ public class BatchStoreCreateDelete extends BatchFileReader
 		x.deleteInventory();
 	    }
 	}
-	//catch(Exception e)
+	catch(Exception e)
 	{
 	    error.writeToLog("DATABASE ERROR");
 	}
+    }
+    void writeHeader(int seq, PrintWriter writer)
+    {
+	Date date = new Date();
+	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+	
+	writer.println("HD " + seq + "      " + format.format(date));
+	writer.flush();
+    }
+    void writeTrailer(PrintWriter writer)
+    {
+	writer.println("T");
+	writer.flush();
     }
 }
