@@ -121,6 +121,23 @@ public class FileSequence
 	
 	return num;
     }
+    public static int readDeletedStoreToWarehouseInventory() throws SQLException
+    {
+	int num;
+	
+	Database.result = Database.statement.executeQuery("SELECT seqnum FROM seq WHERE (file = 'deleted_store_to_warehouse_inventory')");
+	
+	if (Database.result.next())
+	{
+	    num = Database.result.getInt(1);
+	}
+	else
+	{
+	    num = -1;
+	}
+	
+	return num;
+    }
     public static boolean incrementStoreCreateDelete() throws SQLException
     {
 	int num = readStoreCreateDelete();
@@ -239,6 +256,26 @@ public class FileSequence
 	}
 	
 	Database.statement.executeUpdate("UPDATE seq SET seqnum = '" + num + "' WHERE file = 'yearly_sales'");
+	return true;
+    }
+    public static boolean incrementDeletedStoreToWarehouseInventory() throws SQLException
+    {
+	int num = readDeletedStoreToWarehouseInventory();
+	
+	if (num >= 9999)
+	{
+	    num = 1;
+	}
+	else if (num <= -1)
+	{
+	    return false;
+	}
+	else
+	{
+	    num++;
+	}
+	
+	Database.statement.executeUpdate("UPDATE seq SET seqnum = '" + num + "' WHERE file = 'deleted_store_to_warehouse_inventory'");
 	return true;
     }
 }

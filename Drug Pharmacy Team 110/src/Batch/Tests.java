@@ -6,6 +6,7 @@
 package Batch;
 
 import Database.Database;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 /**
@@ -14,16 +15,16 @@ import java.sql.SQLException;
  */
 public class Tests 
 {
-    public static void main(String[] args) throws ClassNotFoundException, SQLException
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException
      {
 	 Database.setupDatabaseConnection();
 	 testBatchStoreUpdate();
 	 //testErrorReport();
      }
     
-    static void testBatchStoreUpdate() throws ClassNotFoundException, SQLException
+    static void testBatchStoreUpdate() throws ClassNotFoundException, SQLException, FileNotFoundException
     {
-	BatchStoreUpdate store = new BatchStoreUpdate();
+	BatchStoreCreateDelete store = new BatchStoreCreateDelete();
 	
 	store.ReadFile();
     }

@@ -22,8 +22,8 @@ public class Tests
 	Store.setCurrentStoreID(1); //sets current store
 	//testEmployee();
 	//testCustomer();
-	//testItem();
-	testStore();
+	testItem();
+	//testStore();
 	//testStoreInventory();
 	//testSales();
 	//testAutoRefills();
@@ -98,7 +98,7 @@ public class Tests
     }
     static void testItem() throws ClassNotFoundException, SQLException
     {
-	Item item = new Item(500);
+	Item item = new Item(1);
 	Item item2;
 	
 	item.setName("Tylenol");
@@ -290,6 +290,7 @@ public class Tests
 	int quantity;
 	System.out.println("******************STARTING WAREHOUSE TEST***********************");
 	
+	/*
 	registered = Store.registerNewInventory(1, 2, 5); 
 	
 	if(registered)
@@ -321,7 +322,7 @@ public class Tests
 	else
 	{
 	    System.out.println("That item does not exist");
-	}
+	}*/
     }
     static void testSales() throws ClassNotFoundException, SQLException
     {

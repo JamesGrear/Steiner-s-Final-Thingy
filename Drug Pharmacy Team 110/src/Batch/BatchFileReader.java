@@ -14,13 +14,13 @@ import java.io.IOException;
  */
 public abstract class BatchFileReader 
 {
-    final int BUFFER_SIZE = 1000;
-    boolean fileNotFound;
-    String fileName;
-    BufferedReader reader;
-    ErrorReport error;
-    int sequenceNumber;
-    int rows;
+    protected final int BUFFER_SIZE = 1000;
+    protected boolean fileNotFound;
+    protected String fileName;
+    protected BufferedReader reader;
+    protected ErrorReport error;
+    protected int sequenceNumber;
+    protected int rows;
     
     BatchFileReader()
     {
