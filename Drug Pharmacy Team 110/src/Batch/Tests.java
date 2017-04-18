@@ -19,6 +19,7 @@ public class Tests
      {
 	 Database.setupDatabaseConnection();
 	 testBatchStoreUpdate();
+	 testInventoryToWarehouse();
 	 //testErrorReport();
      }
     
@@ -30,8 +31,15 @@ public class Tests
     }
     static void testErrorReport()
     {
-	ErrorReport error = new ErrorReport();
+	ErrorReport error;
+	error = ErrorReport.getErrorReport();
 	
 	error.writeHeader("THIS IS HEADER FILE STUFF");
+    }
+    static void testInventoryToWarehouse()
+    {
+	BatchInventoryToWarehouse warehouse = new BatchInventoryToWarehouse();
+	
+	warehouse.readFile();
     }
 }

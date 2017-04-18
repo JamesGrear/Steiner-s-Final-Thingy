@@ -6,6 +6,8 @@
 package Batch;
 
 import Database.FileSequence;
+import Database.Item;
+import Database.Warehouse;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,18 +18,23 @@ import java.sql.SQLException;
  *
  * @author Brian
  */
-public class BatchInventoryToStore extends BatchFileReader
+public class BatchInventoryToWarehouse extends BatchFileReader
 {
-    BatchInventoryToStore()
+    String vendorCode;
+    String itemID;
+    String quantityReceived;
+    String expiration;
+    
+    BatchInventoryToWarehouse()
     {
 	super();
-	//fileName = "adddeletestore.txt";
-	error.writeHeader("INVENTORY TO STORE");
+	fileName = "itemreceived.txt";
+	error.writeHeader("INVENTORY TO WAREHOUSE");
 	
 	try
 	{
 	    reader = new BufferedReader(new FileReader(fileName));
-	    sequenceNumber = FileSequence.readStoreCreateDelete();
+	    sequenceNumber = FileSequence.readInventoryToWarehouse();
 	}
 	catch(FileNotFoundException e)
 	{
@@ -40,14 +47,29 @@ public class BatchInventoryToStore extends BatchFileReader
 	    fileNotFound = true; //not strictly true, but cancels the file reading
 	}
     }
-    
-    boolean ReadFile() throws ClassNotFoundException, SQLException
+    public void readFile()
+    {
+	privateReadFile(); //read external file
+	fileNotFound = false; //reset for next file
+	
+	try
+	{
+	    reader = new BufferedReader(new FileReader("deletedstores.txt"));
+	    privateReadFile();
+	}
+	catch(FileNotFoundException e)
+	{
+	    error.writeToLog("deletedstores.txt FILE NOT FOUND");
+	    fileNotFound = true;
+	}
+    }
+    private void privateReadFile() //private version that is read by the public method
     { 
 	String input;
 	
 	if(fileNotFound)
 	{
-	    return false;
+	    return;
 	}
 	//**************************************************************
 	//******************READ THE HEADER*****************************
@@ -66,9 +88,10 @@ public class BatchInventoryToStore extends BatchFileReader
 	   
 	    while (input != null && input.length() != 0 && input.charAt(0) != 'T')
 	    {
-		
+		readItem(input);
 		reader.mark(BUFFER_SIZE); //mark your spot so you dont skip over the Trailer
 		input = reader.readLine();
+		rows++;
 	    }
 	    reader.reset();
 	}
@@ -83,12 +106,46 @@ public class BatchInventoryToStore extends BatchFileReader
 	{
 	    System.out.println("Successfully read the Trailer");
 	}
-	
-	return true;
     }
-    
-    void combineFiles()
+    private void readItem(String input)
     {
+	int vendor = 0;
+	int item = 0;
+	long quantity = 0;
 	
+	if (input.length() != 33)
+	{
+	    error.writeToLog("INCORRECT ITEM FORMAT");
+	    return;
+	}
+	
+	try
+	{
+	    vendor = Integer.parseInt(input.substring(0, 4));
+	    item = Integer.parseInt(input.substring(4, 13));
+	    quantity = Long.parseLong(input.substring(13, 23));
+	    expiration = input.substring(23, 33); //we don't really care about this
+	}
+	catch(Exception e)
+	{
+	    error.writeToLog("INCORRECT ITEM FORMAT");
+	    return;
+	}
+	
+	try
+	{
+	    if (Item.verifyItem(item) && Warehouse.verifyWarehouseInventory(item)) //item exists 
+	    {
+		Warehouse.updateInventory(item, quantity);
+	    }
+	    else
+	    {
+		error.writeToLog("ITEM WITH ID #" + item + " DOESN'T EXIST");
+	    }
+	}
+	catch(SQLException e)
+	{
+	    error.writeToLog("DATABASE ERROR");
+	}
     }
 }

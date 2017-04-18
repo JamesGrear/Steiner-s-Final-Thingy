@@ -25,7 +25,7 @@ public abstract class BatchFileReader
     BatchFileReader()
     {
 	rows = 0;
-	error = new ErrorReport();
+	error = ErrorReport.getErrorReport();
     }
     public boolean readHeader()
     {
@@ -43,17 +43,24 @@ public abstract class BatchFileReader
 		 .append(" ")
 	         .append(line[1]);
 	}
-	catch(IOException e)
+	catch(NullPointerException e)
+	{
+	    error.writeToLog("HEADER DOES NOT EXIST");
+	}
+	catch(Exception e)
 	{
 	    error.writeToLog("FAILED TO READ HEADER");
 	}
 	
+	System.out.println(input);
+	System.out.println(expected);
 	if (expected.equals(input.toString())) //only first 2 words of the header are read, the rest is ignored
 	{
 	    return true;
 	}
 	else
 	{
+	    System.out.println("Failed to read the Header");
 	    return false;
 	}
     }

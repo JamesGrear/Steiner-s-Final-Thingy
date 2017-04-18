@@ -33,15 +33,15 @@ public class Warehouse
     //	    else returns false
     //NOTE: Important to note that updateAmount is not the new value of quantity, it's the amount of change
     //	    if updateAmount = -1, then 1 will be removed from the current inventory
-    public static boolean updateInventory(int itemID, int updateAmount) throws SQLException
+    public static boolean updateInventory(int itemID, long updateAmount) throws SQLException
     {
-	int currentAmount;
-	int newAmount;
+	long currentAmount;
+	long newAmount;
 	
 	Database.result = Database.statement.executeQuery("SELECT itemquantity FROM warehouse_inventory WHERE (iditem = '" + itemID + "')");
 	if(Database.result.next())
 	{
-	    currentAmount =  Database.result.getInt(1);
+	    currentAmount =  Database.result.getLong(1);
 	    newAmount = (currentAmount + updateAmount);
 	    
 	    Database.statement.executeUpdate("UPDATE warehouse_inventory SET itemquantity = '" + newAmount + "' WHERE iditem = '" + itemID + "'");
@@ -55,14 +55,14 @@ public class Warehouse
     // Pre: The id of the item has already been registered into the Item table
     //Post: if the item id exists in the item table but not the warehouse table, the item and quantity are entered into the warehouse and returns true
     //	    else returns false
-    public static boolean registerNewInventory(int itemID, int quantity) throws ClassNotFoundException, SQLException
+    public static boolean registerNewInventory(int itemID, int vendor, long quantity) throws ClassNotFoundException, SQLException
     {
 	if(Item.verifyItem(itemID)) //item exists in item table
 	{	
 	    if (!Warehouse.verifyWarehouseInventory(itemID)) //item doesn't exist in warehouse table
 	    {
-		Database.statement.executeUpdate("INSERT INTO warehouse_inventory(iditem, itemquantity)"
-					    + "VALUES('" + itemID + "','" + quantity + "')");
+		Database.statement.executeUpdate("INSERT INTO warehouse_inventory(iditem, vendor, itemquantity)"
+					    + "VALUES('" + itemID + "','" + vendor + "','" + quantity + "')");
 	    return true;
 	    }
 	    else

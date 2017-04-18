@@ -21,8 +21,9 @@ public class ErrorReport
     private String fileName;
     private Date date;
     private PrintWriter writer;
+    static ErrorReport error;
     
-    ErrorReport()
+    private ErrorReport()
     {
 	date = new Date();
 	format = new SimpleDateFormat("MM-dd-yyyy");
@@ -36,7 +37,19 @@ public class ErrorReport
 	    
 	}
     }
-    
+    static ErrorReport getErrorReport() //use this to get an object for ErrorReport so it can be limited to 1 per run
+    {
+	
+	if(error == null)
+	{
+	    error = new ErrorReport();
+	    return error;
+	}
+	else
+	{
+	    return error;
+	}
+    }
     void writeHeader(String string)
     {
 	writer.println("******************************************************************************************************");

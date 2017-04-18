@@ -109,7 +109,6 @@ public class Tests
 	item.setDosage(9001);
 	item.setReorderLevel(1);
 	item.setReorderQuantity(10000);
-	item.setVendor(3);
 	
 	boolean registered = false;
 	boolean deleted = false;
@@ -146,7 +145,6 @@ public class Tests
 	item.setDosage(99);
 	item.setReorderLevel(99);
 	item.setReorderQuantity(99);
-	item.setVendor(99);
 	updated = item.updateItem();
 	
 	if (updated)
@@ -389,7 +387,7 @@ public class Tests
 	int quantity;
 	System.out.println("******************STARTING WAREHOUSE TEST***********************");
 	
-	registered = Warehouse.registerNewInventory(2, 5); 
+	registered = Warehouse.registerNewInventory(2, 3, 5); 
 	
 	if(registered)
 	{

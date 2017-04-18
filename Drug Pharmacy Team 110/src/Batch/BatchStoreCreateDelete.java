@@ -104,8 +104,10 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	    {
 		if(input.charAt(0) == 'D')
 		{
-		    deleteStore(input); //removes store from database
-		    reallocateStoreInventory(Integer.parseInt(storeID)); //reads inventory to file and deletes inventory from database
+		    if(deleteStore(input))//tries to remove store from database
+		    {
+			reallocateStoreInventory(Integer.parseInt(storeID)); //reads inventory to file and deletes inventory from database
+		    }
 		}
 		else if(input.charAt(0) == 'A')
 		{
@@ -179,7 +181,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 		    
 		    if (!store.registerNewStore()) //store already exists
 		    {
-			error.writeToLog("STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "' ALREADY EXISTS");
+			error.writeToLog("STORE WITH ID '" + Integer.parseInt(storeID) + "' ALREADY EXISTS");
 		    }
 		    else
 		    {
@@ -239,7 +241,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	writer.println("A" + storeID + priority + input.substring(1, 10) + input.substring(10, 20)); //write to file for reading later
 	writer.flush();
     }
-    void deleteStore(String input) throws ClassNotFoundException, SQLException
+    boolean deleteStore(String input) throws ClassNotFoundException, SQLException
     {
 	rows++; //one row for a delete
 	
@@ -279,23 +281,28 @@ public class BatchStoreCreateDelete extends BatchFileReader
 		    else //Store doesn't exist, can't be deleted
 		    {
 			error.writeToLog("MISMATCHED DATA WITH DATABASE FOR DELETE STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
+			return false;
 		    }
 		}
 		catch(Exception e) //bad formating in file
 		{
 		    error.writeToLog("INCORRECT VALUES FOR DELETE STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
+		    return false;
 		}
 	    }
 	    else //store doesn't exist, can't be deleted
 	    {
 		error.writeToLog("STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "' DOESN'T EXIST AND CAN'T BE DELETED");
+		return false;
 	    }
 	    //********DONE COMPARING FILE DATA TO DATABASE************
 	}
 	else //formatting of line was wrong, can't read it
 	{
 	    error.writeToLog("INCORRECT FORMATTING");
+	    return false;
 	}
+	return true;
     }
     void reallocateStoreInventory(int id) throws SQLException //for deleted stores
     {
@@ -324,7 +331,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	Date date = new Date();
 	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 	
-	writer.println("HD " + seq + "      " + format.format(date));
+	writer.println("HD " + String.format("%04d", seq) + "      " + format.format(date));
 	writer.flush();
     }
     void writeTrailer(PrintWriter writer)
