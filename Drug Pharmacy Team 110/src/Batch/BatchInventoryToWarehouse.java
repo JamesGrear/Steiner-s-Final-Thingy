@@ -88,7 +88,7 @@ public class BatchInventoryToWarehouse extends BatchFileReader
 	   
 	    while (input != null && input.length() != 0 && input.charAt(0) != 'T')
 	    {
-		readItem(input);
+		addItem(input);
 		reader.mark(BUFFER_SIZE); //mark your spot so you dont skip over the Trailer
 		input = reader.readLine();
 		rows++;
@@ -107,7 +107,7 @@ public class BatchInventoryToWarehouse extends BatchFileReader
 	    System.out.println("Successfully read the Trailer");
 	}
     }
-    private void readItem(String input)
+    private void addItem(String input)
     {
 	int vendor = 0;
 	int item = 0;
