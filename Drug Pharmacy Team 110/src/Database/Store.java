@@ -31,7 +31,7 @@ public class Store
     }
     //Post: if the ID doesn't exist, adds a new store into the database and returns true
     //      if the ID already exists, returns false
-    boolean registerNewStore() throws SQLException
+    public boolean registerNewStore() throws SQLException
     {
     if(!verifyStore(id))
 	{
@@ -132,109 +132,22 @@ public class Store
       
       return null; //if all else fails
     }
-  
-    // Pre: The id of the item has already been registered into the Item table
-    //Post: if the item id exists in the item table but not the store_inventory table, the item and quantity are entered into the warehouse and returns true
-    //	    else returns false
-    public static boolean registerNewInventory(int storeID, int itemID, int quantity) throws ClassNotFoundException, SQLException
+    //Pre : This is a private static method. It is meant only for internal data verification
+    //Post: Returns true if a store with the id exists, else returns false
+    private static boolean verifyStore(int id) throws SQLException
     {
-      if(Item.verifyItem(itemID)) //item exists in item table
-      {	
-          if (!Store.verifyStoreInventory(storeID, itemID)) //item doesn't exist in warehouse table
-          {
-            Database.statement.executeUpdate("INSERT INTO store_inventory(idstore, iditem, itemquantity)"
-                      + "VALUES('" + storeID + "','" + itemID + "','" + quantity + "')");
-            
-              return true;
-            
-          }
-        
-          else
-          {
-            return false;
-          }
-      }
-  
-      else
-      {
-          return false;
-      }
-    }
-  
-    //Post: if the id exists, increases its inventory by updateAmount and returns true
-    //	    else returns false
-    //NOTE: Important to note that updateAmount is not the new value of quantity, it's the amount of change
-    //	    if updateAmount = -1, then 1 will be removed from the current inventory
-    public static boolean updateInventory(int storeID, int itemID, int updateAmount) throws SQLException
-    {
-      int currentAmount;
-      int newAmount;
-
-      Database.result = Database.statement.executeQuery("SELECT itemquantity FROM store_inventory WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID + "')");
-      if(Database.result.next())
-      {
-          currentAmount = Database.result.getInt(1);
-          newAmount = (currentAmount + updateAmount);
-
-          Database.statement.executeUpdate("UPDATE store_inventory SET itemquantity = '" + newAmount + "' WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID + "')");
-          return true;
-      }
-      else
-      {
-          return false;
-      }
-    }
-  
-   //Post: if the id exists, returns the quantity of that item in the store with storeID
-   //	    else returns -1
-    public static int readInventory(int storeID, int itemID) throws SQLException
-    {
-      Database.result = Database.statement.executeQuery("SELECT itemquantity"
-                  + " FROM store_inventory WHERE (iditem = '" + itemID +  "'AND idstore = '" + storeID +"')");
-
-      if(Database.result.next())
-      {
-          return Database.result.getInt(1);
-      }
-      
-      else
-      {
-          return -1;
-      }
-    }
-
-	//Pre : This is a private static method. It is meant only for internal data verification
-	//Post: Returns true if a store with the id exists, else returns false
-	private static boolean verifyStore(int id) throws SQLException
-	{
 		Database.result = Database.statement.executeQuery("select idstore from store where idstore = '" + id + "'"); //kind of redundent, but checks if the id exists
 
 		if(Database.result.next())
 		{
 			return true;
 		}
-    
+
 		else
 		{
 			return false;
 		}
-	}
-  
- public static boolean verifyStoreInventory(int itemID, int storeID) throws SQLException
-  {
-    Database.result = Database.statement.executeQuery("SELECT iditem FROM store_inventory WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID +"')"); //kind of redundent, but checks if the id exists
-
-    if(Database.result.next())
-    {
-      return true;
-    }
-
-    else
-    {
-      return false;
-    }
-  }
-      
+    }    
   public void setPriority(int priority)
 	{
 	  this.priority = priority;

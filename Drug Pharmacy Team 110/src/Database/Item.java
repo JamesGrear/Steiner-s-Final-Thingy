@@ -21,7 +21,6 @@ public class Item
     private double cost;
     private int reorderLevel;
     private int reorderQuantity;
-    private int vendor;
     private String deliveryTime;
     
     public Item(int id) throws ClassNotFoundException, SQLException
@@ -35,9 +34,9 @@ public class Item
 		if(!verifyItem(id))
 		{
 			Database.statement.executeUpdate
-					("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime)"
+					("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime)"
 						+ "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','"
-					+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + vendor + "','" + deliveryTime + "')");
+					+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + deliveryTime + "')");
 			return true;
 		}
 		else
@@ -73,7 +72,6 @@ public class Item
 	    Database.statement.executeUpdate("Update item Set cost = '" + cost + "' WHERE iditem = '" + id + "'");
 	    Database.statement.executeUpdate("Update item Set reorderlevel = '" + reorderLevel + "' WHERE iditem = '" + id + "'");
 	    Database.statement.executeUpdate("Update item Set reorderquantity = '" + reorderQuantity + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set vendor = '" + vendor + "' WHERE iditem = '" + id + "'");
 	    Database.statement.executeUpdate("Update item Set deliverytime = '" + deliveryTime + "' WHERE iditem = '" + id + "'");
 	            
 	    return true;
@@ -130,7 +128,7 @@ public class Item
 
 		if (verifyItem(id))
 		{
-			Database.result = Database.statement.executeQuery("SELECT name, description, dosage, warning, cost, reorderlevel, reorderquantity, vendor, deliverytime"
+			Database.result = Database.statement.executeQuery("SELECT name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime"
 								+ " FROM item WHERE (iditem = '" + id + "')");
 
 			if (Database.result.next())
@@ -144,8 +142,7 @@ public class Item
 				item.cost = Database.result.getDouble(5);
 				item.reorderLevel = Database.result.getInt(6);
 				item.reorderQuantity = Database.result.getInt(7);
-				item.vendor = Database.result.getInt(8);
-				item.deliveryTime = Database.result.getString(9);
+				item.deliveryTime = Database.result.getString(8);
 
 				return item;
 			}
@@ -189,10 +186,6 @@ public class Item
     {
 	return reorderQuantity;
     }
-    public int setVendor()
-    {
-	return vendor;
-    }
     public void setName(String name)
     {
 	this.name = name;
@@ -224,9 +217,5 @@ public class Item
     public void setReorderQuantity(int quantity)
     {
 	this.reorderQuantity = quantity;
-    }
-    public void setVendor(int vendor)
-    {
-	this.vendor = vendor;
     }
 }
