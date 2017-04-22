@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `store_inventory`;
 CREATE TABLE `store_inventory` (
   `idstore` int(11) NOT NULL,
   `iditem` int(11) NOT NULL,
-  `itemquantity` int(11) DEFAULT NULL,
-  `defaultquantity` int(11) DEFAULT NULL,
-  `reorderlevel` int(11) DEFAULT NULL,
-  `reorderquantity` int(11) DEFAULT NULL,
+  `itemquantity` bigint(11) DEFAULT NULL,
+  `defaultquantity` bigint(11) DEFAULT NULL,
+  `reorderlevel` bigint(11) DEFAULT NULL,
+  `reorderquantity` bigint(11) DEFAULT NULL,
   PRIMARY KEY (`idstore`,`iditem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-21 17:30:29
+-- Dump completed on 2017-04-22  0:30:43

@@ -17,10 +17,11 @@ public class Tests
 {
     public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException
      {
-	 Database.setupDatabaseConnection();
-	 testBatchStoreUpdate();
-	 testInventoryToWarehouse();
-	 //testErrorReport();
+	Database.setupDatabaseConnection();
+	testBatchStoreUpdate();
+	testInventoryToWarehouse();
+	testItemUpdate();
+	//testErrorReport();
      }
     
     static void testBatchStoreUpdate() throws ClassNotFoundException, SQLException, FileNotFoundException
@@ -41,5 +42,11 @@ public class Tests
 	BatchInventoryToWarehouse warehouse = new BatchInventoryToWarehouse();
 	
 	warehouse.readFile();
+    }
+    static void testItemUpdate()
+    {
+	BatchItemUpdate item = new BatchItemUpdate();
+	
+	item.ReadFile();
     }
 }
