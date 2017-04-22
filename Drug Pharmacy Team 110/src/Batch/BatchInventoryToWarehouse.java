@@ -74,9 +74,10 @@ public class BatchInventoryToWarehouse extends BatchFileReader
 	//**************************************************************
 	//******************READ THE HEADER*****************************
 	//**************************************************************
-	if (readHeader())
+	if (!readHeader())
 	{
-	    System.out.println("Successfully read the Header");
+	    System.out.println("Failed to read the Header");
+	    return;
 	}
 	//**************************************************************
 	//******************READ THE CONTENT****************************

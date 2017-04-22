@@ -106,7 +106,7 @@ public class Tests
 	item.setWarning(5);
 	item.setDeliveryTime("1 week");
 	item.setDescription("This is medicine that does stuff, duh!");
-	item.setDosage(9001);
+	item.setDosage("9001");
 	item.setReorderLevel(1);
 	item.setReorderQuantity(10000);
 	
@@ -142,7 +142,7 @@ public class Tests
 	item.setWarning(99);
 	item.setDeliveryTime("Updated Time");
 	item.setDescription("Updated Description");
-	item.setDosage(99);
+	item.setDosage("99");
 	item.setReorderLevel(99);
 	item.setReorderQuantity(99);
 	updated = item.updateItem();

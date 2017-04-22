@@ -88,9 +88,10 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	//**************************************************************
 	//******************READ THE HEADER*****************************
 	//**************************************************************
-	if (readHeader())
+	if (!readHeader())
 	{
-	    System.out.println("Successfully read the Header");
+	    System.out.println("Failed to read the Header");
+	    return false;
 	}
 	//**************************************************************
 	//******************READ THE CONTENT****************************
@@ -215,10 +216,18 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	    return;
 	}
 	
-	itemId = Integer.parseInt(input.substring(1, 10)); //get the id from the string
-	defaultQuantity = Long.parseLong(input.substring(10, 20)); //get defaultQuantity from the string
-	reorderLevel = Long.parseLong(input.substring(20, 30)); //get reorderLevel from the string
-	reorderQuantity = Long.parseLong(input.substring(30, 40)); //get reorderQuantity from the string
+	try
+	{
+	    itemId = Integer.parseInt(input.substring(1, 10)); //get the id from the string
+	    defaultQuantity = Long.parseLong(input.substring(10, 20)); //get defaultQuantity from the string
+	    reorderLevel = Long.parseLong(input.substring(20, 30)); //get reorderLevel from the string
+	    reorderQuantity = Long.parseLong(input.substring(30, 40)); //get reorderQuantity from the string
+	}
+	catch(Exception e)
+	{
+	    error.writeToLog("ITEM FOR STORE #" + id + " IS NOT PROPERLY FORMATTED");
+	    return;
+	}
 	
 	if(!Item.verifyItem(itemId)) //item doesn't exist
 	{
@@ -308,14 +317,19 @@ public class BatchStoreCreateDelete extends BatchFileReader
     {
 	try
 	{
+	    String vendorCode = "0000";
+	    String storeid;
+	    String quantity;
+	    String expiration;
 	    ArrayList<StoreInventory> deletedStores = StoreInventory.readAllInventory(id);
 	    
 	    for(StoreInventory x : deletedStores)
 	    {
-		String storeid = String.format("%09d", x.getItemID());
-		String quantity = String.format("%010d", x.getItemQuantity());
-		String expiration = "0000-00-00"; //not relevant for our program
-		writer2.println(storeid + quantity + expiration);
+		//vendorCode = string.format("%04d", x.get) THIS NEEDS TO BE IMPLEMENTED
+		storeid = String.format("%09d", x.getItemID());
+		quantity = String.format("%010d", x.getItemQuantity());
+		expiration = "0000-00-00"; //not relevant for our program
+		writer2.println(vendorCode + storeid + quantity + expiration);
 		writer2.flush();
 		
 		x.deleteInventory();
