@@ -25,7 +25,7 @@ public class Database
     public static void setupDatabaseConnection() throws ClassNotFoundException, SQLException
     {
 	    Class.forName("com.mysql.jdbc.Driver");
-	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "junkpw");
+	    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/pharmacy", "root", "junkpw2");
 	    statement = connection.createStatement();
 	    statement2 = connection.createStatement();
     }

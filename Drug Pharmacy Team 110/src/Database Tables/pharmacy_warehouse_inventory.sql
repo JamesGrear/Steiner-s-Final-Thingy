@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `warehouse_inventory`;
 CREATE TABLE `warehouse_inventory` (
   `iditem` int(11) unsigned zerofill NOT NULL,
   `itemquantity` int(11) DEFAULT NULL,
+  `vendor` int(11) DEFAULT NULL,
   PRIMARY KEY (`iditem`),
   UNIQUE KEY `itemID_UNIQUE` (`iditem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -36,7 +37,7 @@ CREATE TABLE `warehouse_inventory` (
 
 LOCK TABLES `warehouse_inventory` WRITE;
 /*!40000 ALTER TABLE `warehouse_inventory` DISABLE KEYS */;
-INSERT INTO `warehouse_inventory` VALUES (00000000002,1505);
+INSERT INTO `warehouse_inventory` VALUES (00000000002,1505,NULL);
 /*!40000 ALTER TABLE `warehouse_inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-12  1:01:30
+-- Dump completed on 2017-04-21 17:30:29

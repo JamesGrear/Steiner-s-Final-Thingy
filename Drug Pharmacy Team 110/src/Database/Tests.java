@@ -22,13 +22,13 @@ public class Tests
 	Store.setCurrentStoreID(1); //sets current store
 	//testEmployee();
 	//testCustomer();
-	//testItem();
+	testItem();
 	//testStore();
 	//testStoreInventory();
 	//testSales();
 	//testAutoRefills();
 	//testWarehouse();
-	testFileSequence();
+	//testFileSequence();
     }
     static void testCustomer() throws SQLException, ClassNotFoundException
     {
@@ -98,7 +98,7 @@ public class Tests
     }
     static void testItem() throws ClassNotFoundException, SQLException
     {
-	Item item = new Item(500);
+	Item item = new Item(1);
 	Item item2;
 	
 	item.setName("Tylenol");
@@ -109,7 +109,6 @@ public class Tests
 	item.setDosage(9001);
 	item.setReorderLevel(1);
 	item.setReorderQuantity(10000);
-	item.setVendor(3);
 	
 	boolean registered = false;
 	boolean deleted = false;
@@ -146,7 +145,6 @@ public class Tests
 	item.setDosage(99);
 	item.setReorderLevel(99);
 	item.setReorderQuantity(99);
-	item.setVendor(99);
 	updated = item.updateItem();
 	
 	if (updated)
@@ -195,11 +193,11 @@ public class Tests
 	
 	System.out.println("******************STARTING STORE TEST***********************");
 	
-	store.setAddress("123 Main Street");
+	store.setAddress("4901 Evergreen");
 	store.setCity("Dearborn");
 	store.setState("MI");
-	store.setPriority(1);
-	store.setZipcode(48128);
+	store.setPriority(2);
+	store.setZipcode(481269998);
 	
 	registered = store.registerNewStore();
 	
@@ -236,7 +234,7 @@ public class Tests
 	store.setZipcode(99999);
 	store.setPriority(9);
 	
-	updated = store.updateStore();
+	//updated = store.updateStore();
 	
 	if (updated)
 	{
@@ -255,7 +253,7 @@ public class Tests
 	    System.out.println("Failed to update store. Store does not exist.");
 	}
 	
-	updated = store.updateStoreID(103);
+	//updated = store.updateStoreID(103);
 	
 	if (updated)
 	{
@@ -290,6 +288,7 @@ public class Tests
 	int quantity;
 	System.out.println("******************STARTING WAREHOUSE TEST***********************");
 	
+	/*
 	registered = Store.registerNewInventory(1, 2, 5); 
 	
 	if(registered)
@@ -321,7 +320,7 @@ public class Tests
 	else
 	{
 	    System.out.println("That item does not exist");
-	}
+	}*/
     }
     static void testSales() throws ClassNotFoundException, SQLException
     {
@@ -388,7 +387,7 @@ public class Tests
 	int quantity;
 	System.out.println("******************STARTING WAREHOUSE TEST***********************");
 	
-	registered = Warehouse.registerNewInventory(2, 5); 
+	registered = Warehouse.registerNewInventory(2, 3, 5); 
 	
 	if(registered)
 	{

@@ -40,7 +40,7 @@ CREATE TABLE `store` (
 
 LOCK TABLES `store` WRITE;
 /*!40000 ALTER TABLE `store` DISABLE KEYS */;
-INSERT INTO `store` VALUES (1,'Updated Address','AA',9,99999,'Updated City'),(103,'Updated Address','AA',9,99999,'Updated City');
+INSERT INTO `store` VALUES (6,'123 Main Street     ','MI',11,481850015,'Westland            ');
 /*!40000 ALTER TABLE `store` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-12  1:01:30
+-- Dump completed on 2017-04-21 17:30:29
