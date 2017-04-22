@@ -16,12 +16,13 @@ public class Item
     private int id; //can only be changed by changing the id in the database. that way false data doesn't exist in item objects
     private String name;
     private String description;
-    private int dosage;
+    private String dosage;
     private int warning;
     private double cost;
-    private int reorderLevel;
-    private int reorderQuantity;
+    private long reorderLevel;
+    private long reorderQuantity;
     private String deliveryTime;
+    private int vendorCode;
     
     public Item(int id) throws ClassNotFoundException, SQLException
     {
@@ -31,18 +32,18 @@ public class Item
     //	    if the ID already exists, returns false
     public boolean registerNewItem() throws SQLException
     {
-		if(!verifyItem(id))
-		{
-			Database.statement.executeUpdate
-					("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime)"
-						+ "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','"
-					+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + deliveryTime + "')");
+	if(!verifyItem(id))
+	{
+	    Database.statement.executeUpdate
+	    ("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime, vendorcode)"
+		+ "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','"
+		+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + deliveryTime + "','" + vendorCode + "')");
 			return true;
-		}
-		else
-		{
-			return false;
-		}
+	}
+	else
+	{
+	    return false;
+	}
     }
     //Post: if the ID exists, deletes the pre existing item from the database 
     //	    if the ID did not exist, returns false
@@ -73,6 +74,7 @@ public class Item
 	    Database.statement.executeUpdate("Update item Set reorderlevel = '" + reorderLevel + "' WHERE iditem = '" + id + "'");
 	    Database.statement.executeUpdate("Update item Set reorderquantity = '" + reorderQuantity + "' WHERE iditem = '" + id + "'");
 	    Database.statement.executeUpdate("Update item Set deliverytime = '" + deliveryTime + "' WHERE iditem = '" + id + "'");
+	    Database.statement.executeUpdate("UPDATE item SET vendorcode = '" + vendorCode + "'WHERE iditem = '" + id + "'");
 	            
 	    return true;
 	}
@@ -128,7 +130,7 @@ public class Item
 
 		if (verifyItem(id))
 		{
-			Database.result = Database.statement.executeQuery("SELECT name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime"
+			Database.result = Database.statement.executeQuery("SELECT name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime, vendorcode"
 								+ " FROM item WHERE (iditem = '" + id + "')");
 
 			if (Database.result.next())
@@ -137,12 +139,13 @@ public class Item
 
 				item.name = Database.result.getString(1);
 				item.description = Database.result.getString(2);
-				item.dosage = Database.result.getInt(3);
+				item.dosage = Database.result.getString(3);
 				item.warning = Database.result.getInt(4);
 				item.cost = Database.result.getDouble(5);
-				item.reorderLevel = Database.result.getInt(6);
-				item.reorderQuantity = Database.result.getInt(7);
+				item.reorderLevel = Database.result.getLong(6);
+				item.reorderQuantity = Database.result.getLong(7);
 				item.deliveryTime = Database.result.getString(8);
+				item.vendorCode = Database.result.getInt(9);
 
 				return item;
 			}
@@ -166,6 +169,10 @@ public class Item
     {
 	return cost;
     }
+    public int getVendorCode()
+    {
+	return vendorCode;
+    }
      public String setDeliveryTime()
     {
 	return deliveryTime;
@@ -174,15 +181,15 @@ public class Item
     {
 	return description;
     }
-    public int setDosage()
+    public String setDosage()
     {
 	return dosage;
     }
-    public int setReorderLevel()
+    public long setReorderLevel()
     {
 	return reorderLevel;
     }
-    public int setReorderQuantity()
+    public long setReorderQuantity()
     {
 	return reorderQuantity;
     }
@@ -206,16 +213,20 @@ public class Item
     {
 	this.description = description;
     }
-    public void setDosage(int dosage)
+    public void setDosage(String dosage)
     {
 	this.dosage = dosage;
     }
-    public void setReorderLevel(int reorder)
+    public void setReorderLevel(long reorder)
     {
 	this.reorderLevel = reorder;
     }
-    public void setReorderQuantity(int quantity)
+    public void setReorderQuantity(long quantity)
     {
 	this.reorderQuantity = quantity;
+    }
+    public void setVendorCode(int vendor)
+    {
+	this.vendorCode = vendor;
     }
 }

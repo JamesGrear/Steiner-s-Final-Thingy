@@ -54,7 +54,8 @@ public class BatchInventoryToStore extends BatchFileReader
 	//**************************************************************
 	if (readHeader())
 	{
-	    System.out.println("Successfully read the Header");
+	    System.out.println("Failed to read the Header");
+	    return false;
 	}
 	//**************************************************************
 	//******************READ THE CONTENT****************************
