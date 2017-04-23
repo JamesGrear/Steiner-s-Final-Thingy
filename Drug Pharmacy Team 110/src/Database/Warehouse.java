@@ -6,6 +6,7 @@
 package Database;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,6 +14,9 @@ import java.sql.SQLException;
  */
 public class Warehouse 
 {
+    int itemID;
+    long itemQuantity;
+    int vendorCode;
     //Post: if the id exists, returns the quantity of that item in the warehouse
     //	    else returns -1
     public static int readInventory(int itemID) throws SQLException
@@ -28,6 +32,25 @@ public class Warehouse
 	{
 	    return -1;
 	}
+    }
+     public static ArrayList<Warehouse> readAllInventory() throws SQLException
+    {
+	ArrayList<Warehouse> list = new ArrayList();
+	Warehouse inventory;
+	
+	Database.result = Database.statement.executeQuery("SELECT iditem, itemquantity, vendor FROM warehouse_inventory WHERE iditem > 0");
+	while (Database.result.next())
+	{
+	    inventory = new Warehouse();
+
+	    inventory.setItemID(Database.result.getInt(1));
+	    inventory.setItemQuantity(Database.result.getLong(2));
+	    inventory.setVendorCode(Database.result.getInt(3));
+	    
+	    list.add(inventory);
+	}
+	
+	return list;
     }
     //Post: if the id exists, increases its inventory by updateAmount and returns true
     //	    else returns false
@@ -89,5 +112,29 @@ public class Warehouse
 	{
 	    return false;
 	}
+    }
+    private void setItemID(int id) 
+    {
+	this.itemID = id;
+    }
+    private void setItemQuantity(long quantity)
+    {
+	this.itemQuantity = quantity;
+    }
+    private void setVendorCode(int code)
+    {
+	this.vendorCode = code;
+    }
+    public int getItemID()
+    {
+	return itemID;
+    }
+    public long getItemQuantity()
+    {
+	return itemQuantity;
+    }
+    public int getVendorCode()
+    {
+	return vendorCode;
     }
 }

@@ -173,6 +173,14 @@ public class Item
     {
 	return vendorCode;
     }
+    public long getReorderLevel()
+    {
+	return reorderLevel;
+    }
+    public long getReorderQuantity()
+    {
+	return reorderQuantity;
+    }
      public String setDeliveryTime()
     {
 	return deliveryTime;

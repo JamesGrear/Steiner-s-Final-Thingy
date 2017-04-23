@@ -6,7 +6,6 @@
 ***********************************INVENTORY TO WAREHOUSE***********************************
 ******************************************************************************************************
 
-ERROR: ITEM WITH ID #1 DOESN'T EXIST
 ERROR: ITEM WITH ID #103 DOESN'T EXIST
 ERROR: INCORRECT TRAILER
 ******************************************************************************************************
@@ -26,5 +25,8 @@ ERROR: ITEM #123456789 ALREADY EXISTS
 ERROR: TRAILER FOR newstores.txt IS INCORRECT
 ERROR: ITEM #10 DOESN'T EXIST
 ERROR: ITEM #123 DOESN'T EXIST
-ERROR: WAREHOUSE INVENTORY DOESN'T EXIST FOR ITEM #1
 ERROR: WAREHOUSE INVENTORY DOESN'T EXIST FOR ITEM #103
+******************************************************************************************************
+***********************************VENDOR INVENTORY REQUEST***********************************
+******************************************************************************************************
+

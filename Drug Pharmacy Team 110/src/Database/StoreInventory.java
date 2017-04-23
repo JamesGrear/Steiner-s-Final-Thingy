@@ -129,10 +129,10 @@ public class StoreInventory
 	    
 	    inventory.setStoreID(id);
 	    inventory.setItemID(Database.result.getInt(1));
-	    inventory.setItemQuantity(Database.result.getInt(2));
-	    inventory.setDefaultQuantity(Database.result.getInt(3));
-            inventory.setReorderLevel(Database.result.getInt(4));
-	    inventory.setReorderQuantity(Database.result.getInt(5));
+	    inventory.setItemQuantity(Database.result.getLong(2));
+	    inventory.setDefaultQuantity(Database.result.getLong(3));
+            inventory.setReorderLevel(Database.result.getLong(4));
+	    inventory.setReorderQuantity(Database.result.getLong(5));
 	    
 	    list.add(inventory);
 	}

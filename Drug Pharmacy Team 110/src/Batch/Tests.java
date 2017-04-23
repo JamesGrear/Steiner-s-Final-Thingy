@@ -23,6 +23,7 @@ public class Tests
 	testBatchInventoryToWarehouse();
 	testBatchItemUpdate();
 	testBatchInventoryToStore();
+	testBatchVendorInventoryRequest();
 	//testErrorReport();
      }
     
@@ -49,6 +50,12 @@ public class Tests
 	BatchInventoryToStore store = new BatchInventoryToStore();
 	
 	store.readFile();
+    }
+    static void testBatchVendorInventoryRequest()
+    {
+	BatchVendorInventoryRequest request = new BatchVendorInventoryRequest();
+	
+	request.writeFile();
     }
     static void testErrorReport()
     {

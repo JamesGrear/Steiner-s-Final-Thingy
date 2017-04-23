@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Brian/Documents/GitHub/Pharmacy/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/BatchInventoryToStore.java</file>
-            <file>file:/C:/Users/Brian/Documents/GitHub/Pharmacy/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/BatchFileReader.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Pharmacy/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Database/StoreInventory.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Pharmacy/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Database/Item.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Pharmacy/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/BatchVendorInventoryRequest.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Pharmacy/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Database/Warehouse.java</file>
         </group>
     </open-files>
 </project-private>
