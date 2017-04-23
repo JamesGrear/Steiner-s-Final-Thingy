@@ -134,7 +134,7 @@ public class Store
     }
     //Pre : This is a private static method. It is meant only for internal data verification
     //Post: Returns true if a store with the id exists, else returns false
-    private static boolean verifyStore(int id) throws SQLException
+    public static boolean verifyStore(int id) throws SQLException
     {
 	Database.result = Database.statement.executeQuery("select idstore from store where idstore = '" + id + "'"); //kind of redundent, but checks if the id exists
 

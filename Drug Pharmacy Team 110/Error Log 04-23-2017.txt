@@ -23,9 +23,8 @@ ERROR: ITEM #123456789 ALREADY EXISTS
 ***********************************INVENTORY TO STORE***********************************
 ******************************************************************************************************
 
-ERROR: INCORRECT TRAILER
 ERROR: TRAILER FOR newstores.txt IS INCORRECT
-ERROR: INCORRECT TRAILER
-ERROR: TRAILER FOR onlinestorerequest.txt IS INCORRECT
-ERROR: INCORRECT TRAILER
-ERROR: TRAILER FOR storeupdate.txt IS INCORRECT
+ERROR: ITEM #10 DOESN'T EXIST
+ERROR: ITEM #123 DOESN'T EXIST
+ERROR: WAREHOUSE INVENTORY DOESN'T EXIST FOR ITEM #1
+ERROR: WAREHOUSE INVENTORY DOESN'T EXIST FOR ITEM #103

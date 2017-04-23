@@ -18,9 +18,11 @@ public class Tests
     public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException
      {
 	Database.setupDatabaseConnection();
+	
 	testBatchStoreUpdate();
-	testInventoryToWarehouse();
-	testItemUpdate();
+	testBatchInventoryToWarehouse();
+	testBatchItemUpdate();
+	testBatchInventoryToStore();
 	//testErrorReport();
      }
     
@@ -30,23 +32,29 @@ public class Tests
 	
 	store.ReadFile();
     }
+    static void testBatchInventoryToWarehouse()
+    {
+	BatchInventoryToWarehouse warehouse = new BatchInventoryToWarehouse();
+	
+	warehouse.readFile();
+    }
+    static void testBatchItemUpdate()
+    {
+	BatchItemUpdate item = new BatchItemUpdate();
+	
+	item.ReadFile();
+    }
+    static void testBatchInventoryToStore()
+    {
+	BatchInventoryToStore store = new BatchInventoryToStore();
+	
+	store.readFile();
+    }
     static void testErrorReport()
     {
 	ErrorReport error;
 	error = ErrorReport.getErrorReport();
 	
 	error.writeHeader("THIS IS HEADER FILE STUFF");
-    }
-    static void testInventoryToWarehouse()
-    {
-	BatchInventoryToWarehouse warehouse = new BatchInventoryToWarehouse();
-	
-	warehouse.readFile();
-    }
-    static void testItemUpdate()
-    {
-	BatchItemUpdate item = new BatchItemUpdate();
-	
-	item.ReadFile();
     }
 }

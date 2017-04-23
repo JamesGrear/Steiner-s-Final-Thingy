@@ -53,15 +53,15 @@ public class StoreInventory
     //	    else returns false
     //NOTE: Important to note that updateAmount is not the new value of quantity, it's the amount of change
     //	    if updateAmount = -1, then 1 will be removed from the current inventory
-    public boolean updateInventory(int updateAmount) throws SQLException
+    public boolean updateInventory(long updateAmount) throws SQLException
     {
-      int currentAmount;
-      int newAmount;
+      long currentAmount;
+      long newAmount;
 
       Database.result = Database.statement.executeQuery("SELECT itemquantity FROM store_inventory WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID + "')");
       if(Database.result.next())
       {
-          currentAmount = Database.result.getInt(1);
+          currentAmount = Database.result.getLong(1);
           newAmount = (currentAmount + updateAmount);
 
           Database.statement.executeUpdate("UPDATE store_inventory SET itemquantity = '" + newAmount + "' WHERE (iditem = '" + itemID + "' AND idstore = '" + storeID + "')");
