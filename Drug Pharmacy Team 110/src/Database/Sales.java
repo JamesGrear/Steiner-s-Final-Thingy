@@ -33,15 +33,15 @@ public class Sales
     }
     //Post: returns an ArrayList with all of the sales for the store with storeID
     //NOTE: might need to rewrite this to take different parameters for dates
-    static ArrayList<Sales> readAllSales(int storeID) throws SQLException, ClassNotFoundException
+    public static ArrayList<Sales> readAllSales(int itemID) throws SQLException, ClassNotFoundException
     {
 	ArrayList<Sales> sales = new ArrayList<>();
 	Item item;
 	Sales sale;
 	
 
-	Database.result2 = Database.statement2.executeQuery("SELECT iditem, quantity, totalprice, date"
-							+ " FROM sales WHERE (idstore = '" + storeID + "')");
+	Database.result2 = Database.statement2.executeQuery("SELECT idstore, quantity, totalprice, date"
+							+ " FROM sales WHERE (iditem = '" + itemID + "')");
 	
 	while(Database.result2.next())
 	{
@@ -62,32 +62,35 @@ public class Sales
     {
 	totalPrice = (item.getCost() * quantity);
     }
-    int getQuantity()
+    public int getQuantity()
     {
 	return quantity;
     }
-    Item getItem()
+    public Item getItem()
     {
 	return this.item;
     }
-    double getTotalPrice()
+    public double getTotalPrice()
     {
 	return totalPrice;
     }
-    Date getDate()
+    public Date getDate()
     {
 	return date;
     }
-    void setQuantity(int quantity)
+    public int getStoreID()
+    {
+	return id;
+    }
+    public void setQuantity(int quantity)
     {
 	this.quantity = quantity;
     }
-    
-    void setDate(Date date)
+    public void setDate(Date date)
     {
 	this.date = date;
     }
-    void setItem(Item item)
+    public void setItem(Item item)
     {
 	this.item = item;
     }

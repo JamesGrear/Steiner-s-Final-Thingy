@@ -51,7 +51,7 @@ public class BatchVendorInventoryRequest
 	}
     }
     
-    public void writeFile() throws ClassNotFoundException, SQLException
+    public void writeFile()
     {
 	String vendorCode;
 	String itemID;

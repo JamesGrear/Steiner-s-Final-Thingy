@@ -279,4 +279,3 @@ public class FileSequence
 	return true;
     }
 }
-
