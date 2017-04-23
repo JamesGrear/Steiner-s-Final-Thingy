@@ -17,6 +17,7 @@ public class AutoRefills
     private int id;
     private Customer customer;
     private Item item;
+    private int ammount;
     private int frequency; //int days
     private int daysUntil; //time before next refill, can go below 0 if a refill is delayed due to lack of inventory
     private int remainingRefills;
@@ -24,18 +25,22 @@ public class AutoRefills
     public void registerNewAutoRefill() throws SQLException
     {
 	Database.statement.executeUpdate
-		("INSERT INTO auto_refills(iditem, idcustomer, frequency, daysuntil, remainingrefills)"
-		+ "VALUES('" + item.getID() + "','" + customer.getID() + "','" + frequency + "','" + daysUntil + "','" + remainingRefills + "')");
+		("INSERT INTO auto_refills(iditem, idcustomer, frequency, daysuntil, remainingrefills, amount)"
+		+ "VALUES('" + item.getID() + "','" + customer.getID() + "','" + frequency + "','" + daysUntil + "','" + remainingRefills + "','" + ammount + "')");
+    }
+    public void deleteAutoRefill() throws SQLException
+    { 
+	Database.statement.executeUpdate("DELETE FROM auto_refills WHERE idrefill = '" + id + "'");
     }
     //Post: Returns all auto refills where daysUntil <= 0
-    ArrayList<AutoRefills> readAutoRefills() throws SQLException, ClassNotFoundException
+    public static ArrayList<AutoRefills> readAutoRefills() throws SQLException, ClassNotFoundException
     {
 	ArrayList<AutoRefills> refills = new ArrayList<>();
 	Item item;
 	Customer customer;
 	AutoRefills refill;
 	
-	Database.result2 = Database.statement2.executeQuery("SELECT idrefill, iditem, idcustomer, frequency, daysuntil, remainingrefills"
+	Database.result2 = Database.statement2.executeQuery("SELECT idrefill, iditem, idcustomer, frequency, daysuntil, remainingrefills, ammount"
 							+ " FROM sales WHERE (daysuntil <= '" + 0 + "')");
 	
 	while(Database.result2.next())
@@ -49,6 +54,7 @@ public class AutoRefills
 	    refill.frequency = Database.result2.getInt(4);
 	    refill.daysUntil = Database.result2.getInt(5);
 	    refill.remainingRefills = Database.result2.getInt(6);
+	    refill.ammount = Database.result2.getInt(7);
 	    
 	    refill.item = item; 
 	    refill.customer = customer;
@@ -57,32 +63,88 @@ public class AutoRefills
 	
 	return refills;
     }
-    Item getItem()
+    public void updateDaysUntil(int days) throws SQLException
+    {
+	int currentDays;
+	int newDays;
+	
+	Database.result = Database.statement.executeQuery("SELECT daysuntil FROM auto_refills WHERE (idrefill = '" + id + "')");
+	
+	if(Database.result.next())
+	{
+	    currentDays =  Database.result.getInt(1);
+	    newDays = currentDays + days;
+	    
+	    Database.statement.executeUpdate("UPDATE auto_refills SET daysuntil = '" + (newDays) + "' WHERE idrefill = '" + id + "'");
+	    daysUntil--; //update current object too
+	}
+    }
+    public void updateRefillsRemaining(int remaining) throws SQLException
+    {
+	int currentRefills;
+	int newRefills;
+	
+	Database.result = Database.statement.executeQuery("SELECT remainingrefills FROM auto_refills WHERE (idrefill = '" + id + "')");
+	
+	if(Database.result.next())
+	{
+	    currentRefills = Database.result.getInt(1);
+	    newRefills = currentRefills + remaining;
+	    
+	    Database.statement.executeUpdate("UPDATE auto_refills SET remainingrefills = '" + (newRefills) + "' WHERE idrefill = '" + id + "'");
+	    remainingRefills--; //update current object too
+	}
+    }
+    public int getID()
+    {
+	return id;
+    }
+    public Item getItem()
     {
 	return item;
     }
-    Customer getCustomer()
+    public Customer getCustomer()
     {
 	return customer;
     }
-    void setItem(Item item)
+    public int getFrequency()
+    {
+	return frequency;
+    }
+    public int getDaysUntil()
+    {
+	return daysUntil;
+    }
+    public int getRemainingRefills()
+    {
+	return remainingRefills;
+    }
+    public int getAmmount()
+    {
+	return ammount;
+    }
+    public void setItem(Item item)
     {
 	this.item = item;
     }
-    void setCustomer(Customer customer)
+    public void setCustomer(Customer customer)
     {
 	this.customer = customer;
     }
-    void setFrequency(int frequency)
+    public void setFrequency(int frequency)
     {
 	this.frequency = frequency;
     }
-    void setDaysUntil(int days)
+    public void setDaysUntil(int days)
     {
 	this.daysUntil = days;
     }
-    void setRemainingRefills(int remaining)
+    public void setRemainingRefills(int remaining)
     {
 	this.remainingRefills = remaining;
+    }
+    public void setAmmount(int ammount)
+    {
+	this.ammount = ammount;
     }
 }

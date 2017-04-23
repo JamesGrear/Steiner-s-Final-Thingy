@@ -109,7 +109,6 @@ public class BatchCalculateSalesReport extends BatchFileReader
 
 		reader.mark(BUFFER_SIZE); //mark your spot so you dont skip over the Trailer
 		input = reader.readLine();
-		rows++;
 	    }
 	    reader.reset();
 	}

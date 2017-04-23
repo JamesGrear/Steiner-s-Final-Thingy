@@ -37,6 +37,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
     File deletedInventory;
     PrintWriter writer;
     PrintWriter writer2;
+    int trailerCount;
     
     BatchStoreCreateDelete() throws FileNotFoundException
     {
@@ -45,6 +46,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	error.writeHeader("ADD/DELETE STORE");
 	outputFile = new File("newstores.txt");
 	deletedInventory = new File("deletedstores.txt");
+	trailerCount = 0;
 	
 	try
 	{
@@ -284,24 +286,23 @@ public class BatchStoreCreateDelete extends BatchFileReader
 		    && store.getPriority() == Integer.parseInt(priority)
 		    && store.getZipcode() == Integer.parseInt(zipcode)) //look at how much fun we're having with these 5 comparisons!
 		    {
-			System.out.println("Store deleted");
 			store.deleteStore();
 		    }
 		    else //Store doesn't exist, can't be deleted
 		    {
-			error.writeToLog("MISMATCHED DATA WITH DATABASE FOR DELETE STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
+			error.writeToLog("MISMATCHED DATA WITH DATABASE FOR DELETE STORE WITH ID '" + Integer.parseInt(storeID) + "'");
 			return false;
 		    }
 		}
 		catch(Exception e) //bad formating in file
 		{
-		    error.writeToLog("INCORRECT VALUES FOR DELETE STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
+		    error.writeToLog("INCORRECT VALUES FOR DELETE STORE WITH ID '" + Integer.parseInt(storeID) + "'");
 		    return false;
 		}
 	    }
 	    else //store doesn't exist, can't be deleted
 	    {
-		error.writeToLog("STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "' DOESN'T EXIST AND CAN'T BE DELETED");
+		error.writeToLog("STORE WITH ID '" + Integer.parseInt(storeID) + "' DOESN'T EXIST AND CAN'T BE DELETED");
 		return false;
 	    }
 	    //********DONE COMPARING FILE DATA TO DATABASE************
@@ -331,6 +332,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 		expiration = "0000-00-00"; //not relevant for our program
 		writer2.println(vendorCode + storeid + quantity + expiration);
 		writer2.flush();
+		trailerCount++;
 		
 		x.deleteInventory();
 	    }
@@ -350,7 +352,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
     }
     void writeTrailer(PrintWriter writer)
     {
-	writer.println("T");
+	writer.println("T " + String.format("%04d", trailerCount));
 	writer.flush();
     }
 }
