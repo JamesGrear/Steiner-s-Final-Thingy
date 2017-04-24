@@ -16,8 +16,8 @@ import java.util.ArrayList;
  */
 public class BatchAutoRefill 
 {
-    ArrayList<AutoRefills> refills;
-    ErrorReport error;
+    private ArrayList<AutoRefills> refills;
+    private ErrorReport error;
     
     BatchAutoRefill()
     {

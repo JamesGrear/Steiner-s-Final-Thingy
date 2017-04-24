@@ -25,10 +25,10 @@ import java.util.Date;
  */
 public class BatchCalculateSalesReport extends BatchFileReader
 {
-    PrintWriter writer;
-    String reportName;
-    Date date;
-    DateFormat format;
+    private PrintWriter writer;
+    private String reportName;
+    private Date date;
+    private DateFormat format;
     
     BatchCalculateSalesReport()
     {

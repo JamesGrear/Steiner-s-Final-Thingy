@@ -27,19 +27,19 @@ import java.util.Date;
  */
 public class BatchStoreCreateDelete extends BatchFileReader
 {
-    String storeID;
-    String address;
-    String city;
-    String state;
-    String zipcode;
-    String priority;
-    File outputFile;
-    File deletedInventory;
-    PrintWriter writer;
-    PrintWriter writer2;
-    int trailerCount;
+    private String storeID;
+    private String address;
+    private String city;
+    private String state;
+    private String zipcode;
+    private String priority;
+    private File outputFile;
+    private File deletedInventory;
+    private PrintWriter writer;
+    private PrintWriter writer2;
+    private int trailerCount;
     
-    BatchStoreCreateDelete() throws FileNotFoundException
+    BatchStoreCreateDelete()
     {
 	super();
 	fileName = "adddeletestore.txt";
@@ -76,12 +76,19 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	    fileNotFound = true; //not strictly true, but cancels the file reading
 	}
     }
-    boolean ReadFile() throws ClassNotFoundException, SQLException
+    public boolean readFile()
     { 
 	String input;
 	
-	writeHeader(FileSequence.readInventoryToStore(), writer);
-	writeHeader(FileSequence.readDeletedStoreToWarehouseInventory(), writer2);
+	try
+	{
+	    writeHeader(FileSequence.readInventoryToStore(), writer);
+	    writeHeader(FileSequence.readDeletedStoreToWarehouseInventory(), writer2);
+	}
+	catch(SQLException e)
+	{
+	    error.writeToLog("DATABASE ERROR");
+	}
 	
 	if(fileNotFound)
 	{
@@ -146,6 +153,10 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	{
 	    
 	}
+	catch(ClassNotFoundException | SQLException e)
+	{
+	    error.writeToLog("DATABASE ERROR");
+	}
 	//**************************************************************
 	//******************READ THE TRAILER****************************
 	//**************************************************************
@@ -159,7 +170,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	
 	return true;
     }
-    int addStore(String input)
+    private int addStore(String input)
     {
 	rows++; //first line of add
 	
@@ -204,7 +215,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 
 	return -1; //something went wrong, can't process further;
     }
-    void addItem(String input, int id) throws ClassNotFoundException, SQLException //writes to file "newstores.txt" to be read during InventoryToStore process
+    private void addItem(String input, int id) throws ClassNotFoundException, SQLException //writes to file "newstores.txt" to be read during InventoryToStore process
     {
 	StoreInventory inventory = new StoreInventory();
 	int itemId;
@@ -252,7 +263,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	writer.println("A" + storeID + priority + input.substring(1, 10) + input.substring(10, 20)); //write to file for reading later
 	writer.flush();
     }
-    boolean deleteStore(String input) throws ClassNotFoundException, SQLException
+    private boolean deleteStore(String input) throws ClassNotFoundException, SQLException
     {
 	rows++; //one row for a delete
 	
@@ -314,7 +325,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	}
 	return true;
     }
-    void reallocateStoreInventory(int id) throws SQLException //for deleted stores
+    private void reallocateStoreInventory(int id) throws SQLException //for deleted stores
     {
 	try
 	{
@@ -342,7 +353,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	    error.writeToLog("DATABASE ERROR");
 	}
     }
-    void writeHeader(int seq, PrintWriter writer)
+    private void writeHeader(int seq, PrintWriter writer)
     {
 	Date date = new Date();
 	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -350,7 +361,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	writer.println("HD " + String.format("%04d", seq) + "      " + format.format(date));
 	writer.flush();
     }
-    void writeTrailer(PrintWriter writer)
+    private void writeTrailer(PrintWriter writer)
     {
 	writer.println("T " + String.format("%04d", trailerCount));
 	writer.flush();

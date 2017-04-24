@@ -23,11 +23,11 @@ import java.util.Date;
  */
 public class BatchVendorInventoryRequest 
 {
-    File file;
-    PrintWriter writer;
-    ErrorReport error;
-    int sequence;
-    int rows;
+    private File file;
+    private PrintWriter writer;
+    private ErrorReport error;
+    private int sequence;
+    private int rows;
     
     BatchVendorInventoryRequest()
     {
@@ -94,7 +94,7 @@ public class BatchVendorInventoryRequest
 	    
 	writeTrailer();
     }
-    void writeHeader()
+    private void writeHeader()
     {
 	Date date = new Date();
 	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -102,7 +102,7 @@ public class BatchVendorInventoryRequest
 	writer.println("HD " + String.format("%04d", sequence) + "      " + format.format(date));
 	writer.flush();
     }
-    void writeTrailer()
+    private void writeTrailer()
     {
 	writer.println("T " + String.format("%04d", rows));
 	writer.flush();

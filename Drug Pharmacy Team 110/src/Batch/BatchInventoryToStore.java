@@ -24,9 +24,9 @@ import java.sql.SQLException;
  */
 public class BatchInventoryToStore extends BatchFileReader
 {
-    int trailerCount;
-    final int MAX_PRIORITY = 15;
-    PrintWriter writer;
+    private int trailerCount;
+    private final int MAX_PRIORITY = 15;
+    private PrintWriter writer;
     
     BatchInventoryToStore()
     {
@@ -359,7 +359,7 @@ public class BatchInventoryToStore extends BatchFileReader
 	writer.println("HD " + String.format("%04d", sequenceNumber));
 	writer.flush();
     }
-    public void writeTrailer()
+    private void writeTrailer()
     {
 	writer.println("T " + String.format("%04d", trailerCount));
 	writer.flush();

@@ -25,6 +25,7 @@ public class Tests
 	testBatchInventoryToStore();
 	testBatchVendorInventoryRequest();
 	testBatchCalculateSalesReport();
+	testBatchAutoRefill();
 	//testErrorReport();
      }
     
@@ -32,7 +33,7 @@ public class Tests
     {
 	BatchStoreCreateDelete store = new BatchStoreCreateDelete();
 	
-	store.ReadFile();
+	store.readFile();
     }
     static void testBatchInventoryToWarehouse()
     {
@@ -44,7 +45,7 @@ public class Tests
     {
 	BatchItemUpdate item = new BatchItemUpdate();
 	
-	item.ReadFile();
+	item.readFile();
     }
     static void testBatchInventoryToStore()
     {
@@ -63,6 +64,12 @@ public class Tests
 	BatchCalculateSalesReport report = new BatchCalculateSalesReport();
 	
 	report.readFile();
+    }
+    static void testBatchAutoRefill()
+    {
+	BatchAutoRefill refill = new BatchAutoRefill();
+	
+	refill.refill();
     }
     static void testErrorReport()
     {
