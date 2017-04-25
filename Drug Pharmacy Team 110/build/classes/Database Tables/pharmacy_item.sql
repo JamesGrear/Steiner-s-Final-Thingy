@@ -28,10 +28,11 @@ CREATE TABLE `item` (
   `warning` int(11) DEFAULT NULL,
   `cost` double DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
-  `dosage` int(11) DEFAULT NULL,
-  `reorderlevel` int(11) DEFAULT NULL,
-  `reorderquantity` int(11) DEFAULT NULL,
+  `dosage` varchar(20) DEFAULT NULL,
+  `reorderlevel` bigint(11) DEFAULT NULL,
+  `reorderquantity` bigint(11) DEFAULT NULL,
   `deliverytime` varchar(45) DEFAULT NULL,
+  `vendorcode` int(11) DEFAULT NULL,
   PRIMARY KEY (`iditem`),
   UNIQUE KEY `iditem_UNIQUE` (`iditem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -43,7 +44,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (0,'null',0,0,'null',0,0,0,'null'),(1,'Updated Name',99,99,'Updated Description',99,99,99,'Updated Time'),(2,'Tylenol',0,4.5,NULL,NULL,NULL,NULL,NULL),(3,'null',0,0,'null',0,0,0,'null'),(4,'null',0,0,'null',0,0,0,'null'),(9,'Updated Name',5,3,'This is medicine that does stuff, duh!',9001,1,10000,'1 week'),(35,'Updated Name',5,3,'This is medicine that does stuff, duh!',9001,1,10000,'1 week'),(99,'Updated Name',99,99,'Updated Description',99,99,99,'Updated Time'),(100,'Updated Name',5,3,'This is medicine that does stuff, duh!',9001,1,10000,'1 week'),(101,'Updated Name',99,99,'Updated Description',99,99,99,'Updated Time'),(102,'Updated Name',99,99,'Updated Description',99,99,99,'Updated Time'),(103,'Updated Name',99,99,'Updated Description',99,99,99,'Updated Time'),(500,'Updated Name',99,99,'Updated Description',99,99,99,'Updated Time');
+INSERT INTO `item` VALUES (0,'null',0,0,'null','0',0,0,'null',NULL),(1,'Updated Name',99,99,'Updated Description','99',99,99,'Updated Time',0),(2,'Tylenol',0,4.5,NULL,NULL,NULL,NULL,NULL,NULL),(3,'null',0,0,'null','0',0,0,'null',NULL),(4,'null',0,0,'null','0',0,0,'null',NULL),(9,'Updated Name',5,3,'This is medicine that does stuff, duh!','9001',1,10000,'1 week',NULL),(35,'Updated Name',5,3,'This is medicine that does stuff, duh!','9001',1,10000,'1 week',NULL),(99,'Updated Name',99,99,'Updated Description','99',99,99,'Updated Time',NULL),(100,'Updated Name',5,3,'This is medicine that does stuff, duh!','9001',1,10000,'1 week',NULL),(101,'Updated Name',99,99,'Updated Description','99',99,99,'Updated Time',NULL),(102,'Updated Name',99,99,'Updated Description','99',99,99,'Updated Time',NULL),(103,'Updated Name',99,99,'Updated Description','99',99,99,'Updated Time',NULL),(500,'Updated Name',99,99,'Updated Description','99',99,99,'Updated Time',NULL),(123456789,'name                ',0,5,'description                                                                                         ','dose                ',9876543210,123456789,'Monday                                       ',1234);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-21 17:30:28
+-- Dump completed on 2017-04-22  0:30:42

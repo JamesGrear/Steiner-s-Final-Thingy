@@ -20,10 +20,10 @@ import java.sql.SQLException;
  */
 public class BatchInventoryToWarehouse extends BatchFileReader
 {
-    String vendorCode;
-    String itemID;
-    String quantityReceived;
-    String expiration;
+    private String vendorCode;
+    private String itemID;
+    private String quantityReceived;
+    private String expiration;
     
     BatchInventoryToWarehouse()
     {

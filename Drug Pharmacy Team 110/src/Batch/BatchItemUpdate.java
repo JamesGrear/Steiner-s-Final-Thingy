@@ -22,9 +22,9 @@ import java.util.ArrayList;
  */
 public class BatchItemUpdate extends BatchFileReader
 {
-    int rowA;
-    int rowD;
-    int rowC;
+    private int rowA;
+    private int rowD;
+    private int rowC;
     
     BatchItemUpdate()
     {
@@ -54,7 +54,7 @@ public class BatchItemUpdate extends BatchFileReader
 	}
     }
     
-    boolean ReadFile()
+    public boolean readFile()
     { 
 	String input;
 	
@@ -186,8 +186,7 @@ public class BatchItemUpdate extends BatchFileReader
 
 	return true;
     }
-    
-    void addItem(String input)
+    private void addItem(String input)
     {
 	Item item;
 	
@@ -248,7 +247,7 @@ public class BatchItemUpdate extends BatchFileReader
 	    error.writeToLog("INCORRECT FORMAT FOR ADD ITEM LINE");
 	}
     }
-    void deleteItem(String input)
+    private void deleteItem(String input)
     {
 	boolean isEmpty = true;
 	Item item;
@@ -313,7 +312,7 @@ public class BatchItemUpdate extends BatchFileReader
 	    error.writeToLog("DATABASE ERROR");
 	}
     }
-    void changeItem(String input)
+    private void changeItem(String input)
     {
 	Item item; 
 	

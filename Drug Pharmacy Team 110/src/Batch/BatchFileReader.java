@@ -54,6 +54,7 @@ public abstract class BatchFileReader
 	
 	System.out.println(input);
 	System.out.println(expected);
+	
 	if (expected.equals(input.toString())) //only first 2 words of the header are read, the rest is ignored
 	{
 	    return true;
@@ -82,6 +83,8 @@ public abstract class BatchFileReader
 	
 	if(input != null)
 	{
+	    System.out.println(input);
+	    System.out.println(expected);
 	    if (expected.equals(input))
 	    {
 	     return true;

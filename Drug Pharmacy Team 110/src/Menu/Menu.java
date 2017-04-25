@@ -121,13 +121,14 @@ public class Menu
         /*
             TODO: Launch Batch Processing Program from here
         */
-
         Alert noAccountFound = new Alert(Alert.AlertType.WARNING);
         noAccountFound.initStyle(StageStyle.UTILITY);
         noAccountFound.setTitle(null);
         noAccountFound.setHeaderText("Working");
         noAccountFound.setContentText("The Batch Button works.");
-
-        noAccountFound.showAndWait();
+	
+        noAccountFound.show();
+	
+	Batch.Batch.main(null); //start up batch processing
     }
 }
