@@ -22,6 +22,8 @@ import Menu.Menu;
 
 public class Login
 {
+    Window loginScreen;
+
     @FXML private TextField userIDBox; // Text box for user to enter User ID
 
     @FXML private PasswordField passwordBox; // Password Box for user to enter password
@@ -41,7 +43,7 @@ public class Login
     @FXML private void handleEnterClick(ActionEvent event) throws ClassNotFoundException, SQLException
     // Runs if the Enter button was clicked. Gets reference to the login window and passes it to try login
     {
-        Window loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+        loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
         tryLogin(loginScreen); // try to log in with entered credentials
     }
@@ -51,7 +53,7 @@ public class Login
     {
         if(event.getCode() == KeyCode.ENTER) // ignore other key presses aside from Enter key
         {
-            Window loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+            loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
             tryLogin(loginScreen); // try to log in with entered credentials
         }
@@ -63,7 +65,7 @@ public class Login
     {
         try
         {
-            // TODO:
+            // TODO: make it so id 00001 != 1
 
             int userID = Integer.parseInt(userIDBox.getText()); // this may throw NumberFormatException, see catch block below
 

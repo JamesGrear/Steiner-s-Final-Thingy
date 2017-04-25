@@ -49,6 +49,7 @@ public class Menu
             Scene scene = new Scene(page);
             Stage stage = new Stage();
             stage.setTitle("Pharmacy Interface - Main Menu");
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
 

@@ -10,9 +10,12 @@ package ProductLookup;
 import Database.Employee;
 import Database.Item;
 import Menu.Menu;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
@@ -23,7 +26,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.event.ActionEvent;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 
 public class Lookup
@@ -50,13 +56,26 @@ public class Lookup
         {
             User = user;
 
-            // Load main menu
+            Parent root;
 
-            AnchorPane page = FXMLLoader.load(Lookup.class.getResource("Product Lookup.fxml"));
-            Scene scene = new Scene(page);
+            // Set up controller class
+            URL location = Lookup.class.getResource("Product Lookup.fxml");
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(location);
+            fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
+            root = fxmlLoader.load(location.openStream());
+            Lookup contr = fxmlLoader.getController();
+
+            // Display screen
+            Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle("Pharmacy Interface - Product Lookup");
+            stage.setResizable(false);
+
+            stage.setOnCloseRequest(event -> contr.closeWindow(scene.getWindow()));
+
             stage.setScene(scene);
+
             stage.show();
 
             prevScreen.hide(); // Closes the previous screen
@@ -93,12 +112,18 @@ public class Lookup
 
     }
 
-    @FXML private void handleCancelClick(ActionEvent event)
+    private void closeWindow(Window lookupScreen)
     // Returns user to main menu and exits the product lookup screen
+    {
+        Menu.launchMenu(User, lookupScreen); // launch the main menu interface, passing the user's information and the current window
+    }
+
+    @FXML private void handleCancelClick(ActionEvent event)
+    // Call closeWindow function on lookup screen if cancel button is clicked or ESC key is pressed
     {
         Window lookupScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
-        Menu.launchMenu(User, lookupScreen); // launch the main menu interface, passing the user's information and the current window
+        closeWindow(lookupScreen);
     }
 
     @FXML private void handleEnterClick() throws ClassNotFoundException, SQLException
@@ -122,6 +147,8 @@ public class Lookup
     {
         try
         {
+            // TODO: implement function to limit number of chars in textfield (http://stackoverflow.com/questions/22714268/how-to-limit-the-amount-of-characters-a-javafx-textfield)
+
             int itemID = Integer.parseInt(productSearchBox.getText()); // this may throw NumberFormatException, see catch block below
 
             String itemIDAsString = convertIDToString(itemID);  // the item ID displayed as a string (zero filled, 9 digits)
@@ -179,7 +206,7 @@ public class Lookup
             invalidFormat.initStyle(StageStyle.UTILITY);
             invalidFormat.setTitle(null);
             invalidFormat.setHeaderText("Invalid item ID formatting");
-            invalidFormat.setContentText("The item ID you have entered is improperly formatted.\n\nDouble check that the ID is composed only of numbers (no spaces/separators)");
+            invalidFormat.setContentText("The item ID you have entered is improperly formatted.\n\nDouble check that the ID is composed only of numbers (no spaces/separators).");
 
             invalidFormat.showAndWait();
         }

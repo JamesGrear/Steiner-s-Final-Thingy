@@ -5,8 +5,11 @@
  */
 package Main;
 
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import CurrentStore.CurrentStore;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,17 +17,33 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.sql.SQLException;
 import Database.Database;
+import Database.Store;
 
 
 public class Main extends Application
 {
     // @param args the command line arguments
 
-    // Sets up database connection and launches application
+    // * Checks for current store file
+    // * Sets up database connection
+    // * Launches application
     public static void main(String[] args) throws ClassNotFoundException, SQLException 
     {
         Database.setupDatabaseConnection();
+
+        CurrentStore.main(null);
+
+        System.out.println(Store.getCurrentStoreID());
+
         Application.launch(Main.class, (java.lang.String[])null);
+    }
+
+    public static Scene launchLoginScreen() throws IOException
+    {
+        AnchorPane page = FXMLLoader.load(Main.class.getResource("/Login/Login Screen.fxml"));
+        Scene scene = new Scene(page);
+
+        return scene;
     }
 
     @Override
@@ -32,14 +51,15 @@ public class Main extends Application
     {
         try
         {
-            AnchorPane page = FXMLLoader.load(Main.class.getResource("/Login/Login Screen.fxml"));
-            Scene scene = new Scene(page);
-            primaryStage.setScene(scene);
+            Scene scene = launchLoginScreen();
+
             primaryStage.setTitle("Pharmacy Interface - Login Screen");
+            primaryStage.setResizable(false);
+            primaryStage.setScene(scene);
             primaryStage.show();
         }
 
-        catch (Exception ex)
+        catch (IOException ex)
         {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
