@@ -18,7 +18,7 @@ public class CurrentStore extends Application
 {
     public static void main(String[] args)
     {
-        File curStoreFile = new File("./Steiner-s-Final-Thingy/Drug Pharmacy Team 110/currentStore.txt"); // path to currentStore file
+        File curStoreFile = new File("./currentStore.txt"); // path to currentStore file
 
         // check if currentStore.txt exists, is readable, and is a file (not directory)
         if(curStoreFile.exists() && curStoreFile.canRead() && curStoreFile.isFile())
