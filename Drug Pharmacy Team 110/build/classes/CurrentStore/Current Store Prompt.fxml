@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleEnterKeyPressed" prefHeight="124.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CurrentStore.CurrentStorePromptContr">
+   <children>
+      <Label layoutX="60.0" layoutY="14.0" text="This program has not yet been setup for use in this store. Please enter your store ID below." />
+      <Label layoutX="196.0" layoutY="54.0" text="Store ID:" />
+      <TextField fx:id="storeIDTextBox" layoutX="251.0" layoutY="50.0" />
+      <Button layoutX="482.0" layoutY="85.0" mnemonicParsing="false" onAction="#handleEnterClick" text="Enter" />
+      <Button cancelButton="true" layoutX="94.0" layoutY="85.0" mnemonicParsing="false" text="Clear" />
+   </children>
+</AnchorPane>
