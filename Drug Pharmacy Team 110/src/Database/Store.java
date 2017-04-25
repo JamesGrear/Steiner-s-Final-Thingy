@@ -27,38 +27,39 @@ public class Store
 
     public Store(int id)
     {
-	this.id = id;
+        this.id = id;
     }
+
     //Post: if the ID doesn't exist, adds a new store into the database and returns true
     //      if the ID already exists, returns false
     public boolean registerNewStore() throws SQLException
     {
-    if(!verifyStore(id))
-	{
-	    Database.statement.executeUpdate
-				("INSERT INTO store(idstore, priority, address, city, state, zipcode)"
-			        + "VALUES('" + id + "','" + priority + "','" + address + "','" + city + "','" + state + "','" + zipcode + "')");
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+        if(!verifyStore(id))
+        {
+            Database.statement.executeUpdate
+                    ("INSERT INTO store(idstore, priority, address, city, state, zipcode)"
+                        + "VALUES('" + id + "','" + priority + "','" + address + "','" + city + "','" + state + "','" + zipcode + "')");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     //Post: if the ID exists, deletes the pre existing store from the database 
     //	    if the ID did not exist, returns false
     public boolean deleteStore() throws SQLException
     {
-	if(verifyStore(id))
-	{	    
-	    Database.statement.executeUpdate("DELETE FROM store WHERE idstore = '" + id + "'");
-			        
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+        if(verifyStore(id))
+        {
+            Database.statement.executeUpdate("DELETE FROM store WHERE idstore = '" + id + "'");
+
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     //Post: if the store exists, updates all attributes of a pre-existing store (except id)and returns true
     //	    if the store did not exist, returns false
@@ -136,16 +137,17 @@ public class Store
     //Post: Returns true if a store with the id exists, else returns false
     public static boolean verifyStore(int id) throws SQLException
     {
-	Database.result = Database.statement.executeQuery("select idstore from store where idstore = '" + id + "'"); //kind of redundent, but checks if the id exists
+		Database.result = Database.statement.executeQuery("select idstore from store where idstore = '" + id + "'"); //kind of redundent, but checks if the id exists
 
-	if(Database.result.next())
-	{
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+		if(Database.result.next())
+		{
+			return true;
+		}
+
+		else
+		{
+			return false;
+		}
     }    
   public void setPriority(int priority)
 	{
