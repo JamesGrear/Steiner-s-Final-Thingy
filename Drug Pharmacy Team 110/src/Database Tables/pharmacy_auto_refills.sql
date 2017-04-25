@@ -29,6 +29,7 @@ CREATE TABLE `auto_refills` (
   `daysuntil` int(11) DEFAULT NULL,
   `remainingrefills` int(11) DEFAULT NULL,
   `idcustomer` int(11) DEFAULT NULL,
+  `ammount` int(11) DEFAULT NULL,
   PRIMARY KEY (`idrefill`),
   UNIQUE KEY `idrefill_UNIQUE` (`idrefill`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -40,7 +41,6 @@ CREATE TABLE `auto_refills` (
 
 LOCK TABLES `auto_refills` WRITE;
 /*!40000 ALTER TABLE `auto_refills` DISABLE KEYS */;
-INSERT INTO `auto_refills` VALUES (1,2,30,0,5,1);
 /*!40000 ALTER TABLE `auto_refills` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-22  0:30:43
+-- Dump completed on 2017-04-24 21:33:02

@@ -39,7 +39,7 @@ public class CurrentStorePromptContr implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources)
     {
-        curStoreFile = new File("./Steiner-s-Final-Thingy/Drug Pharmacy Team 110/currentStore.txt");
+        curStoreFile = new File("./currentStore.txt");
 
         try
         {
