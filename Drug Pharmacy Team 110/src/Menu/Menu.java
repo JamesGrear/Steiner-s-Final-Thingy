@@ -66,18 +66,6 @@ public class Menu
 
     @FXML private void launchPOS(ActionEvent event)
     {
-        /*
-            TODO: Launch Transaction Program from here (pass user and current window)
-        */
-
-        /*Alert noAccountFound = new Alert(Alert.AlertType.WARNING);
-        noAccountFound.initStyle(StageStyle.UTILITY);
-        noAccountFound.setTitle(null);
-        noAccountFound.setHeaderText("Working");
-        noAccountFound.setContentText("The POS Button works.");
-
-        noAccountFound.showAndWait();*/
-	
 	Window menuScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
         CustomerLogin.launchCustomerLogin(User, menuScreen);

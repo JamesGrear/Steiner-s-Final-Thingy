@@ -5,24 +5,73 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="337.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Transaction.Transaction">  
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="828.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Transaction.Transaction">  
 <children>
-      <Text layoutX="23.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total:" />
-      <Text layoutX="23.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item:" wrappingWidth="72.998046875">
+      <Text layoutX="27.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer ID:" />
+      <Text layoutX="27.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 1:" wrappingWidth="72.998046875">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button cancelButton="true" layoutX="26.0" layoutY="198.0" mnemonicParsing="false" onAction="handleCancelClick" text="Cancel" />
-      <Button layoutX="216.0" layoutY="198.0" mnemonicParsing="false" text="Purchase" />
-      <MenuButton layoutX="96.0" layoutY="45.0" mnemonicParsing="false" text="Drugs">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
-      <Button layoutX="205.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="43.0" text="Add" />
-      <Button layoutX="263.0" layoutY="45.0" mnemonicParsing="false" text="Remove" />
+      <Button cancelButton="true" layoutX="24.0" layoutY="374.0" mnemonicParsing="false" onAction="#handleCancelClick" text="Cancel" />
+      <Button layoutX="750.0" layoutY="374.0" mnemonicParsing="false" text="Purchase" />
+      <Text layoutX="61.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" />
+      <Text layoutX="50.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" />
+      <Text layoutX="17.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reward Points:" />
+      <Text layoutX="27.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 5:" wrappingWidth="72.998046875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="27.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 2:" wrappingWidth="72.998046875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="27.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 4:" wrappingWidth="72.998046875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="27.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 3:" wrappingWidth="72.998046875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField layoutX="90.0" layoutY="138.0" />
+      <TextField layoutX="90.0" layoutY="168.0" />
+      <TextField layoutX="90.0" layoutY="198.0" />
+      <TextField layoutX="90.0" layoutY="228.0" />
+      <TextField layoutX="90.0" layoutY="258.0" />
+      <TextField layoutX="248.0" layoutY="138.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField layoutX="248.0" layoutY="168.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField layoutX="248.0" layoutY="198.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField layoutX="248.0" layoutY="228.0" prefHeight="25.0" prefWidth="69.0" />
+      <TextField layoutX="248.0" layoutY="258.0" prefHeight="25.0" prefWidth="69.0" />
+      <Text layoutX="145.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item ID" />
+      <Text layoutX="260.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity" />
+      <CheckBox layoutX="379.0" layoutY="142.0" mnemonicParsing="false" />
+      <CheckBox layoutX="379.0" layoutY="172.0" mnemonicParsing="false" />
+      <CheckBox layoutX="379.0" layoutY="202.0" mnemonicParsing="false" />
+      <CheckBox layoutX="379.0" layoutY="232.0" mnemonicParsing="false" />
+      <CheckBox layoutX="379.0" layoutY="262.0" mnemonicParsing="false" />
+      <TextField layoutX="400.0" layoutY="138.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="400.0" layoutY="168.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="400.0" layoutY="198.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="400.0" layoutY="228.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="400.0" layoutY="258.0" prefHeight="25.0" prefWidth="114.0" />
+      <Text layoutX="430.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Frequency" />
+      <Text layoutX="564.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Refills" />
+      <TextField layoutX="523.0" layoutY="138.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="523.0" layoutY="168.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="523.0" layoutY="198.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="523.0" layoutY="228.0" prefHeight="25.0" prefWidth="114.0" />
+      <TextField layoutX="523.0" layoutY="258.0" prefHeight="25.0" prefWidth="114.0" />
+      <Text layoutX="475.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Setup Auto Refill" />
+      <Text fx:id="customerIDBox" layoutX="100.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="300.0" />
+      <Text fx:id="customerNameBox" layoutX="100.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="300.0" />
+      <Text fx:id="customerAddressBox" layoutX="100.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="300.0" />
+      <Text fx:id="customerRewardBox" layoutX="100.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="300.0" />
+      <Button layoutX="17.0" layoutY="89.0" mnemonicParsing="false" onAction="#setCustomerText" text="Button" />
    </children>
 </AnchorPane>

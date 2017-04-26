@@ -5,6 +5,7 @@
  */
 package Transaction;
 
+import Database.Customer;
 import Database.Employee;
 import Menu.Menu;
 import java.io.IOException;
@@ -14,11 +15,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.fxml.LoadException;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
@@ -29,15 +33,32 @@ import javafx.stage.Window;
 public class Transaction 
 {
     private static Employee User; // The user that is currently logged in
+    //private static Customer Customer; //the customer that is currently logged in
+    private static Customer customer;
+    //private static Window PrevScreen;
+    
+    // Text boxes for user input
 
-    public static void launchTransaction(Employee user, Window prevScreen)
+    // Text boxes for program output
+    @FXML private Text customerIDBox;	     // Text box to write the customer ID to
+    @FXML private Text customerNameBox;	     // Text box to write the customer name to
+    @FXML private Text customerAddressBox;	     // Text box to write the customer address to
+    @FXML private Text customerRewardBox;	   // Text box to write the customer reward points to
+
+    public Transaction()
+    {
+
+    }
+    public void launchTransaction(Employee user, Customer customer, Window prevScreen)
     {
         try
-        {
-            User = user;
-
+        {   
+	    User = user;
+	    //PrevScreen = prevScreen;
+	    this.customer = customer;
+	    
             Parent root;
-
+	   
             // Set up controller class
             URL location = Transaction.class.getResource("Transactions.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader();
@@ -45,13 +66,13 @@ public class Transaction
             fxmlLoader.setBuilderFactory(new JavaFXBuilderFactory());
             root = fxmlLoader.load(location.openStream());
             Transaction contr = fxmlLoader.getController();
-
+	    
             // Display screen
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle("Pharmacy Interface - Transaction");
             stage.setResizable(false);
-
+	    
             stage.setOnCloseRequest(event -> contr.closeWindow(scene.getWindow()));
 
             stage.setScene(scene);
@@ -60,34 +81,35 @@ public class Transaction
 
             prevScreen.hide(); // Closes the previous screen
 	}
-	catch (IOException e)
+	catch (LoadException e)
         {
             e.printStackTrace();
+	    System.out.println(e.getCause());
         }
+	catch(IOException e)
+	{
+	    
+	}
     }
+    @FXML private void setCustomerText()
+    {
+	customerIDBox.setText(Integer.toString(customer.getID()));
+	customerNameBox.setText(customer.getName());
+	customerAddressBox.setText(customer.getAddress());
+	customerRewardBox.setText(Integer.toString(customer.getRewardPoints()));
+    }
+    
     private void closeWindow(Window lookupScreen)
     // Returns user to main menu and exits the product lookup screen
     {
-        Menu.launchMenu(User, lookupScreen); // launch the main menu interface, passing the user's information and the current window
+	Menu.launchMenu(User, lookupScreen); // launch the main menu interface, passing the user's information and the current window
     }
-    @FXML private void handleEnterClick() throws ClassNotFoundException, SQLException
-    // Calls function to search for item with matching ID in database
-    {
-       // tryLookup(); // attempt to find the item in the database and display its attributes
-    }
+   
     @FXML private void handleCancelClick(ActionEvent event)
     // Call closeWindow function on lookup screen if cancel button is clicked or ESC key is pressed
     {
-        Window lookupScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+       // Window lookupScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
-        closeWindow(lookupScreen);
-    }
-    @FXML private void handleEnterKeyPressed(KeyEvent event) throws ClassNotFoundException, SQLException
-    // Calls function to search for item with matching ID in database
-    {
-        if(event.getCode() == KeyCode.ENTER) // ignore other key presses aside from Enter key
-        {
-            //tryLookup(); // attempt to find the item in the database and display its attributes
-        }
+        //closeWindow(lookupScreen);
     }
 }
