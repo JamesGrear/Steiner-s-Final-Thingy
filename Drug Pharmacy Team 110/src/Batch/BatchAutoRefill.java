@@ -42,46 +42,43 @@ public class BatchAutoRefill
 		try
 		{
 			for(AutoRefills x: refills)
-		    if(Warehouse.readInventory(x.getItem().getID()) >= x.getAmount()) //warehouse has enough inventory for refill
-		    {
-			Warehouse.updateInventory(x.getItem().getID(), (x.getAmount() * -1)); //subtract inventory from warehouse
-			x.updateRefillsRemaining(-1); //remove 1 refill remaining
-			
-			if(x.getRemainingRefills() <= 0)
-			{
-				x.updateDaysUntil(-1); //decrement days until
-				daysUntil = x.getDaysUntil();
+            {
+                if(Warehouse.readInventory(x.getItem().getID()) >= x.getAmount()) //warehouse has enough inventory for refill
+                {
+                    Warehouse.updateInventory(x.getItem().getID(), (x.getAmount() * -1)); //subtract inventory from warehouse
+                    x.updateRefillsRemaining(-1); //remove 1 refill remaining
 
-				if(x.getItem() != null) //item exists
-				{
-					if(Warehouse.readInventory(x.getItem().getID()) >= x.getAmmount()) //warehouse has enough inventory for refill
-					{
-						Warehouse.updateInventory(x.getItem().getID(), (x.getAmmount() * -1)); //subtract inventory from warehouse
-						x.updateRefillsRemaining(-1); //remove 1 refill remaining
+                    if (x.getRemainingRefills() <= 0)
+                    {
+                        x.updateDaysUntil(-1); //decrement days until
+                        daysUntil = x.getDaysUntil();
 
-						if(x.getRemainingRefills() <= 0)
-						{
-							x.deleteAutoRefill();
-						}
+                        if (x.getItem() != null) //item exists
+                        {
+                            if (Warehouse.readInventory(x.getItem().getID()) >= x.getAmount()) //warehouse has enough inventory for refill
+                            {
+                                Warehouse.updateInventory(x.getItem().getID(), (x.getAmount() * -1)); //subtract inventory from warehouse
+                                x.updateRefillsRemaining(-1); //remove 1 refill remaining
 
-						else
-						{
-							x.updateDaysUntil(x.getFrequency()); //add frequency to days until, works even if days until is negative due to inventory shortage
-						}
-					}
+                                if (x.getRemainingRefills() <= 0) {
+                                    x.deleteAutoRefill();
+                                } else {
+                                    x.updateDaysUntil(x.getFrequency()); //add frequency to days until, works even if days until is negative due to inventory shortage
+                                }
+                            } else {
+                                error.writeToLog("WAREHOUSE LACKS INVENTORY OF ITEM #" + x.getItem().getID() + " FOR REFILL #" + x.getID());
+                            }
+                        }
 
-					else
-					{
-						error.writeToLog("WAREHOUSE LACKS INVENTORY OF ITEM #" + x.getItem().getID() + " FOR REFILL #" + x.getID());
-					}
-				}
-
-				else
-				{
-					error.writeToLog("COULD NOT REGISTER REFILL #" + x.getID() + " BECAUSE ITEM DOES NOT EXIST");
-				}
+                        else
+                        {
+                            error.writeToLog("COULD NOT REGISTER REFILL #" + x.getID() + " BECAUSE ITEM DOES NOT EXIST");
+                        }
+                    }
+                }
 			}
 		}
+
 		catch(SQLException e)
 		{
 			error.writeToLog("DATABASE ERROR");

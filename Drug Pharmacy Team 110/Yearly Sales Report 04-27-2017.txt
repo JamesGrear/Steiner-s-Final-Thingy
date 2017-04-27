@@ -1,32 +1,4 @@
-
-                    YEARLY SALES FOR ITEM #33000000
-
                     YEARLY SALES FOR ITEM #1
-
-
-
-
-       STORE ID                 QUANTITY SOLD                   TOTAL PRICE
-
-                                          DECEMBER
-         0                            20                          35.0
-
-TOTAL FOR YEAR: 35.0
-
-TOTAL FOR ALL SALES: 35.0
-
-                                             MARCH
-         8                             5                         495.0
-         8                             2                         198.0
-         8                             3                         297.0
-         8                             5                         495.0
-
-                                             APRIL
-         8                            10                         990.0
-
-TOTAL FOR YEAR: 2475.0
-
-TOTAL FOR ALL SALES: 2475.0
 
 
 
@@ -35,42 +7,6 @@ TOTAL FOR ALL SALES: 2475.0
 
 
        STORE ID                 QUANTITY SOLD                   TOTAL PRICE
-         0                            20                          35.0
-
-                                          FEBRUARY
-         0                            20                          35.0
-
-                                             MARCH
-         0                            20                          35.0
-
-                                             APRIL
-         0                            20                          35.0
-
-                                               MAY
-         0                            20                          35.0
-
-                                              JUNE
-         0                            20                          35.0
-
-                                              JULY
-         0                            20                          35.0
-
-                                            AUGUST
-         0                            20                          35.0
-
-                                         SEPTEMBER
-         0                            20                          35.0
-
-                                           OCTOBER
-         0                            20                          35.0
-
-                                          NOVEMBER
-         0                            20                          35.0
-
-                                          DECEMBER
-         0                            20                          35.0
-         0                            20                          35.0
-
       1234                            20                          35.0
 
                                           FEBRUARY
@@ -106,7 +42,6 @@ TOTAL FOR ALL SALES: 2475.0
                                           DECEMBER
       1234                            20                          35.0
       1234                            20                          35.0
-
 
 TOTAL FOR YEAR: 455.0
 
