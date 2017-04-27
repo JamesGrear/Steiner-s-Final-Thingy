@@ -14,27 +14,29 @@ import java.util.ArrayList;
  *
  * @author Brian
  */
-public class BatchAutoRefill 
+public class BatchAutoRefill
 {
-    private ArrayList<AutoRefills> refills;
-    private ErrorReport error;
-    
-    BatchAutoRefill()
-    {
-	error = ErrorReport.getErrorReport();
-	error.writeHeader("AUTO REFILLS");
-	
-	try
+	private ArrayList<AutoRefills> refills;
+	private ErrorReport error;
+
+	BatchAutoRefill()
 	{
-	    refills = AutoRefills.readAutoRefills(); //gets all refills that are due
+		error = ErrorReport.getErrorReport();
+		error.writeHeader("AUTO REFILLS");
+
+		try
+		{
+			refills = AutoRefills.readAutoRefills(); //gets all refills that are due
+		}
+		catch(ClassNotFoundException | SQLException e)
+		{
+
+			error.writeToLog("DATABASE ERROR");
+		}
 	}
-	catch(ClassNotFoundException | SQLException e)
+
+	public void refill()
 	{
-	    error.writeToLog("DATABASE ERROR");
-	}
-    }
-    public void refill()
-    {
 		int daysUntil;
 
 		try
