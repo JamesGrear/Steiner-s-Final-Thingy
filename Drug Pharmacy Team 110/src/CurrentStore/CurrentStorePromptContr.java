@@ -147,8 +147,7 @@ public class CurrentStorePromptContr implements Initializable
 
             curStoreFile.setReadOnly();
 
-            // Hide current screen
-            curStorePrompt.hide();
+            Store.setStoreSet(true);
 
             // Launch login screen
             Scene scene = Main.launchLoginScreen();
@@ -157,6 +156,9 @@ public class CurrentStorePromptContr implements Initializable
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
+
+            // Hide current screen
+            curStorePrompt.hide();
         }
 
         catch(Exception ex)

@@ -14,7 +14,8 @@ import java.util.ArrayList;
  */
 public class Store 
 {
-    private static int currentStoreID;  //this is the ID of the store that the program is running for
+    private static int currentStoreID = -1;  //this is the ID of the store that the program is running inside
+	private static boolean storeSet = false; // this boolean indicates if application launch was already called in setting store
     private static ArrayList<Store> stores; //all stores that exist
 	    
     private int id;
@@ -177,6 +178,8 @@ public class Store
 	{
 	  currentStoreID = id;
 	}
+
+	public static void setStoreSet(boolean set) { storeSet = set; }
   
 	public int getID()
 	{
@@ -202,6 +205,8 @@ public class Store
 	{
 	  return state;
 	}
+
+	public static boolean getStoreSet() { return storeSet; }
   
 	public int getZipcode()
 	{

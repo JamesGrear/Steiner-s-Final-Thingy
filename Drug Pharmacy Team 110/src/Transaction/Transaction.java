@@ -78,8 +78,7 @@ public class Transaction implements Initializable
     
     @FXML private TextField userIDBox;      //secondary user login
     @FXML private TextField userPasswordBox;
-    
-    
+
     // Text for program output
     @FXML private Text customerIDBox;	     // Text box to write the customer ID to
     @FXML private Text customerNameBox;	     // Text box to write the customer name to
@@ -817,11 +816,12 @@ public class Transaction implements Initializable
 	Window lookupScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
         closeWindow(lookupScreen);
-    } 
+    }
+
     private void closeWindow(Window lookupScreen)
     // Returns user to main menu and exits the product lookup screen
     {
-	Menu.launchMenu(User, lookupScreen); // launch the main menu interface, passing the user's information and the current window
+		Menu.launchMenu(User, lookupScreen); // launch the main menu interface, passing the user's information and the current window
     }
    
     @FXML private void handleCancelClick(ActionEvent event)

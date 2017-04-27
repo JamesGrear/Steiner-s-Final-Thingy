@@ -35,7 +35,10 @@ public class Main extends Application
 
         System.out.println(Store.getCurrentStoreID());
 
-        Application.launch(Main.class, (java.lang.String[])null);
+        if(Store.getStoreSet() == false && Store.getCurrentStoreID() != -1)
+        {
+            Application.launch(Main.class, (java.lang.String[]) null);
+        }
     }
 
     public static Scene launchLoginScreen() throws IOException
