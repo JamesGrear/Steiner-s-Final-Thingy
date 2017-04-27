@@ -42,6 +42,12 @@ public class BatchAutoRefill
 		try
 		{
 			for(AutoRefills x: refills)
+		    if(Warehouse.readInventory(x.getItem().getID()) >= x.getAmount()) //warehouse has enough inventory for refill
+		    {
+			Warehouse.updateInventory(x.getItem().getID(), (x.getAmount() * -1)); //subtract inventory from warehouse
+			x.updateRefillsRemaining(-1); //remove 1 refill remaining
+			
+			if(x.getRemainingRefills() <= 0)
 			{
 				x.updateDaysUntil(-1); //decrement days until
 				daysUntil = x.getDaysUntil();

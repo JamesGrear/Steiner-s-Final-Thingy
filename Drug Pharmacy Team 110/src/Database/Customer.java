@@ -89,15 +89,27 @@ public class Customer
 	}
     }
     //Post: Writes new data into the database for a new Customer
-    public void registerNewCustomer(Customer customer) throws SQLException
+    public void registerNewCustomer() throws SQLException
     {
 	Database.statement.executeUpdate("INSERT INTO customer(name, address, rewardpoints)"
-			                + "VALUES('" + customer.name + "','" + customer.address + "','" + 0 + "')");
+			                + "VALUES('" + name + "','" + address + "','" + 0 + "')");
     }
     //Post: RewardPoints = points + RewardPoints
-    public void addRewardPoints(int points)
+    public void addRewardPoints(int points) throws SQLException
     {
-	rewardPoints = rewardPoints + points;
+	int currentPoints;
+	int newPoints;
+	
+	Database.result = Database.statement.executeQuery("SELECT rewardpoints FROM customer WHERE (idcustomer = '" + id + "')");
+	
+	if(Database.result.next())
+	{
+	    currentPoints =  Database.result.getInt(1);
+	    newPoints = currentPoints + points;
+	    
+	    Database.statement.executeUpdate("UPDATE customer SET rewardpoints = '" + (newPoints) + "' WHERE idcustomer = '" + id + "'");
+	}
+	rewardPoints = rewardPoints + points; //update current object too
     }
     public String readName(int id) throws SQLException
     {
@@ -171,5 +183,21 @@ public class Customer
     public int getRewardPoints()
     {
 	return rewardPoints;
+    }
+    public void setID(int id)
+    {
+	this.id = id;
+    }
+    public void setName(String name)
+    {
+	this.name = name;
+    }
+    public void setAddress(String address)
+    {
+	this.address = address;
+    }
+    public void setRewardPoints(int points)
+    {
+	this.rewardPoints = points;
     }
 }
