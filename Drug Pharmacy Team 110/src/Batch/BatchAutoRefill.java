@@ -14,11 +14,33 @@ import java.util.ArrayList;
  *
  * @author Brian
  */
-public class BatchAutoRefill 
+public class BatchAutoRefill
 {
+	private ArrayList<AutoRefills> refills;
+	private ErrorReport error;
+
+	BatchAutoRefill()
+	{
+		error = ErrorReport.getErrorReport();
+		error.writeHeader("AUTO REFILLS");
+
+		try
+		{
+			refills = AutoRefills.readAutoRefills(); //gets all refills that are due
+		}
+		catch(ClassNotFoundException | SQLException e)
+		{
+
+			error.writeToLog("DATABASE ERROR");
+		}
+	}
+
+	public void refill()
+	{
+		int daysUntil;
     private ArrayList<AutoRefills> refills;
     private ErrorReport error;
-    
+
     BatchAutoRefill()
     {
       error = ErrorReport.getErrorReport();
@@ -34,7 +56,7 @@ public class BatchAutoRefill
           error.writeToLog("DATABASE ERROR");
       }
     }
-  
+
     public void refill()
     {
 		  int daysUntil;
@@ -68,7 +90,7 @@ public class BatchAutoRefill
 									{
 										x.deleteAutoRefill();
 									}
-                  
+
 									else
 									{
 										x.updateDaysUntil(x.getFrequency()); //add frequency to days until, works even if days until is negative due to inventory shortage
