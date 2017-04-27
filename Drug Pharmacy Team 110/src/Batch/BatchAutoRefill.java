@@ -21,25 +21,32 @@ public class BatchAutoRefill
     
     BatchAutoRefill()
     {
-		error = ErrorReport.getErrorReport();
-		error.writeHeader("AUTO REFILLS");
-
-		try
-		{
-			refills = AutoRefills.readAutoRefills(); //gets all refills that are due
-		}
-
-		catch(ClassNotFoundException | SQLException e)
-		{
-			error.writeToLog("DATABASE ERROR");
-		}
+	error = ErrorReport.getErrorReport();
+	error.writeHeader("AUTO REFILLS");
+	
+	try
+	{
+	    refills = AutoRefills.readAutoRefills(); //gets all refills that are due
+	}
+	catch(ClassNotFoundException | SQLException e)
+	{
+	    error.writeToLog("DATABASE ERROR");
+	}
     }
-
     public void refill()
     {
-		int daysUntil;
-
-		try
+	int daysUntil;
+	
+	
+	
+	try
+	{
+	    for(AutoRefills x: refills)
+	    {
+		x.updateDaysUntil(-1); //decrement days until
+		daysUntil = x.getDaysUntil();
+		
+		if(x.getItem() != null) //item exists
 		{
 			for(AutoRefills x: refills)
             {
@@ -77,11 +84,27 @@ public class BatchAutoRefill
                     }
                 }
 			}
+		    }
+		    else
+		    {
+			error.writeToLog("WAREHOUSE LACKS INVENTORY OF ITEM #" + x.getItem().getID() + " FOR REFILL #" + x.getID());
+		    }
 		}
 
-		catch(SQLException e)
+		else
 		{
-			error.writeToLog("DATABASE ERROR");
+		    error.writeToLog("COULD NOT REGISTER REFILL #" + x.getID() + " BECAUSE ITEM DOES NOT EXIST");
 		}
+	    }	
+	}
+	catch(SQLException e)
+	{
+	   // e.printStackTrace();
+	    error.writeToLog("DATABASE ERROR");
+	}
+	catch(Exception e)
+	{
+	    //e.printStackTrace();
+	}
     }
 }

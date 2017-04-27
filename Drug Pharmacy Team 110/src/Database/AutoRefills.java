@@ -32,7 +32,6 @@ public class AutoRefills
     { 
 	Database.statement.executeUpdate("DELETE FROM auto_refills WHERE idrefill = '" + id + "'");
     }
-
     //Post: Returns all auto refills where daysUntil <= 0
     public static ArrayList<AutoRefills> readAutoRefills() throws SQLException, ClassNotFoundException
     {
