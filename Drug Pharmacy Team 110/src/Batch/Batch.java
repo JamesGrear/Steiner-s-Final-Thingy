@@ -6,6 +6,7 @@
 package Batch;
 
 import Database.Database;
+import Database.FileSequence;
 import java.sql.SQLException;
 
 /**
@@ -17,7 +18,7 @@ public class Batch
      public static void main(String[] args)
      {
 		ErrorReport error = ErrorReport.getErrorReport();
-
+		
 		try
 		{
 			Database.setupDatabaseConnection();
@@ -31,20 +32,41 @@ public class Batch
 		}
 
 		BatchItemUpdate item = new BatchItemUpdate();
-		BatchStoreCreateDelete stores = new BatchStoreCreateDelete();
-		BatchInventoryToWarehouse inventoryToWarehouse = new BatchInventoryToWarehouse();
-		BatchAutoRefill refills = new BatchAutoRefill();
-		BatchInventoryToStore inventoryToStores = new BatchInventoryToStore();
-		BatchVendorInventoryRequest inventoryRequest = new BatchVendorInventoryRequest();
-		BatchCalculateSalesReport report = new BatchCalculateSalesReport();
-
 		item.readFile();
+		
+		BatchStoreCreateDelete stores = new BatchStoreCreateDelete();
 		stores.readFile();
+		
+		BatchInventoryToWarehouse inventoryToWarehouse = new BatchInventoryToWarehouse();
 		inventoryToWarehouse.readFile();
+		
+		BatchAutoRefill refills = new BatchAutoRefill();
 		refills.refill();
+		
+		BatchInventoryToStore inventoryToStores = new BatchInventoryToStore();
 		inventoryToStores.readFile();
+		
+		BatchVendorInventoryRequest inventoryRequest = new BatchVendorInventoryRequest();
 		inventoryRequest.writeFile();
+		
+		BatchCalculateSalesReport report = new BatchCalculateSalesReport();
 		report.readFile();
-
+		
+		
+		try
+		{
+		    FileSequence.incrementDeletedStoreToWarehouseInventory();
+		    FileSequence.incrementInventoryOrder();
+		    FileSequence.incrementInventoryToStore();
+		    FileSequence.incrementInventoryToWarehouse();
+		    FileSequence.incrementItemUpdate();
+		    FileSequence.incrementStoreCreateDelete();
+		    FileSequence.incrementYearlySales();
+		}
+		catch(SQLException e)
+		{
+		    e.printStackTrace();
+		}
+		
      }
 }

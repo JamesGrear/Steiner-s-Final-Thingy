@@ -30,6 +30,7 @@ public class BatchAutoRefill
 	}
 	catch(ClassNotFoundException | SQLException e)
 	{
+	    
 	    error.writeToLog("DATABASE ERROR");
 	}
     }
@@ -43,13 +44,6 @@ public class BatchAutoRefill
 	{
 	    for(AutoRefills x: refills)
 	    {
-		x.updateDaysUntil(-1); //decrement days until
-		daysUntil = x.getDaysUntil();
-		
-		if(x.getItem() != null) //item exists
-		{
-			for(AutoRefills x: refills)
-            {
                 if(Warehouse.readInventory(x.getItem().getID()) >= x.getAmount()) //warehouse has enough inventory for refill
                 {
                     Warehouse.updateInventory(x.getItem().getID(), (x.getAmount() * -1)); //subtract inventory from warehouse
@@ -67,12 +61,17 @@ public class BatchAutoRefill
                                 Warehouse.updateInventory(x.getItem().getID(), (x.getAmount() * -1)); //subtract inventory from warehouse
                                 x.updateRefillsRemaining(-1); //remove 1 refill remaining
 
-                                if (x.getRemainingRefills() <= 0) {
+                                if (x.getRemainingRefills() <= 0) 
+				{
                                     x.deleteAutoRefill();
-                                } else {
+                                } 
+				else 
+				{
                                     x.updateDaysUntil(x.getFrequency()); //add frequency to days until, works even if days until is negative due to inventory shortage
                                 }
-                            } else {
+                            } 
+			    else 
+			    {
                                 error.writeToLog("WAREHOUSE LACKS INVENTORY OF ITEM #" + x.getItem().getID() + " FOR REFILL #" + x.getID());
                             }
                         }
@@ -82,9 +81,7 @@ public class BatchAutoRefill
                             error.writeToLog("COULD NOT REGISTER REFILL #" + x.getID() + " BECAUSE ITEM DOES NOT EXIST");
                         }
                     }
-                }
-			}
-		    }
+
 		    else
 		    {
 			error.writeToLog("WAREHOUSE LACKS INVENTORY OF ITEM #" + x.getItem().getID() + " FOR REFILL #" + x.getID());
@@ -99,7 +96,7 @@ public class BatchAutoRefill
 	}
 	catch(SQLException e)
 	{
-	   // e.printStackTrace();
+	    e.printStackTrace();
 	    error.writeToLog("DATABASE ERROR");
 	}
 	catch(Exception e)

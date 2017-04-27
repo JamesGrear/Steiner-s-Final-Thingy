@@ -41,7 +41,7 @@ public class AutoRefills
         Customer customer;
         AutoRefills refill;
 
-        Database.result2 = Database.statement2.executeQuery("SELECT idrefill, iditem, idcustomer, frequency, daysuntil, remainingrefills, ammount"
+        Database.result2 = Database.statement2.executeQuery("SELECT idrefill, iditem, idcustomer, frequency, daysuntil, remainingrefills, amount"
                                 + " FROM auto_refills WHERE (daysuntil <= '" + 0 + "')");
 
         while(Database.result2.next())
