@@ -82,9 +82,24 @@ public class CurrentStorePromptContr implements Initializable
             {
                 int storeID = Integer.parseInt(storeIDAsString);
 
-                Store.setCurrentStoreID(storeID);
+                if(Store.verifyStore(storeID))
+                {
+                    Store.setCurrentStoreID(storeID);
 
-                saveIDToFile(storeIDAsString);
+                    saveIDToFile(storeIDAsString);
+                }
+
+                else
+                {
+                    Alert invalidID = new Alert(Alert.AlertType.WARNING);
+                    invalidID.initStyle(StageStyle.UTILITY);
+                    invalidID.setTitle(null);
+                    invalidID.setHeaderText("Invalid store ID");
+                    invalidID.setContentText(String.format("There is no store with matching ID: %s.\n\nDouble check that the ID was entered correctly.", storeIDAsString));
+
+                    invalidID.showAndWait();
+                }
+
             }
 
             catch(NumberFormatException nfe)
@@ -96,6 +111,11 @@ public class CurrentStorePromptContr implements Initializable
                 invalidID.setContentText("The Store ID you have entered is improperly formatted.\n\nDouble check that the ID is composed only of numbers (no spaces/separators).");
 
                 invalidID.showAndWait();
+            }
+
+            catch(Exception ex)
+            {
+                ex.printStackTrace();
             }
         }
 

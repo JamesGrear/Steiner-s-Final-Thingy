@@ -32,9 +32,39 @@ public class AutoRefills
     { 
 	Database.statement.executeUpdate("DELETE FROM auto_refills WHERE idrefill = '" + id + "'");
     }
+
     //Post: Returns all auto refills where daysUntil <= 0
     public static ArrayList<AutoRefills> readAutoRefills() throws SQLException, ClassNotFoundException
     {
+
+        ArrayList<AutoRefills> refills = new ArrayList<>();
+        Item item;
+        Customer customer;
+        AutoRefills refill;
+
+        Database.result2 = Database.statement2.executeQuery("SELECT idrefill, iditem, idcustomer, frequency, daysuntil, remainingrefills, ammount"
+                                + " FROM auto_refills WHERE (daysuntil <= '" + 0 + "')");
+
+        while(Database.result2.next())
+        {
+            refill = new AutoRefills();
+            customer = new Customer();
+
+            refill.id = Database.result2.getInt(1);
+            item = Item.readItem(Database.result2.getInt(2)); //read the item id and create an item object with correct variables
+            customer.login(Database.result2.getInt(3)); //read the customer id and create a customer object with correct variables
+            refill.frequency = Database.result2.getInt(4);
+            refill.daysUntil = Database.result2.getInt(5);
+            refill.remainingRefills = Database.result2.getInt(6);
+            refill.ammount = Database.result2.getInt(7);
+
+            refill.item = item;
+            refill.customer = customer;
+            refills.add(refill);
+        }
+
+        return refills;
+
 	ArrayList<AutoRefills> refills = new ArrayList<>();
 	Item item;
 	Customer customer;
@@ -62,6 +92,7 @@ public class AutoRefills
 	}
 	
 	return refills;
+
     }
     public void updateDaysUntil(int days) throws SQLException
     {

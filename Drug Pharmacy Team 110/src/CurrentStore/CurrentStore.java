@@ -36,7 +36,19 @@ public class CurrentStore extends Application
 
                     // if store int is correct length, set currentStoreID to value of int
                     if(storeIDAsString.length() <= 5)
-                        Store.setCurrentStoreID(currentStoreID);
+                    {
+                        if(Store.verifyStore(currentStoreID)) // ID is valid and of correct length
+                        {
+                            Store.setCurrentStoreID(currentStoreID);
+                        }
+
+                        else // ID is valid length but store does not exist
+                        {
+                            scanner.close();
+
+                            attemptOverwrite(curStoreFile);
+                        }
+                    }
 
                     else // int is incorrect length to be storeID -- close scanner, overwrite file
                     {
@@ -55,7 +67,7 @@ public class CurrentStore extends Application
                 }
             }
 
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 ex.printStackTrace();
             }
