@@ -5,7 +5,10 @@
  */
 package Database;
 
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import static Database.Database.connection;
 
 /**
  *
@@ -17,13 +20,19 @@ public class Item
     private String name;
     private String description;
     private String dosage;
+	private int storeStock;
+    private int companyStock;
     private int warning;
     private double cost;
     private long reorderLevel;
     private long reorderQuantity;
     private String deliveryTime;
     private int vendorCode;
-    
+
+	// Prepared statements for name and description so single quotes don't break the program
+	PreparedStatement updateName = connection.prepareStatement("UPDATE item SET NAME = ? WHERE iditem = ?");
+	PreparedStatement updateDescription = connection.prepareStatement("UPDATE item SET description = ? WHERE iditem = ?");
+
     public Item(int id) throws ClassNotFoundException, SQLException
     {
 		this.id = id;
@@ -64,24 +73,43 @@ public class Item
     //	    if the item did not exist, returns false
     public boolean updateItem() throws SQLException
     {
-	if(verifyItem(id))
-	{	    
-	    Database.statement.executeUpdate("Update item Set name = '" + name + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set description = '" + description + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set dosage = '" + dosage + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set warning = '" + warning + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set cost = '" + cost + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set reorderlevel = '" + reorderLevel + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set reorderquantity = '" + reorderQuantity + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("Update item Set deliverytime = '" + deliveryTime + "' WHERE iditem = '" + id + "'");
-	    Database.statement.executeUpdate("UPDATE item SET vendorcode = '" + vendorCode + "'WHERE iditem = '" + id + "'");
-	            
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+		if(verifyItem(id))
+		{
+			updateName.setString(1, name);
+			updateName.setInt(2, id);
+			updateName.executeUpdate();
+
+			updateDescription.setString(1, description);
+			updateDescription.setInt(2, id);
+			updateDescription.executeUpdate();
+
+			Database.statement.executeUpdate("Update item Set dosage = '" + dosage + "' WHERE iditem = '" + id + "'");
+			Database.statement.executeUpdate("Update item Set warning = '" + warning + "' WHERE iditem = '" + id + "'");
+			Database.statement.executeUpdate("Update item Set cost = '" + cost + "' WHERE iditem = '" + id + "'");
+			Database.statement.executeUpdate("Update item Set reorderlevel = '" + reorderLevel + "' WHERE iditem = '" + id + "'");
+			Database.statement.executeUpdate("Update item Set reorderquantity = '" + reorderQuantity + "' WHERE iditem = '" + id + "'");
+			Database.statement.executeUpdate("Update item Set deliverytime = '" + deliveryTime + "' WHERE iditem = '" + id + "'");
+			Database.statement.executeUpdate("UPDATE item SET vendorcode = '" + vendorCode + "'WHERE iditem = '" + id + "'");
+			Database.statement.executeUpdate("UPDATE store_inventory SET itemquantity = '" + storeStock +
+											 "'WHERE idstore = '" + Store.getCurrentStoreID() + "' AND iditem = '" + id + "'"  );
+
+			Database.result = Database.statement.executeQuery("SELECT SUM(itemquantity) FROM store_inventory WHERE (iditem = '" + id + "')");
+
+			if (Database.result.next())
+			{
+				companyStock = Database.result.getInt(1);
+			}
+
+			else
+				companyStock = 0;
+
+			return true;
+		}
+
+		else
+		{
+			return false;
+		}
     }
     //Post: if the id exists and newID doesn't, updates the id of a pre-existing item to newID in the database, updates object id to newID, returns true
     //	    else, returns false
@@ -147,8 +175,31 @@ public class Item
 				item.deliveryTime = Database.result.getString(8);
 				item.vendorCode = Database.result.getInt(9);
 
+				Database.result = Database.statement.executeQuery("SELECT itemquantity FROM store_inventory WHERE iditem = '" + id + "' " +
+						"AND idstore = '" + Store.getCurrentStoreID() + "'");
+
+				if (Database.result.next())
+				{
+					item.storeStock = Database.result.getInt(1);
+				}
+
+				else
+					item.storeStock = 0;
+
+                Database.result = Database.statement.executeQuery("SELECT SUM(itemquantity) FROM store_inventory WHERE (iditem = '" + id + "')");
+
+                if (Database.result.next())
+                {
+                    item.companyStock = Database.result.getInt(1);
+                }
+
+                else
+                    item.companyStock = 0;
+
 				return item;
 			}
+
+
 		}
 
 		return null; //if all else fails
@@ -173,6 +224,8 @@ public class Item
     {
 	return vendorCode;
     }
+	public int getStoreStock() { return storeStock; }
+    public int getCompanyStock() { return companyStock; }
     public long getReorderLevel()
     {
 	return reorderLevel;
@@ -181,25 +234,17 @@ public class Item
     {
 	return reorderQuantity;
     }
-     public String setDeliveryTime()
+	public String getDeliveryTime()
     {
 	return deliveryTime;
     }
-    public String setDescription()
+    public String getDescription()
     {
 	return description;
     }
-    public String setDosage()
+    public String getDosage()
     {
 	return dosage;
-    }
-    public long setReorderLevel()
-    {
-	return reorderLevel;
-    }
-    public long setReorderQuantity()
-    {
-	return reorderQuantity;
     }
     public void setName(String name)
     {
@@ -213,6 +258,7 @@ public class Item
     {
 	this.cost = cost;
     }
+    public void setStoreStock(int storeStock) {this.storeStock = storeStock;}
     public void setDeliveryTime(String time)
     {
 	this.deliveryTime = time;

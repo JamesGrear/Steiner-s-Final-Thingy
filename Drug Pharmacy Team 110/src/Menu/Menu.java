@@ -13,6 +13,8 @@
 package Menu;
 
 import Database.Employee;
+import Main.Main;
+import ProductLookup.AdminLookup;
 import ProductLookup.Lookup;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,12 +81,17 @@ public class Menu
 
     @FXML private void launchProductLookup(ActionEvent event)
     {
-        /*
-            TODO: Launch Item Lookup Program from here (pass user and current window)
-        */
-        Window menuScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+        Window menuScreen = ((Node) (event.getSource())).getScene().getWindow(); // get reference to current window
 
-        Lookup.launchProductLookup(User, menuScreen);
+        if(User.getManager())
+        {
+            AdminLookup.launchProductLookup(User, menuScreen);
+        }
+
+        else
+        {
+            Lookup.launchProductLookup(User, menuScreen);
+        }
     }
 
     @FXML private void launchAdminMenu()
@@ -118,17 +125,31 @@ public class Menu
 
     @FXML private void launchBatchProcessing()
     {
-        /*
-            TODO: Launch Batch Processing Program from here
-        */
-        Alert noAccountFound = new Alert(Alert.AlertType.WARNING);
-        noAccountFound.initStyle(StageStyle.UTILITY);
-        noAccountFound.setTitle(null);
-        noAccountFound.setHeaderText("Working");
-        noAccountFound.setContentText("The Batch Button works.");
-	
-        noAccountFound.show();
-	
 	    Batch.Batch.main(null); //start up batch processing
+    }
+
+    @FXML private void logout(ActionEvent event)
+    {
+        Window menuScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+
+        try
+        {
+            menuScreen.hide();
+
+            User = null; // might be unnecessary, but just in case
+
+            // Launch login screen
+            Scene scene = Main.launchLoginScreen();
+            Stage stage = new Stage();
+            stage.setTitle("Pharmacy Interface - Login Screen");
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.show();
+        }
+
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 }

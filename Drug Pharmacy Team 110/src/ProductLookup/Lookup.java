@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -42,6 +43,7 @@ public class Lookup
     @FXML private TextField productNameBox;     // Text box to write the product name to
     @FXML private TextField productPriceBox;    // Text box to write the product price to
     @FXML private TextField productStockBox;    // Text box to write the product stock amount to
+    @FXML private TextArea productDescriptionBox; // Text box to write the product description to
 
     private static Employee User; // The user that is currently logged in
 
@@ -72,6 +74,8 @@ public class Lookup
             stage.setTitle("Pharmacy Interface - Product Lookup");
             stage.setResizable(false);
 
+            // Runs custom close window function on close request so if user hits red x to close window it takes
+            // them back to main menu screen instead of exiting application
             stage.setOnCloseRequest(event -> contr.closeWindow(scene.getWindow()));
 
             stage.setScene(scene);
@@ -94,6 +98,7 @@ public class Lookup
 
         StringBuilder sb = new StringBuilder();
 
+        // Add 0s (if necessary) until ID is 9 digits long
         if(itemIDAsString.length() <= 9)
         {
             while(sb.length() + itemIDAsString.length() < 9)
@@ -185,6 +190,16 @@ public class Lookup
 
                     productPriceBox.setVisible(true);
                     productPriceBox.setText(String.format("$%.2f", item.getCost()));
+
+                    // Display number in stock (store level)
+
+                    productStockBox.setVisible(true);
+                    productStockBox.setText(Integer.toString(item.getStoreStock()));
+
+                    // Display description of product
+
+                    productDescriptionBox.setVisible(true);
+                    productDescriptionBox.setText(item.getDescription());
                 }
 
                 else
