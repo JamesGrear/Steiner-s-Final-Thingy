@@ -68,7 +68,7 @@ public class Tests
 	}
 	else
 	{   
-	    customer.registerNewCustomer(customer);
+	    customer.registerNewCustomer();
 	    System.out.println("Failed login");
 	}
     }

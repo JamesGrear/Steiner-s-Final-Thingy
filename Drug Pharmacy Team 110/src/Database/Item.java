@@ -234,6 +234,7 @@ public class Item
     {
 	return reorderQuantity;
     }
+
 	public String getDeliveryTime()
     {
 	return deliveryTime;
@@ -246,6 +247,7 @@ public class Item
     {
 	return dosage;
     }
+
     public void setName(String name)
     {
 	this.name = name;

@@ -136,7 +136,6 @@ public class BatchCalculateSalesReport extends BatchFileReader
 	
 	try
 	{
-	    
 	    sales = Sales.readAllSales(id);
 	    
 	    writer.println("                    YEARLY SALES FOR ITEM #" + id + "\n\n");

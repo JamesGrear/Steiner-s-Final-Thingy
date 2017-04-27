@@ -45,5 +45,6 @@ public class Batch
 		inventoryToStores.readFile();
 		inventoryRequest.writeFile();
 		report.readFile();
+
      }
 }

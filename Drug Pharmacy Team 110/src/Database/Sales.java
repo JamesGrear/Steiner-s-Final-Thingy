@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class Sales 
 {
     private int id;
+    private int storeID;
     private int quantity;
     private double totalPrice;
     private Date date; 
@@ -23,7 +24,7 @@ public class Sales
     
     //Post: if the ID doesn't exist, adds a new store into the database and returns true
     //      if the ID already exists, returns false
-    void registerNewSale() throws SQLException
+    public void registerNewSale() throws SQLException
     {
 	calcTotalPrice();
 	
@@ -47,9 +48,13 @@ public class Sales
 	{
 	    sale = new Sales(); 
 	    
+	    sale.storeID = Database.result2.getInt(1);
 	    sale.quantity = Database.result2.getInt(2);
 	    sale.totalPrice = Database.result2.getDouble(3);
 	    sale.date = Database.result2.getDate(4);
+	    
+	    System.out.println(sale.storeID);
+	    System.out.println(sale.date);
 	    
 	    item = Item.readItem(Database.result2.getInt(1)); //read the item id and create an item object with correct variables
 	    sale.item = item; 
@@ -80,7 +85,7 @@ public class Sales
     }
     public int getStoreID()
     {
-	return id;
+	return storeID;
     }
     public void setQuantity(int quantity)
     {
