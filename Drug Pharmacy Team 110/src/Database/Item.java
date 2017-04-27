@@ -181,26 +181,6 @@ public class Item
     {
 	return reorderQuantity;
     }
-     public String setDeliveryTime()
-    {
-	return deliveryTime;
-    }
-    public String setDescription()
-    {
-	return description;
-    }
-    public String setDosage()
-    {
-	return dosage;
-    }
-    public long setReorderLevel()
-    {
-	return reorderLevel;
-    }
-    public long setReorderQuantity()
-    {
-	return reorderQuantity;
-    }
     public void setName(String name)
     {
 	this.name = name;
