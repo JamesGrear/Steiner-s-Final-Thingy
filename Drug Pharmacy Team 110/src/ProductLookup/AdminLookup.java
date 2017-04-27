@@ -423,7 +423,7 @@ public class AdminLookup
                     // Display dosage information
 
                     productDoseBox.setVisible(true);
-                    productDescriptionBox.setText(item.getDosage());
+                    productDoseBox.setText(item.getDosage());
                     prodDoseCheck.setText("");
                     doseButton.setVisible(true);
                 }
