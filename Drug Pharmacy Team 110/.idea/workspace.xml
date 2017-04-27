@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="636eb23e-c92c-4706-9bec-7f9ea15c8a60" name="Default" comment="Merge branch 'master' of https://github.com/rlarabell/Steiner-s-Final-Thingy&#10;&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/currentStore.txt" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Batch/Batch.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Batch/Batch.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Batch/BatchAutoRefill.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Batch/BatchAutoRefill.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/CurrentStore/CurrentStorePromptContr.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/CurrentStore/CurrentStorePromptContr.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Database/AutoRefills.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Database/AutoRefills.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Database/Store.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Database/Store.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Menu/Menu.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Menu/Menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/ProductLookup/AdminLookup.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/ProductLookup/AdminLookup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/ProductLookup/Lookup.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/ProductLookup/Lookup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Transaction/CustomerLogin.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Transaction/CustomerLogin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Transaction/Transaction.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Transaction/Transaction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/67dd852d-ebbe-405f-b8b2-65b97ed7694f.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/67dd852d-ebbe-405f-b8b2-65b97ed7694f.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Error Log 04-27-2017.txt" afterPath="$PROJECT_DIR$/Error Log 04-27-2017.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deletedstores.txt" afterPath="$PROJECT_DIR$/deletedstores.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newstores.txt" afterPath="$PROJECT_DIR$/newstores.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/onlinestorerequest.txt" afterPath="$PROJECT_DIR$/onlinestorerequest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Batch/BatchAutoRefill.java" afterPath="$PROJECT_DIR$/src/Batch/BatchAutoRefill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CurrentStore/CurrentStorePromptContr.java" afterPath="$PROJECT_DIR$/src/CurrentStore/CurrentStorePromptContr.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Customer.java" afterPath="$PROJECT_DIR$/src/Database/Customer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Store.java" afterPath="$PROJECT_DIR$/src/Database/Store.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main/Main.java" afterPath="$PROJECT_DIR$/src/Main/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Transaction/CustomerLogin.java" afterPath="$PROJECT_DIR$/src/Transaction/CustomerLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Transaction/Transaction.java" afterPath="$PROJECT_DIR$/src/Transaction/Transaction.java" />
-    </list>
+    <list default="true" id="636eb23e-c92c-4706-9bec-7f9ea15c8a60" name="Default" comment="" />
     <ignored path="Drug Pharmacy Team 110.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -193,7 +168,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BatchItemUpdate.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BatchItemUpdate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Batch/BatchItemUpdate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
@@ -203,21 +178,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Customer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Customer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Database/Customer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1734">
-              <caret line="106" column="52" selection-start-line="106" selection-start-column="52" selection-end-line="106" selection-end-column="52" />
+            <state relative-caret-position="-170">
+              <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1493327238067" expanded="true" signature="582:644" ph="SELECT idcus... customer" />
-                <marker date="1493327238067" expanded="true" signature="723:789" ph="INSERT INTO customer... " />
-                <marker date="1493327238067" expanded="true" signature="2006:2069" ph="select idcus... customer" />
-                <marker date="1493327238067" expanded="true" signature="3079:3146" ph="SELECT rewar... customer" />
-                <marker date="1493327238067" expanded="true" signature="3308:3396" ph="UPDATE custo... " />
-                <marker date="1493327238067" expanded="true" signature="3594:3651" ph="SELECT name customer" />
-                <marker date="1493327238067" expanded="true" signature="3890:3950" ph="select addre... customer" />
-                <marker date="1493327238067" expanded="true" signature="4191:4256" ph="select rewar... customer" />
+                <marker date="1493328281947" expanded="true" signature="582:644" ph="SELECT idcus... customer" />
+                <marker date="1493328281947" expanded="true" signature="723:789" ph="INSERT INTO customer... " />
+                <marker date="1493328281947" expanded="true" signature="2006:2069" ph="select idcus... customer" />
+                <marker date="1493328281947" expanded="true" signature="3082:3149" ph="SELECT rewar... customer" />
+                <marker date="1493328281947" expanded="true" signature="3311:3399" ph="UPDATE custo... " />
+                <marker date="1493328281947" expanded="true" signature="3597:3654" ph="SELECT name customer" />
+                <marker date="1493328281947" expanded="true" signature="3893:3953" ph="select addre... customer" />
+                <marker date="1493328281947" expanded="true" signature="4194:4259" ph="select rewar... customer" />
               </folding>
             </state>
           </provider>
@@ -253,8 +228,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -263,8 +238,8 @@
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/67dd852d-ebbe-405f-b8b2-65b97ed7694f/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
+            <state relative-caret-position="17">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -335,10 +310,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1288" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="1000" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -1058,7 +1033,7 @@
       <workItem from="1493149781393" duration="2487000" />
       <workItem from="1493237500006" duration="22050000" />
       <workItem from="1493269651791" duration="14648000" />
-      <workItem from="1493313726069" duration="12998000" />
+      <workItem from="1493313726069" duration="14009000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/rlarabell/Steiner-s-Final-Thingy&#10;&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;">
       <created>1493318984899</created>
@@ -1067,11 +1042,18 @@
       <option name="project" value="LOCAL" />
       <updated>1493318984899</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Customer ID bug fix&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;">
+      <created>1493328581747</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1493328581747</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61065000" />
+    <option name="totallyTimeSpent" value="62076000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1083,8 +1065,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1288" y="-8" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.4974293" order="6" side_tool="false" content_ui="tabs" />
@@ -1093,14 +1075,14 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5025707" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19607843" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.49485862" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22880216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.49485862" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3176312" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31472492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20307444" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16131106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1173,7 +1155,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Merge branch 'master' of https://github.com/rlarabell/Steiner-s-Final-Thingy&#10;&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/rlarabell/Steiner-s-Final-Thingy&#10;&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;" />
+    <MESSAGE value="Customer ID bug fix&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Customer ID bug fix&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1702,14 +1685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CurrentStore/CurrentStorePromptContr.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="402">
@@ -1760,40 +1735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/67dd852d-ebbe-405f-b8b2-65b97ed7694f/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Transaction/CustomerLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="109" column="59" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1734">
-          <caret line="106" column="52" selection-start-line="106" selection-start-column="52" selection-end-line="106" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1493327238067" expanded="true" signature="582:644" ph="SELECT idcus... customer" />
-            <marker date="1493327238067" expanded="true" signature="723:789" ph="INSERT INTO customer... " />
-            <marker date="1493327238067" expanded="true" signature="2006:2069" ph="select idcus... customer" />
-            <marker date="1493327238067" expanded="true" signature="3079:3146" ph="SELECT rewar... customer" />
-            <marker date="1493327238067" expanded="true" signature="3308:3396" ph="UPDATE custo... " />
-            <marker date="1493327238067" expanded="true" signature="3594:3651" ph="SELECT name customer" />
-            <marker date="1493327238067" expanded="true" signature="3890:3950" ph="select addre... customer" />
-            <marker date="1493327238067" expanded="true" signature="4191:4256" ph="select rewar... customer" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/currentStore.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1807,6 +1748,48 @@
         <state relative-caret-position="289">
           <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Transaction/CustomerLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="109" column="59" selection-start-line="109" selection-start-column="19" selection-end-line="109" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/67dd852d-ebbe-405f-b8b2-65b97ed7694f/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="105" column="48" selection-start-line="105" selection-start-column="48" selection-end-line="105" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1493328281947" expanded="true" signature="582:644" ph="SELECT idcus... customer" />
+            <marker date="1493328281947" expanded="true" signature="723:789" ph="INSERT INTO customer... " />
+            <marker date="1493328281947" expanded="true" signature="2006:2069" ph="select idcus... customer" />
+            <marker date="1493328281947" expanded="true" signature="3082:3149" ph="SELECT rewar... customer" />
+            <marker date="1493328281947" expanded="true" signature="3311:3399" ph="UPDATE custo... " />
+            <marker date="1493328281947" expanded="true" signature="3597:3654" ph="SELECT name customer" />
+            <marker date="1493328281947" expanded="true" signature="3893:3953" ph="select addre... customer" />
+            <marker date="1493328281947" expanded="true" signature="4194:4259" ph="select rewar... customer" />
+          </folding>
         </state>
       </provider>
     </entry>
