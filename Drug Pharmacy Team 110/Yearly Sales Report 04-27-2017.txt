@@ -2,6 +2,7 @@
 
 
 
+
        STORE ID                 QUANTITY SOLD                   TOTAL PRICE
 
                                              MARCH
@@ -19,6 +20,7 @@
 TOTAL FOR YEAR: 8118.0
 
 TOTAL FOR ALL SALES: 8118.0
+
 
 
                     YEARLY SALES FOR ITEM #123456789
