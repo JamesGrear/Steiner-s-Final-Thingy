@@ -39,11 +39,12 @@ public class Lookup
     @FXML private TextField productSearchBox; // Text box for user to enter product ID
 
     // Text boxes for program output
-    @FXML private TextField productIDBox;       // Text box to write the product ID to
-    @FXML private TextField productNameBox;     // Text box to write the product name to
-    @FXML private TextField productPriceBox;    // Text box to write the product price to
-    @FXML private TextField productStockBox;    // Text box to write the product stock amount to
+    @FXML private TextField productIDBox;         // Text box to write the product ID to
+    @FXML private TextField productNameBox;       // Text box to write the product name to
+    @FXML private TextField productPriceBox;      // Text box to write the product price to
+    @FXML private TextField productStockBox;      // Text box to write the product stock amount to
     @FXML private TextArea productDescriptionBox; // Text box to write the product description to
+    @FXML private TextField productDosageBox;     // Text box to write the product dosage to
 
     private static Employee User; // The user that is currently logged in
 
@@ -200,6 +201,11 @@ public class Lookup
 
                     productDescriptionBox.setVisible(true);
                     productDescriptionBox.setText(item.getDescription());
+
+                    // Display dosage of product
+
+                    productDosageBox.setVisible(true);
+                    productDosageBox.setText(item.getDosage());
                 }
 
                 else

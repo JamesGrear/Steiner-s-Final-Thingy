@@ -32,97 +32,101 @@ public class BatchCalculateSalesReport extends BatchFileReader
     
     BatchCalculateSalesReport()
     {
-	super();
-	date = new Date();
-	format = new SimpleDateFormat("MM-dd-yyy");
-	
-	fileName = "reports.txt";
-	reportName = "Yearly Sales Report " + format.format(date) + ".txt"; 
-	error.writeHeader("YEARLY REPORTS");
-	
-	try
-	{
-	    writer = new PrintWriter(reportName);
-	    reader = new BufferedReader(new FileReader(fileName));
-	    sequenceNumber = FileSequence.readYearlySales();
-	}
-	catch(FileNotFoundException e)
-	{
-	    error.writeToLog(fileName + " FILE NOT FOUND");
-	    fileNotFound = true;
-	}
-	catch (SQLException e)
-	{
-	    error.writeToLog("DATABASE ERROR. CHECK YOUR DATABASE AND TRY AGAIN.");
-	    fileNotFound = true; //not strictly true, but cancels the file reading
-	}
+		super();
+		date = new Date();
+		format = new SimpleDateFormat("MM-dd-yyy");
+
+		fileName = "reports.txt";
+		reportName = "Yearly Sales Report " + format.format(date) + ".txt";
+		error.writeHeader("YEARLY REPORTS");
+
+		try
+		{
+			writer = new PrintWriter(reportName);
+			reader = new BufferedReader(new FileReader(fileName));
+			sequenceNumber = FileSequence.readYearlySales();
+		}
+		catch(FileNotFoundException e)
+		{
+			error.writeToLog(fileName + " FILE NOT FOUND");
+			fileNotFound = true;
+		}
+		catch (SQLException e)
+		{
+			error.writeToLog("DATABASE ERROR. CHECK YOUR DATABASE AND TRY AGAIN.");
+			fileNotFound = true; //not strictly true, but cancels the file reading
+		}
     }
     
     public void readFile()
     {
-	String input;
-	int id;
-	
-	if(fileNotFound)
-	{
-	    return;
-	}
-	//**************************************************************
-	//******************READ THE HEADER*****************************
-	//**************************************************************
-	if (!readHeader())
-	{
-	    System.out.println("Failed to read the Header");
-	    return;
-	}
-	//**************************************************************
-	//******************READ THE CONTENT****************************
-	//**************************************************************
-	try
-	{
-	    reader.mark(BUFFER_SIZE);
-	    input = reader.readLine();
-	   
-	    while (input != null && input.length() != 0 && input.charAt(0) != 'T')
-	    {
-		if(input.charAt(0) == 'I')
+		String input;
+		int id;
+
+		if(fileNotFound)
 		{
-		    try
-		    {
-			if(input.length() == 10)
+			return;
+		}
+		//**************************************************************
+		//******************READ THE HEADER*****************************
+		//**************************************************************
+		if (!readHeader())
+		{
+			System.out.println("Failed to read the Header");
+			return;
+		}
+		//**************************************************************
+		//******************READ THE CONTENT****************************
+		//**************************************************************
+		try
+		{
+			reader.mark(BUFFER_SIZE);
+			input = reader.readLine();
+
+			while (input != null && input.length() != 0 && input.charAt(0) != 'T')
 			{
-			    id = Integer.parseInt(input.substring(1, 10));
-			    
-			    writeReport(id);
+				if(input.charAt(0) == 'I')
+				{
+					try
+					{
+						if(input.length() == 10)
+						{
+							id = Integer.parseInt(input.substring(1, 10));
+
+							writeReport(id);
+						}
+						else
+						{
+							error.writeToLog("INCORRECT FORMAT FOR YEARLY REPORT REQUEST");
+						}
+					}
+
+					catch(IllegalArgumentException e)
+					{
+						error.writeToLog("INCORRECT FORMAT FOR YEARLY REPORT REQUEST");
+					}
+
+					rows++;
+				}
+
+				reader.mark(BUFFER_SIZE); //mark your spot so you dont skip over the Trailer
+				input = reader.readLine();
 			}
-			else
-			{
-			    error.writeToLog("INCORRECT FORMAT FOR YEARLY REPORT REQUEST");
-			}
-		    }
-		    catch(IllegalArgumentException e)
-		    {
-			error.writeToLog("INCORRECT FORMAT FOR YEARLY REPORT REQUEST");
-		    }
-		    rows++;
+
+			reader.reset();
 		}
 
-		reader.mark(BUFFER_SIZE); //mark your spot so you dont skip over the Trailer
-		input = reader.readLine();
-	    }
-	    reader.reset();
-	}
-	catch(IOException e)
-	{
-	    
-	}
-	//**************************************************************
-	//******************READ THE TRAILER****************************
-	//**************************************************************
-	if (readTrailer())
-	{
-	    System.out.println("Successfully read the Trailer");
-	}
+		catch(IOException e)
+		{
+
+		}
+		//**************************************************************
+		//******************READ THE TRAILER****************************
+		//**************************************************************
+		if (readTrailer())
+		{
+			System.out.println("Successfully read the Trailer");
+		}
     }
     private void writeReport(int id)
     {

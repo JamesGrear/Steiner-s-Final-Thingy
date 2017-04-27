@@ -22,8 +22,7 @@ public class Store
     private String address;
     private String city;
     private String state;
-    private int zipcode;   
-   
+    private int zipcode;
 
     public Store(int id)
     {

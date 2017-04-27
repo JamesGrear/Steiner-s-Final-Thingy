@@ -7,6 +7,7 @@ package Database;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Types;
 
 import static Database.Database.connection;
 
@@ -29,9 +30,14 @@ public class Item
     private String deliveryTime;
     private int vendorCode;
 
-	// Prepared statements for name and description so single quotes don't break the program
-	PreparedStatement updateName = connection.prepareStatement("UPDATE item SET NAME = ? WHERE iditem = ?");
-	PreparedStatement updateDescription = connection.prepareStatement("UPDATE item SET description = ? WHERE iditem = ?");
+	// Some statements I've prepared
+	private PreparedStatement updateName = connection.prepareStatement("UPDATE item SET NAME = ? WHERE iditem = ?");
+	private PreparedStatement updateDescription = connection.prepareStatement("UPDATE item SET description = ? WHERE iditem = ?");
+	private PreparedStatement updateStock = connection.prepareStatement("UPDATE store_inventory SET itemquantity = ? WHERE idstore = ? AND iditem = ?");
+	private PreparedStatement insertStoreInventory = connection.prepareStatement("INSERT INTO store_inventory VALUES(?, ?, ?, ?, ?, ?)");
+	private PreparedStatement selectFromStoreInventory = connection.prepareStatement("SELECT * FROM store_inventory WHERE idstore = ? AND iditem = ?");
+	private PreparedStatement deleteStoreInventory = connection.prepareStatement("DELETE FROM store_inventory WHERE iditem = ?");
+	private PreparedStatement deleteWarehouseInventory = connection.prepareStatement("DELETE FROM warehouse_inventory WHERE iditem = ?");
 
     public Item(int id) throws ClassNotFoundException, SQLException
     {
@@ -41,18 +47,19 @@ public class Item
     //	    if the ID already exists, returns false
     public boolean registerNewItem() throws SQLException
     {
-	if(!verifyItem(id))
-	{
-	    Database.statement.executeUpdate
-	    ("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime, vendorcode)"
-		+ "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','"
-		+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + deliveryTime + "','" + vendorCode + "')");
-			return true;
-	}
-	else
-	{
-	    return false;
-	}
+		if(!verifyItem(id))
+		{
+			Database.statement.executeUpdate
+			("INSERT INTO item(iditem, name, description, dosage, warning, cost, reorderlevel, reorderquantity, deliverytime, vendorcode)"
+			+ "VALUES('" + id + "','" + name + "','" + description + "','" + dosage + "','" + warning + "','"
+			+ cost + "','" + reorderLevel + "','" + reorderQuantity + "','" + deliveryTime + "','" + vendorCode + "')");
+				return true;
+		}
+
+		else
+		{
+			return false;
+		}
     }
     //Post: if the ID exists, deletes the pre existing item from the database 
     //	    if the ID did not exist, returns false
@@ -62,8 +69,15 @@ public class Item
 		{
 			Database.statement.executeUpdate("DELETE FROM item WHERE iditem = '" + id + "'");
 
+			deleteStoreInventory.setInt(1, id);
+			deleteStoreInventory.executeUpdate();
+
+			deleteWarehouseInventory.setInt(1, id);
+			deleteWarehouseInventory.executeUpdate();
+
 			return true;
 		}
+
 		else
 		{
 			return false;
@@ -75,10 +89,12 @@ public class Item
     {
 		if(verifyItem(id))
 		{
+			// Update name in item table
 			updateName.setString(1, name);
 			updateName.setInt(2, id);
 			updateName.executeUpdate();
 
+			// Update description in item table
 			updateDescription.setString(1, description);
 			updateDescription.setInt(2, id);
 			updateDescription.executeUpdate();
@@ -90,8 +106,33 @@ public class Item
 			Database.statement.executeUpdate("Update item Set reorderquantity = '" + reorderQuantity + "' WHERE iditem = '" + id + "'");
 			Database.statement.executeUpdate("Update item Set deliverytime = '" + deliveryTime + "' WHERE iditem = '" + id + "'");
 			Database.statement.executeUpdate("UPDATE item SET vendorcode = '" + vendorCode + "'WHERE iditem = '" + id + "'");
-			Database.statement.executeUpdate("UPDATE store_inventory SET itemquantity = '" + storeStock +
-											 "'WHERE idstore = '" + Store.getCurrentStoreID() + "' AND iditem = '" + id + "'"  );
+
+			// check to see if item already exists in store_inventory
+			selectFromStoreInventory.setInt(1, Store.getCurrentStoreID());
+			selectFromStoreInventory.setInt(2, id);
+
+			Database.result = selectFromStoreInventory.executeQuery();
+
+			if(Database.result.next())
+			{
+				// update stock in store_inventory table
+				updateStock.setInt(1, storeStock);
+				updateStock.setInt(2, Store.getCurrentStoreID());
+				updateStock.setInt(3, id);
+				updateStock.executeUpdate();
+			}
+
+			else // entry needs to be created in store_inventory table
+			{
+				// insert stock in store_inventory table
+				insertStoreInventory.setInt(1, Store.getCurrentStoreID());
+				insertStoreInventory.setInt(2, id);
+				insertStoreInventory.setInt(3, storeStock);
+				insertStoreInventory.setNull(4, Types.BIGINT);
+				insertStoreInventory.setNull(5, Types.BIGINT);
+				insertStoreInventory.setNull(6, Types.BIGINT);
+				insertStoreInventory.executeUpdate();
+			}
 
 			Database.result = Database.statement.executeQuery("SELECT SUM(itemquantity) FROM store_inventory WHERE (iditem = '" + id + "')");
 
@@ -115,23 +156,25 @@ public class Item
     //	    else, returns false
     public boolean updateItemID(int newID) throws SQLException
     {
-	if(verifyItem(id))
-	{	    
-	    if (!verifyItem(newID))
-	    {
-		Database.statement.executeUpdate("UPDATE item SET iditem = '" + newID + "' WHERE iditem = '" + this.id + "'");
-		this.id = newID;
-		return true;
-	    }
-	    else
-	    {
-		return false;
-	    }
-	}
-	else
-	{
-	    return false;
-	}
+		if(verifyItem(id))
+		{
+			if (!verifyItem(newID))
+			{
+				Database.statement.executeUpdate("UPDATE item SET iditem = '" + newID + "' WHERE iditem = '" + this.id + "'");
+				this.id = newID;
+				return true;
+			}
+
+			else
+			{
+				return false;
+			}
+		}
+
+		else
+		{
+			return false;
+		}
     }
     //Pre : This is a private static method. It is meant only for internal data verification
     //Post: Returns true if an item with the id exists, else returns false
@@ -143,6 +186,7 @@ public class Item
 		{
 			return true;
 		}
+
 		else
 		{
 			return false;
@@ -260,7 +304,7 @@ public class Item
     {
 	this.cost = cost;
     }
-    public void setStoreStock(int storeStock) {this.storeStock = storeStock;}
+    public void setStoreStock(int storeStock) { this.storeStock = storeStock; }
     public void setDeliveryTime(String time)
     {
 	this.deliveryTime = time;

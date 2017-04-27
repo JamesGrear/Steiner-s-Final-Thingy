@@ -58,60 +58,71 @@ public class Warehouse
     //	    if updateAmount = -1, then 1 will be removed from the current inventory
     public static boolean updateInventory(int itemID, long updateAmount) throws SQLException
     {
-	long currentAmount;
-	long newAmount;
-	
-	Database.result = Database.statement.executeQuery("SELECT itemquantity FROM warehouse_inventory WHERE (iditem = '" + itemID + "')");
-	if(Database.result.next())
-	{
-	    currentAmount =  Database.result.getLong(1);
-	    newAmount = (currentAmount + updateAmount);
-	    
-	    Database.statement.executeUpdate("UPDATE warehouse_inventory SET itemquantity = '" + newAmount + "' WHERE iditem = '" + itemID + "'");
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+		long currentAmount;
+		long newAmount;
+
+		Database.result = Database.statement.executeQuery("SELECT itemquantity FROM warehouse_inventory WHERE (iditem = '" + itemID + "')");
+
+		if(Database.result.next())
+		{
+			currentAmount =  Database.result.getLong(1);
+			newAmount = (currentAmount + updateAmount);
+
+			if(newAmount >= 0)
+			{
+				Database.statement.executeUpdate("UPDATE warehouse_inventory SET itemquantity = '" + newAmount + "' WHERE iditem = '" + itemID + "'");
+				return true;
+			}
+
+			else
+				return false;
+
+		}
+
+		else
+		{
+			return false;
+		}
     }
     // Pre: The id of the item has already been registered into the Item table
     //Post: if the item id exists in the item table but not the warehouse table, the item and quantity are entered into the warehouse and returns true
     //	    else returns false
     public static boolean registerNewInventory(int itemID, int vendor, long quantity) throws ClassNotFoundException, SQLException
     {
-	if(Item.verifyItem(itemID)) //item exists in item table
-	{	
-	    if (!Warehouse.verifyWarehouseInventory(itemID)) //item doesn't exist in warehouse table
-	    {
-		Database.statement.executeUpdate("INSERT INTO warehouse_inventory(iditem, vendor, itemquantity)"
-					    + "VALUES('" + itemID + "','" + vendor + "','" + quantity + "')");
-	    return true;
-	    }
-	    else
-	    {
-		return false;
-	    }
-	}
-	else
-	{
-	    return false;
-	}
+		if(Item.verifyItem(itemID)) //item exists in item table
+		{
+			if (!Warehouse.verifyWarehouseInventory(itemID)) //item doesn't exist in warehouse table
+			{
+				Database.statement.executeUpdate("INSERT INTO warehouse_inventory(iditem, vendor, itemquantity)"
+								+ "VALUES('" + itemID + "','" + vendor + "','" + quantity + "')");
+				return true;
+			}
+
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
     }
     //Post: if the itemID exists in the warehouse table, returns true
     //	    else returns false
     public static boolean verifyWarehouseInventory(int id) throws SQLException
     {
-	Database.result = Database.statement.executeQuery("select iditem from warehouse_inventory where iditem = '" + id + "'"); //kind of redundent, but checks if the id exists
-	
-	if(Database.result.next())
-	{
-	    return true;
-	}
-	else
-	{
-	    return false;
-	}
+		Database.result = Database.statement.executeQuery("select iditem from warehouse_inventory where iditem = '" + id + "'"); //kind of redundent, but checks if the id exists
+
+		if(Database.result.next())
+		{
+			return true;
+		}
+
+		else
+		{
+			return false;
+		}
     }
     private void setItemID(int id) 
     {

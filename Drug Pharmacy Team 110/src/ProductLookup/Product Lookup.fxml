@@ -5,21 +5,23 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="472.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductLookup.Lookup">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductLookup.Lookup">
    <children>
       <TextField fx:id="productSearchBox" alignment="TOP_LEFT" layoutX="114.0" layoutY="30.0" onKeyPressed="#handleEnterKeyPressed" prefHeight="17.0" prefWidth="149.0" promptText="Enter Item ID..." />
       <TextField fx:id="productIDBox" editable="false" layoutX="114.0" layoutY="67.0" prefHeight="25.0" prefWidth="149.0" visible="false" />
       <TextField fx:id="productNameBox" editable="false" layoutX="114.0" layoutY="106.0" prefHeight="25.0" prefWidth="149.0" visible="false" />
       <TextField fx:id="productPriceBox" editable="false" layoutX="114.0" layoutY="146.0" prefHeight="10.0" prefWidth="149.0" visible="false" />
       <TextField fx:id="productStockBox" editable="false" layoutX="114.0" layoutY="179.0" prefHeight="25.0" prefWidth="149.0" visible="false" />
-      <TextArea fx:id="productDescriptionBox" editable="false" layoutX="112.0" layoutY="217.0" prefHeight="53.0" prefWidth="291.0" visible="false" />
+      <TextArea fx:id="productDescriptionBox" editable="false" layoutX="114.0" layoutY="263.0" prefHeight="53.0" prefWidth="291.0" visible="false" wrapText="true" />
       <Text layoutX="27.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Search" />
       <Text layoutX="25.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID:" wrappingWidth="78.97265625" />
       <Text layoutX="27.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Name:" />
       <Text layoutX="26.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price:" />
       <Text layoutX="25.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock:" />
-      <Button cancelButton="true" layoutX="14.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleCancelClick" text="Cancel" />
-      <Button layoutX="414.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleEnterClick" text="Enter" />
-      <Label layoutX="25.0" layoutY="217.0" prefHeight="17.0" prefWidth="79.0" text="Description:" />
+      <Button cancelButton="true" layoutX="15.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleCancelClick" text="Cancel" />
+      <Button layoutX="419.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleEnterClick" text="Enter" />
+      <Label layoutX="28.0" layoutY="263.0" prefHeight="17.0" prefWidth="79.0" text="Description:" />
+      <Label layoutX="27.0" layoutY="221.0" prefHeight="17.0" prefWidth="79.0" text="Dosage:" />
+      <TextField fx:id="productDosageBox" editable="false" layoutX="114.0" layoutY="217.0" prefHeight="25.0" prefWidth="149.0" visible="false" />
    </children>
 </AnchorPane>
