@@ -98,7 +98,7 @@ public class Customer
     public void registerNewCustomer() throws SQLException
     {
 		insertInCustomer.setString(1, name);
-		insertInCustomer.setString(2, name);
+		insertInCustomer.setString(2, address);
 
 		insertInCustomer.executeUpdate();
 	}
