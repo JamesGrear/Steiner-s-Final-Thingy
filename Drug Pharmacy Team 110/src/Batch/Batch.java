@@ -67,6 +67,5 @@ public class Batch
 		{
 		    e.printStackTrace();
 		}
-		
      }
 }

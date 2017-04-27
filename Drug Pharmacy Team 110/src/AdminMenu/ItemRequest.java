@@ -226,5 +226,4 @@ public class ItemRequest
     {
         Menu.launchMenu(User, adminMenu); // launch the main menu interface, passing the user's information and the current window
     }
-
 }

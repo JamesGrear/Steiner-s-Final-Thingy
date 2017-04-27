@@ -7,7 +7,6 @@ package AdminMenu;
 
 import Database.Employee;
 import Menu.Menu;
-import ProductLookup.Lookup;
 import java.io.IOException;
 import java.net.URL;
 import javafx.event.ActionEvent;
@@ -17,7 +16,9 @@ import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 /**
@@ -83,7 +84,9 @@ public class AdminMenu
     
     @FXML private void salesReport(ActionEvent event)
     {
-	System.out.println("sales");
+	Window adminMenu = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
+
+        SalesReport.launchSalesReport(User,adminMenu);
     }
     @FXML private void itemRequest(ActionEvent event)
     {
