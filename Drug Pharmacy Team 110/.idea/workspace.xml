@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="636eb23e-c92c-4706-9bec-7f9ea15c8a60" name="Default" comment="Merge branch 'master' of https://github.com/rlarabell/Steiner-s-Final-Thingy&#10;&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Batch/BatchAutoRefill.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Batch/BatchAutoRefill.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Database/Customer.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Database/Customer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Transaction/CustomerLogin.class" afterPath="$PROJECT_DIR$/out/production/Drug Pharmacy Team 110/Transaction/CustomerLogin.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Error Log 04-27-2017.txt" afterPath="$PROJECT_DIR$/Error Log 04-27-2017.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deletedstores.txt" afterPath="$PROJECT_DIR$/deletedstores.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/newstores.txt" afterPath="$PROJECT_DIR$/newstores.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Batch/BatchAutoRefill.java" afterPath="$PROJECT_DIR$/src/Batch/BatchAutoRefill.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Customer.java" afterPath="$PROJECT_DIR$/src/Database/Customer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Transaction/CustomerLogin.java" afterPath="$PROJECT_DIR$/src/Transaction/CustomerLogin.java" />
     </list>
     <ignored path="Drug Pharmacy Team 110.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,7 +80,7 @@
       <file leaf-file-name="CustomerLogin.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Transaction/CustomerLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
+            <state relative-caret-position="-3439">
               <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
               <folding />
             </state>
@@ -721,12 +712,20 @@
       <workItem from="1493149781393" duration="2487000" />
       <workItem from="1493237500006" duration="22050000" />
       <workItem from="1493269651791" duration="14648000" />
-      <workItem from="1493313726069" duration="5239000" />
+      <workItem from="1493313726069" duration="5569000" />
     </task>
+    <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/rlarabell/Steiner-s-Final-Thingy&#10;&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;">
+      <created>1493318984899</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1493318984899</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53306000" />
+    <option name="totallyTimeSpent" value="53636000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -738,18 +737,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.4974293" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3835801" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3835801" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5025707" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22880216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.49485862" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32974428" sideWeight="0.49485862" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31897712" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -896,9 +895,9 @@
         <state relative-caret-position="1870">
           <caret line="137" column="64" selection-start-line="137" selection-start-column="64" selection-end-line="137" selection-end-column="64" />
           <folding>
-            <element signature="e#0#4167#0" expanded="false" />
+            <element signature="e#0#4386#0" expanded="false" />
             <element signature="imports" expanded="false" />
-            <marker date="1493269563643" expanded="true" signature="1878:1886" ph="{...}" />
+            <marker date="1493318997446" expanded="true" signature="1878:1886" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -936,6 +935,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1045,6 +1045,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="29" column="63" selection-start-line="29" selection-start-column="63" selection-end-line="29" selection-end-column="63" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1164,9 +1165,9 @@
         <state relative-caret-position="17">
           <caret line="64" column="10" selection-start-line="64" selection-start-column="10" selection-end-line="64" selection-end-column="10" />
           <folding>
-            <element signature="e#0#4167#0" expanded="false" />
+            <element signature="e#0#4386#0" expanded="false" />
             <element signature="imports" expanded="false" />
-            <marker date="1493269563643" expanded="true" signature="1878:1886" ph="{...}" />
+            <marker date="1493318997446" expanded="true" signature="1878:1886" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -1197,6 +1198,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="536">
           <caret line="110" column="22" selection-start-line="110" selection-start-column="12" selection-end-line="110" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1216,13 +1218,13 @@
           <caret line="71" column="16" selection-start-line="71" selection-start-column="16" selection-end-line="71" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1493314343689" expanded="true" signature="712:952" ph="INSERT INTO auto_refills... " />
-            <marker date="1493314343689" expanded="true" signature="1059:1113" ph="DELETE FROM " />
-            <marker date="1493314343689" expanded="true" signature="1487:1659" ph="SELECT idref... auto_refills" />
-            <marker date="1493314343689" expanded="true" signature="2648:2714" ph="SELECT daysu... auto_refills" />
-            <marker date="1493314343689" expanded="true" signature="2878:2963" ph="UPDATE auto_... " />
-            <marker date="1493314343689" expanded="true" signature="3194:3267" ph="SELECT remai... auto_refills" />
-            <marker date="1493314343689" expanded="true" signature="3444:3539" ph="UPDATE auto_... " />
+            <marker date="1493318997442" expanded="true" signature="712:952" ph="INSERT INTO auto_refills... " />
+            <marker date="1493318997442" expanded="true" signature="1059:1113" ph="DELETE FROM " />
+            <marker date="1493318997442" expanded="true" signature="1487:1658" ph="SELECT idref... auto_refills" />
+            <marker date="1493318997442" expanded="true" signature="2647:2713" ph="SELECT daysu... auto_refills" />
+            <marker date="1493318997442" expanded="true" signature="2877:2962" ph="UPDATE auto_... " />
+            <marker date="1493318997442" expanded="true" signature="3193:3266" ph="SELECT remai... auto_refills" />
+            <marker date="1493318997442" expanded="true" signature="3443:3538" ph="UPDATE auto_... " />
           </folding>
         </state>
       </provider>
@@ -1356,7 +1358,7 @@
         <state relative-caret-position="1683">
           <caret line="99" column="1" selection-start-line="99" selection-start-column="1" selection-end-line="99" selection-end-column="1" />
           <folding>
-            <element signature="e#0#2470#0" expanded="true" />
+            <element signature="e#0#3040#0" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
         </state>
@@ -1454,14 +1456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Transaction/CustomerLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Database/Customer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -1477,6 +1471,14 @@
             <marker date="1493318422791" expanded="true" signature="3944:4004" ph="select addre... customer" />
             <marker date="1493318422791" expanded="true" signature="4245:4310" ph="select rewar... customer" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Transaction/CustomerLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3439">
+          <caret line="29" column="16" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
