@@ -136,7 +136,6 @@ public class CustomerLogin
 					customer.setRewardPoints(customer.readRewardPoints(id));
 				}
 
-
 				Window loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 				Transaction transaction = new Transaction();
 				transaction.launchTransaction(User, customer, loginScreen);

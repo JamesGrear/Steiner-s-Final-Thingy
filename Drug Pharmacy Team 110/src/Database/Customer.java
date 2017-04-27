@@ -91,15 +91,7 @@ public class Customer
 
 		Database.result = selectIDFromCustomer.executeQuery();
 
-		if (Database.result.next())
-		{
-			return true;
-		}
-
-		else
-		{
-			return false;
-		}
+		return Database.result.next();
     }
 
     //Post: Writes new data into the database for a new Customer
