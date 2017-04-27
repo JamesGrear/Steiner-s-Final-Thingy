@@ -268,14 +268,29 @@ public class AdminLookup
         {
             int updatedStock = Integer.parseInt(productStockBox.getText());
 
-            item.setStoreStock(updatedStock);
+            if(updatedStock >= 0)
+            {
+                item.setStoreStock(updatedStock);
 
-            item.updateItem();
+                item.updateItem();
 
-            storeStockCheck.setText("✓");
+                storeStockCheck.setText("✓");
 
-            // Display updated company-wide stock after stock update
-            productCompanyStockBox.setText(Integer.toString(item.getCompanyStock()));
+                // Display updated company-wide stock after stock update
+                productCompanyStockBox.setText(Integer.toString(item.getCompanyStock()));
+            }
+
+            else
+            {
+                Alert invalidPrice = new Alert(Alert.AlertType.WARNING);
+                invalidPrice.initStyle(StageStyle.UTILITY);
+                invalidPrice.setTitle(null);
+                invalidPrice.setHeaderText("Invalid stock amount");
+                invalidPrice.setContentText("The stock amount you have entered defies logic.\n\nWe can't have negative stock, that's impossible!");
+
+                invalidPrice.showAndWait();
+            }
+
         }
 
         catch (NumberFormatException ex)

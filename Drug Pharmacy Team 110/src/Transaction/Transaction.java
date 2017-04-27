@@ -17,9 +17,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -36,7 +39,7 @@ import javafx.stage.Window;
  *
  * @author Brian
  */
-public class Transaction 
+public class Transaction implements Initializable
 {
     private static Employee User; // The user that is currently logged in
     private static Customer customer; //the customer that is currently logged in
@@ -85,15 +88,24 @@ public class Transaction
 
     public Transaction()
     {
-
     }
+
+    @Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		customerIDBox.setText(Integer.toString(customer.getID()));
+		customerNameBox.setText(customer.getName());
+		customerAddressBox.setText(customer.getAddress());
+		customerRewardBox.setText(Integer.toString(customer.getRewardPoints()));
+	}
+
     public void launchTransaction(Employee user, Customer customer, Window prevScreen)
     {
         try
         {   
-	    User = user;
-	    PrevScreen = prevScreen;
-	    this.customer = customer;
+			User = user;
+			PrevScreen = prevScreen;
+			this.customer = customer;
 	    
             Parent root;
 	   
@@ -118,19 +130,14 @@ public class Transaction
             stage.show();
 
             prevScreen.hide(); // Closes the previous screen
-	}
-	catch(IOException e)
-	{
-	    e.printStackTrace();
-	}
+		}
+
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
     }
-    @FXML private void setCustomerText()
-    {
-	customerIDBox.setText(Integer.toString(customer.getID()));
-	customerNameBox.setText(customer.getName());
-	customerAddressBox.setText(customer.getAddress());
-	customerRewardBox.setText(Integer.toString(customer.getRewardPoints()));
-    }
+
     @FXML private void tryPurchase(ActionEvent event)
     {
 	boolean processItem[] = new boolean[5]; //keeps track of which orders to process in the end

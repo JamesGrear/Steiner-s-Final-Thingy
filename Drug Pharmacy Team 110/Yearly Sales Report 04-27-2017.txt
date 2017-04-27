@@ -4,13 +4,15 @@
 
        STORE ID                 QUANTITY SOLD                   TOTAL PRICE
 
-                                             MARCH
-         8                             5                         495.0
-         8                             2                         198.0
-         8                             3                         297.0
-         8                             5                         495.0
-
                                              APRIL
+
+         6                            10                         950.0
+         6                            50                        4750.0
+
+TOTAL FOR YEAR: 5700.0
+
+TOTAL FOR ALL SALES: 5700.0
+
          8                            10                         990.0
          8                            10                         990.0
          8                            15                        1485.0
@@ -21,6 +23,7 @@
 TOTAL FOR YEAR: 9603.0
 
 TOTAL FOR ALL SALES: 9603.0
+
 
 
                     YEARLY SALES FOR ITEM #123456789

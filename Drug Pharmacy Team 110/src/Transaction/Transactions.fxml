@@ -72,7 +72,6 @@
       <Text fx:id="customerNameBox" layoutX="100.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0" />
       <Text fx:id="customerAddressBox" layoutX="100.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0" />
       <Text fx:id="customerRewardBox" layoutX="100.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="300.0" />
-      <Button layoutX="17.0" layoutY="89.0" mnemonicParsing="false" onAction="#setCustomerText" text="Set Customer Info" />
       <TextField fx:id="userIDBox" layoutX="184.0" layoutY="353.0" prefHeight="25.0" prefWidth="356.0" />
       <Text layoutX="111.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User ID:" wrappingWidth="72.998046875">
          <font>
