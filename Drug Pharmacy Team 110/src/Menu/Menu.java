@@ -12,6 +12,7 @@
 
 package Menu;
 
+import AdminMenu.AdminMenu;
 import Database.Employee;
 import Main.Main;
 import ProductLookup.AdminLookup;
@@ -88,21 +89,13 @@ public class Menu
         }
     }
 
-    @FXML private void launchAdminMenu()
+    @FXML private void launchAdminMenu(ActionEvent event)
     {
-        /*
-            TODO: Launch Administration Menu Program from here (pass user and current window)
-        */
-
         if(User.getManager())
         {
-            Alert noAccountFound = new Alert(Alert.AlertType.WARNING);
-            noAccountFound.initStyle(StageStyle.UTILITY);
-            noAccountFound.setTitle(null);
-            noAccountFound.setHeaderText("ACCESS GRANTED");
-            noAccountFound.setContentText("Wow, you're a manager? That's awesome man, good for you! Come on in and do some admin stuff!");
+            Window menuScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
-            noAccountFound.showAndWait();
+	    AdminMenu.launchAdminMenu(User, menuScreen);
         }
 
         else
@@ -119,7 +112,18 @@ public class Menu
 
     @FXML private void launchBatchProcessing()
     {
+	    Alert startBatch = new Alert(Alert.AlertType.INFORMATION);
+            startBatch.initStyle(StageStyle.UTILITY);
+            startBatch.setTitle(null);
+            startBatch.setHeaderText("Batch Processing starting.");
+            startBatch.setContentText("Shutting down online mode and starting Batch Processing");
+	    startBatch.showAndWait();
+	    
 	    Batch.Batch.main(null); //start up batch processing
+	    
+	    startBatch.setHeaderText("Batch Processing finished.");
+	    startBatch.setContentText("Thank you for waiting. Enjoy online mode.");
+	    startBatch.showAndWait();
     }
 
     @FXML private void logout(ActionEvent event)

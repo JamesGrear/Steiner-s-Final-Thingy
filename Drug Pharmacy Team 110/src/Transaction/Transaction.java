@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -795,6 +794,8 @@ public class Transaction implements Initializable
 		    
 		    //add the sale to the database
 		    sale.registerNewSale();
+		    
+		    customer.addRewardPoints((int)(item[i].getCost() * quantity[i] *.1));
 		}
 		if(processRefill[i])
 		{
