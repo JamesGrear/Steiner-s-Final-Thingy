@@ -16,7 +16,6 @@ public class Batch
 {
      public static void main(String[] args)
      {
-	ErrorReport error = ErrorReport.getErrorReport();
 	
 	try
 	{
@@ -24,25 +23,29 @@ public class Batch
 	}
 	catch(ClassNotFoundException | SQLException e)
 	{
-	    error.writeHeader("MAJOR DATABASE ERROR");
-	    error.writeToLog("COULD NOT CONNECT TO DATABASE");
 	    System.out.println("MAJOR DATABASE ERROR");
+	    System.out.println("COULD NOT CONNECT TO DATABASE");
 	}
 	 
 	BatchItemUpdate item = new BatchItemUpdate();
-	BatchStoreCreateDelete stores = new BatchStoreCreateDelete();
-	BatchInventoryToWarehouse inventoryToWarehouse = new BatchInventoryToWarehouse();
-	BatchAutoRefill refills = new BatchAutoRefill();
-	BatchInventoryToStore inventoryToStores = new BatchInventoryToStore();
-	BatchVendorInventoryRequest inventoryRequest = new BatchVendorInventoryRequest();
-	BatchCalculateSalesReport report = new BatchCalculateSalesReport();
-	
 	item.readFile();
+	
+	BatchStoreCreateDelete stores = new BatchStoreCreateDelete();
 	stores.readFile();
+	
+	BatchInventoryToWarehouse inventoryToWarehouse = new BatchInventoryToWarehouse();
 	inventoryToWarehouse.readFile();
+	
+	BatchAutoRefill refills = new BatchAutoRefill();
 	refills.refill();
+	
+	BatchInventoryToStore inventoryToStores = new BatchInventoryToStore();
 	inventoryToStores.readFile();
+	
+	BatchVendorInventoryRequest inventoryRequest = new BatchVendorInventoryRequest();
 	inventoryRequest.writeFile();
+	
+	BatchCalculateSalesReport report = new BatchCalculateSalesReport();
 	report.readFile();
      }
 }

@@ -46,9 +46,9 @@ public class BatchAutoRefill
 		
 		if(x.getItem() != null) //item exists
 		{
-		    if(Warehouse.readInventory(x.getItem().getID()) >= x.getAmmount()) //warehouse has enough inventory for refill
+		    if(Warehouse.readInventory(x.getItem().getID()) >= x.getAmount()) //warehouse has enough inventory for refill
 		    {
-			Warehouse.updateInventory(x.getItem().getID(), (x.getAmmount() * -1)); //subtract inventory from warehouse
+			Warehouse.updateInventory(x.getItem().getID(), (x.getAmount() * -1)); //subtract inventory from warehouse
 			x.updateRefillsRemaining(-1); //remove 1 refill remaining
 			
 			if(x.getRemainingRefills() <= 0)

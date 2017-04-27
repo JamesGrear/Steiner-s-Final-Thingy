@@ -17,7 +17,7 @@ public class AutoRefills
     private int id;
     private Customer customer;
     private Item item;
-    private int ammount;
+    private int amount;
     private int frequency; //int days
     private int daysUntil; //time before next refill, can go below 0 if a refill is delayed due to lack of inventory
     private int remainingRefills;
@@ -26,7 +26,7 @@ public class AutoRefills
     {
 	Database.statement.executeUpdate
 		("INSERT INTO auto_refills(iditem, idcustomer, frequency, daysuntil, remainingrefills, amount)"
-		+ "VALUES('" + item.getID() + "','" + customer.getID() + "','" + frequency + "','" + daysUntil + "','" + remainingRefills + "','" + ammount + "')");
+		+ "VALUES('" + item.getID() + "','" + customer.getID() + "','" + frequency + "','" + daysUntil + "','" + remainingRefills + "','" + amount + "')");
     }
     public void deleteAutoRefill() throws SQLException
     { 
@@ -54,7 +54,7 @@ public class AutoRefills
 	    refill.frequency = Database.result2.getInt(4);
 	    refill.daysUntil = Database.result2.getInt(5);
 	    refill.remainingRefills = Database.result2.getInt(6);
-	    refill.ammount = Database.result2.getInt(7);
+	    refill.amount = Database.result2.getInt(7);
 	    
 	    refill.item = item; 
 	    refill.customer = customer;
@@ -119,9 +119,9 @@ public class AutoRefills
     {
 	return remainingRefills;
     }
-    public int getAmmount()
+    public int getAmount()
     {
-	return ammount;
+	return amount;
     }
     public void setItem(Item item)
     {
@@ -143,8 +143,8 @@ public class AutoRefills
     {
 	this.remainingRefills = remaining;
     }
-    public void setAmmount(int ammount)
+    public void setAmount(int ammount)
     {
-	this.ammount = ammount;
+	this.amount = ammount;
     }
 }

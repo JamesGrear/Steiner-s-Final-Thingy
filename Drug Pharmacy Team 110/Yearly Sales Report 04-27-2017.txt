@@ -1,0 +1,66 @@
+                    YEARLY SALES FOR ITEM #1
+
+
+
+       STORE ID                 QUANTITY SOLD                   TOTAL PRICE
+
+                                             MARCH
+         8                             5                         495.0
+         8                             2                         198.0
+         8                             3                         297.0
+         8                             5                         495.0
+
+                                             APRIL
+         8                            10                         990.0
+
+TOTAL FOR YEAR: 2475.0
+
+TOTAL FOR ALL SALES: 2475.0
+
+
+                    YEARLY SALES FOR ITEM #123456789
+
+
+
+       STORE ID                 QUANTITY SOLD                   TOTAL PRICE
+      1234                            20                          35.0
+
+                                          FEBRUARY
+      1234                            20                          35.0
+
+                                             MARCH
+      1234                            20                          35.0
+
+                                             APRIL
+      1234                            20                          35.0
+
+                                               MAY
+      1234                            20                          35.0
+
+                                              JUNE
+      1234                            20                          35.0
+
+                                              JULY
+      1234                            20                          35.0
+
+                                            AUGUST
+      1234                            20                          35.0
+
+                                         SEPTEMBER
+      1234                            20                          35.0
+
+                                           OCTOBER
+      1234                            20                          35.0
+
+                                          NOVEMBER
+      1234                            20                          35.0
+
+                                          DECEMBER
+      1234                            20                          35.0
+      1234                            20                          35.0
+
+TOTAL FOR YEAR: 455.0
+
+TOTAL FOR ALL SALES: 455.0
+
+

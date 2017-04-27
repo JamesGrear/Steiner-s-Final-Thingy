@@ -19,13 +19,13 @@ public class Tests
      {
 	Database.setupDatabaseConnection();
 	
+	testBatchItemUpdate();
 	testBatchStoreUpdate();
 	testBatchInventoryToWarehouse();
-	testBatchItemUpdate();
+	testBatchAutoRefill();
 	testBatchInventoryToStore();
 	testBatchVendorInventoryRequest();
 	testBatchCalculateSalesReport();
-	testBatchAutoRefill();
 	//testErrorReport();
      }
     

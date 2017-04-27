@@ -108,6 +108,11 @@ public class CustomerLogin
 	    {
 		name = customerNameBox.getText();
 		address = customerAddressBox.getText();
+		
+		if(name.contains("'") || address.contains("'"))
+		{
+		    throw new IllegalArgumentException();
+		}
 
 		customer = new Customer();
 
@@ -206,7 +211,7 @@ public class CustomerLogin
 		    Window loginScreen = ((Node)(event.getSource())).getScene().getWindow(); // get reference to current window
 
 		    Transaction transaction = new Transaction();
-		    transaction.launchTransaction(User, customer, menu);
+		    transaction.launchTransaction(User, customer, loginScreen);
 		}
 		else
 		{
