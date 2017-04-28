@@ -37,7 +37,7 @@
     <column id="20" parent="5" name="idcustomer">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="21" parent="5" name="ammount">
+    <column id="21" parent="5" name="amount">
       <data-type>int(11)|0</data-type>
     </column>
     <index id="22" parent="5" name="idrefill_UNIQUE">
@@ -113,144 +113,144 @@
     <column id="40" parent="8" name="warning">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="41" parent="8" name="cost">
-      <data-type>double|0</data-type>
-    </column>
-    <column id="42" parent="8" name="description">
+    <column id="41" parent="8" name="description">
       <data-type>varchar(100)|0</data-type>
     </column>
-    <column id="43" parent="8" name="dosage">
+    <column id="42" parent="8" name="dosage">
       <data-type>varchar(20)|0</data-type>
     </column>
-    <column id="44" parent="8" name="reorderlevel">
+    <column id="43" parent="8" name="reorderlevel">
       <data-type>bigint(11)|0</data-type>
     </column>
-    <column id="45" parent="8" name="reorderquantity">
+    <column id="44" parent="8" name="reorderquantity">
       <data-type>bigint(11)|0</data-type>
     </column>
-    <column id="46" parent="8" name="deliverytime">
+    <column id="45" parent="8" name="deliverytime">
       <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="47" parent="8" name="vendorcode">
+    <column id="46" parent="8" name="vendorcode">
       <data-type>int(11)|0</data-type>
     </column>
-    <index id="48" parent="8" name="iditem_UNIQUE">
+    <index id="47" parent="8" name="iditem_UNIQUE">
       <columns>iditem</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="49" parent="8" name="PRIMARY">
+    <key id="48" parent="8" name="PRIMARY">
       <columns>iditem</columns>
       <primary>1</primary>
     </key>
-    <key id="50" parent="8" name="iditem_UNIQUE">
+    <key id="49" parent="8" name="iditem_UNIQUE">
       <columns>iditem</columns>
       <underlying-index>iditem_UNIQUE</underlying-index>
     </key>
-    <column id="51" parent="9" name="idsales">
+    <column id="50" parent="9" name="idsales">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="52" parent="9" name="iditem">
+    <column id="51" parent="9" name="iditem">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="53" parent="9" name="idstore">
+    <column id="52" parent="9" name="idstore">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="54" parent="9" name="quantity">
+    <column id="53" parent="9" name="quantity">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="55" parent="9" name="totalprice">
+    <column id="54" parent="9" name="totalprice">
       <data-type>double|0</data-type>
     </column>
-    <column id="56" parent="9" name="date">
+    <column id="55" parent="9" name="date">
       <data-type>date|0</data-type>
     </column>
-    <index id="57" parent="9" name="idsales_UNIQUE">
+    <index id="56" parent="9" name="idsales_UNIQUE">
       <columns>idsales</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="58" parent="9" name="PRIMARY">
+    <key id="57" parent="9" name="PRIMARY">
       <columns>idsales</columns>
       <primary>1</primary>
     </key>
-    <key id="59" parent="9" name="idsales_UNIQUE">
+    <key id="58" parent="9" name="idsales_UNIQUE">
       <columns>idsales</columns>
       <underlying-index>idsales_UNIQUE</underlying-index>
     </key>
-    <column id="60" parent="10" name="file">
+    <column id="59" parent="10" name="file">
       <mandatory>1</mandatory>
       <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="61" parent="10" name="seqnum">
+    <column id="60" parent="10" name="seqnum">
       <data-type>int(10) unsigned zerofill|0</data-type>
     </column>
-    <index id="62" parent="10" name="file_UNIQUE">
+    <index id="61" parent="10" name="file_UNIQUE">
       <columns>file</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="63" parent="10" name="PRIMARY">
+    <key id="62" parent="10" name="PRIMARY">
       <columns>file</columns>
       <primary>1</primary>
     </key>
-    <key id="64" parent="10" name="file_UNIQUE">
+    <key id="63" parent="10" name="file_UNIQUE">
       <columns>file</columns>
       <underlying-index>file_UNIQUE</underlying-index>
     </key>
-    <column id="65" parent="11" name="idstore">
+    <column id="64" parent="11" name="idstore">
       <mandatory>1</mandatory>
       <data-type>int(11) unsigned|0</data-type>
     </column>
-    <column id="66" parent="11" name="address">
+    <column id="65" parent="11" name="address">
       <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="67" parent="11" name="state">
+    <column id="66" parent="11" name="state">
       <data-type>varchar(2)|0</data-type>
     </column>
-    <column id="68" parent="11" name="priority">
+    <column id="67" parent="11" name="priority">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="69" parent="11" name="zipcode">
+    <column id="68" parent="11" name="zipcode">
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="70" parent="11" name="city">
+    <column id="69" parent="11" name="city">
       <data-type>varchar(45)|0</data-type>
     </column>
-    <index id="71" parent="11" name="idstore_UNIQUE">
+    <index id="70" parent="11" name="idstore_UNIQUE">
       <columns>idstore</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="72" parent="11" name="PRIMARY">
+    <key id="71" parent="11" name="PRIMARY">
       <columns>idstore</columns>
       <primary>1</primary>
     </key>
-    <key id="73" parent="11" name="idstore_UNIQUE">
+    <key id="72" parent="11" name="idstore_UNIQUE">
       <columns>idstore</columns>
       <underlying-index>idstore_UNIQUE</underlying-index>
     </key>
-    <column id="74" parent="12" name="idstore">
+    <column id="73" parent="12" name="idstore">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="75" parent="12" name="iditem">
+    <column id="74" parent="12" name="iditem">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
     </column>
-    <column id="76" parent="12" name="itemquantity">
+    <column id="75" parent="12" name="itemquantity">
       <data-type>bigint(11)|0</data-type>
     </column>
-    <column id="77" parent="12" name="defaultquantity">
+    <column id="76" parent="12" name="defaultquantity">
       <data-type>bigint(11)|0</data-type>
     </column>
-    <column id="78" parent="12" name="reorderlevel">
+    <column id="77" parent="12" name="reorderlevel">
       <data-type>bigint(11)|0</data-type>
     </column>
-    <column id="79" parent="12" name="reorderquantity">
+    <column id="78" parent="12" name="reorderquantity">
       <data-type>bigint(11)|0</data-type>
+    </column>
+    <column id="79" parent="12" name="cost">
+      <data-type>double|0</data-type>
     </column>
     <key id="80" parent="12" name="PRIMARY">
       <columns>idstore

@@ -29,6 +29,7 @@ CREATE TABLE `store_inventory` (
   `defaultquantity` bigint(11) DEFAULT NULL,
   `reorderlevel` bigint(11) DEFAULT NULL,
   `reorderquantity` bigint(11) DEFAULT NULL,
+  `cost` double DEFAULT NULL,
   PRIMARY KEY (`idstore`,`iditem`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +40,6 @@ CREATE TABLE `store_inventory` (
 
 LOCK TABLES `store_inventory` WRITE;
 /*!40000 ALTER TABLE `store_inventory` DISABLE KEYS */;
-INSERT INTO `store_inventory` VALUES (1,2,505,NULL,NULL,NULL),(6,0,0,NULL,NULL,NULL),(6,1,242,1234567899,1234567899,1234567899),(6,2,0,NULL,NULL,NULL),(6,3,98,NULL,NULL,NULL),(6,4,10,NULL,NULL,NULL),(6,9,996,NULL,NULL,NULL),(6,103,0,4500000,3000,4000),(6,123456789,0,NULL,NULL,NULL),(26,0,500,28,54901,5823),(26,123456789,0,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `store_inventory` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-27 20:07:27
+-- Dump completed on 2017-04-27 23:18:55
