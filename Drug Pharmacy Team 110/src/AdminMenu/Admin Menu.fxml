@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminMenu.AdminMenu">
+   <children>
+      <Button layoutX="255.0" layoutY="300.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="25.0" prefWidth="85.0" scaleX="2.0" scaleY="2.0" text="Main Menu" />
+      <Button layoutX="255.0" layoutY="225.0" mnemonicParsing="false" onAction="#salesReport" prefHeight="25.0" prefWidth="86.0" scaleX="2.0" scaleY="2.0" text="Sales Report" />
+      <Button layoutX="255.0" layoutY="150.0" mnemonicParsing="false" onAction="#itemRequest" scaleX="2.0" scaleY="2.0" text="Item Request" />
+      <Text layoutX="222.0" layoutY="50.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to the Admin Menu" />
+   </children>
+</AnchorPane>

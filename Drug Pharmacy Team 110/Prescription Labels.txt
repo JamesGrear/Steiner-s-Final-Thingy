@@ -1,0 +1,51 @@
+ALL PRESCRIPTIONS FROM THE START OF TIME!!!
+
+
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS:Westland
+PRESCRIPTION: 9001Medicine
+DESCRIPTION: This makes you feel better.
+WARNING: OH NO DANGER!
+*****************************************************
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS :Westland
+PRESCRIPTION: 9001 Medicine
+DESCRIPTION: This makes you feel better.
+WARNING: OH NO DANGER!
+*****************************************************
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS :Westland
+PRESCRIPTION: 9002 Medicine2
+DESCRIPTION: This makes you feel better2.
+*****************************************************
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS :Westland
+PRESCRIPTION: 9003 Medicine3
+DESCRIPTION: This makes you feel better3.
+WARNING: WARNING: Ask your doctor if you experience erections lasting longer than 6hrs.
+*****************************************************
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS :Westland
+PRESCRIPTION: 9009 Medicine4
+DESCRIPTION: This makes you feel better9.
+WARNING: CAUTION: Highly toxic
+*****************************************************
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS :Westland
+PRESCRIPTION: H2O Water
+DESCRIPTION: Hope you are thirsty!
+WARNING: CAUTION: Highly addictive, may cause death.
+*****************************************************
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS: Westland
+PRESCRIPTION: 9001 Medicine
+DESCRIPTION: This makes you feel better.
+WARNING: OH NO DANGER!
+*****************************************************

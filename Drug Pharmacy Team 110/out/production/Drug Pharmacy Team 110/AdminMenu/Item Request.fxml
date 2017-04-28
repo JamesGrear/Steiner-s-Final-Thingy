@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminMenu.ItemRequest">
+   <children>
+      <Text layoutX="186.0" layoutY="65.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Inventory From Warehouse" />
+      <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleCancelClick" prefHeight="25.0" prefWidth="49.0" text="Back" />
+      <Button layoutX="188.0" layoutY="179.0" mnemonicParsing="false" onAction="#orderLowInventory" scaleX="2.0" scaleY="2.0" text="REORDER ALL LOW INVENTORY" />
+   </children>
+</AnchorPane>
