@@ -42,3 +42,10 @@ PRESCRIPTION: H2O Water
 DESCRIPTION: Hope you are thirsty!
 WARNING: CAUTION: Highly addictive, may cause death.
 *****************************************************
+*****************************************************
+CUSTOMER NAME: Brian
+CUSTOMER ADDRESS: Westland
+PRESCRIPTION: 9001 Medicine
+DESCRIPTION: This makes you feel better.
+WARNING: OH NO DANGER!
+*****************************************************

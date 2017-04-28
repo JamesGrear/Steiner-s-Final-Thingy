@@ -1039,7 +1039,7 @@ public class SalesReport
 	    
 	    textBox.appendText(String.format("%80s", "YEARLY SALES REPORT FOR STORE #") + id + "\n\n");
 	    textBox.appendText(String.format("%15s", "DATE"));
-	    textBox.appendText(String.format("%20s", "SITEM ID")); //pad with spaces
+	    textBox.appendText(String.format("%20s", "ITEM ID")); //pad with spaces
 	    textBox.appendText(String.format("%25s", "QUANTITY SOLD"));
 	    textBox.appendText(String.format("%30s", "TOTAL PRICE"));
 	    textBox.appendText("\n\n");

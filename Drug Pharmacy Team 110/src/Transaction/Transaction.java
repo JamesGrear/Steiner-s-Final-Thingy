@@ -22,6 +22,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -35,6 +36,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -84,6 +86,8 @@ public class Transaction implements Initializable
     
     @FXML private TextField userIDBox;      //secondary user login
     @FXML private TextField userPasswordBox;
+    
+    @FXML private TextArea storeLocatorBox;
 
     // Text for program output
     @FXML private Text customerIDBox;	     // Text box to write the customer ID to
@@ -279,8 +283,11 @@ public class Transaction implements Initializable
 				if(storeInventory[0].readInventory() < quantity[0])
 				{
 				lowInventory.setHeaderText("Insufficient stock of item ID#" + item[0].getID());
-				lowInventory.setContentText("Sorry, we do not have enough stock of item ID#" + item[0].getID() + " to match your order.");
+				lowInventory.setContentText("Sorry, we do not have enough stock of item ID#" + item[0].getID() + ". See Store Locator for other Store options.");
 				lowInventory.showAndWait();
+				
+				locateStores(item[0], quantity[0]);
+				
 				return;
 				}
 
@@ -375,6 +382,8 @@ public class Transaction implements Initializable
 				lowInventory.setHeaderText("Insufficient stock of item ID#" + item[1].getID());
 				lowInventory.setContentText("Sorry, we do not have enough stock of item ID#" + item[1].getID() + " to match your order.");
 				lowInventory.showAndWait();
+				
+				locateStores(item[1], quantity[1]);
 				return;
 				}
 
@@ -467,6 +476,7 @@ public class Transaction implements Initializable
 				lowInventory.setHeaderText("Insufficient stock of item ID#" + item[2].getID());
 				lowInventory.setContentText("Sorry, we do not have enough stock of item ID#" + item[2].getID() + " to match your order.");
 				lowInventory.showAndWait();
+				locateStores(item[2], quantity[2]);
 				return;
 				}
 
@@ -559,6 +569,7 @@ public class Transaction implements Initializable
 				lowInventory.setHeaderText("Insufficient stock of item ID#" + item[3].getID());
 				lowInventory.setContentText("Sorry, we do not have enough stock of item ID#" + item[3].getID() + " to match your order.");
 				lowInventory.showAndWait();
+				locateStores(item[3], quantity[3]);
 				return;
 				}
 
@@ -651,6 +662,7 @@ public class Transaction implements Initializable
 				lowInventory.setHeaderText("Insufficient stock of item ID#" + item[4].getID());
 				lowInventory.setContentText("Sorry, we do not have enough stock of item ID#" + item[4].getID() + " to match your order.");
 				lowInventory.showAndWait();
+				locateStores(item[4], quantity[4]);
 				return;
 				}
 
@@ -892,6 +904,53 @@ public class Transaction implements Initializable
 	catch(IOException e)
 	{
 	    e.printStackTrace();
+	}
+    }
+    private void locateStores(Item item, int quantity)
+    {
+	ArrayList<StoreInventory> inventories;
+	Store store;
+	String state;
+	boolean foundStore = false;
+	try
+	{
+	    state = Store.readStore(Store.getCurrentStoreID()).getState(); //gets state of current store
+
+	    inventories = StoreInventory.readAllInventoryForItem(item.getID());
+	    
+	    storeLocatorBox.clear();
+	    storeLocatorBox.appendText("STORES WITH AT LEAST " + quantity + " OF ITEM #" + item.getID() + "\n\n");
+	    
+		
+	    for(StoreInventory y: inventories)
+	    {
+		store = Store.readStore(y.getStoreID());
+		    
+		if(store.getState().equals(state) && y.getItemQuantity() >= quantity)
+		{
+		    storeLocatorBox.appendText("STORE #" + store.getID());
+		    storeLocatorBox.appendText("\nSTORE LOCATION: " + store.getAddress().replace("  ", "") + ", " + store.getCity().replace("  ", "") 
+			    + ", " + store.getState() + ", " + store.getZipcode());
+		    storeLocatorBox.appendText("\nSTORE STOCK OF ITEM #" + item.getID() + ": " + y.getItemQuantity());
+		    storeLocatorBox.appendText("\nSTORE PRICE PER ITEM: $" + y.getCost());
+		    storeLocatorBox.appendText("\n\n");
+
+		    foundStore = true;
+		}
+	    }
+	    
+	    if(!foundStore)
+	    {
+		storeLocatorBox.appendText("NONE, SORRY!");
+	    }
+	}
+	catch(SQLException | ClassNotFoundException e)
+	{
+	    Alert dbError = new Alert(Alert.AlertType.WARNING);
+	    dbError.initStyle(StageStyle.UTILITY);
+	    dbError.setTitle(null);
+	    dbError.setHeaderText("Major Database Error.");
+	    dbError.setContentText("Please check your Database and try again later.");
 	}
     }
     private void closeWindow(Window lookupScreen)
