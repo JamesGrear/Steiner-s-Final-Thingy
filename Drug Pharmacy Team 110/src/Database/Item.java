@@ -5,6 +5,7 @@
  */
 package Database;
 
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -23,7 +24,8 @@ public class Item
     private String dosage;
 	private int storeStock;
     private int companyStock;
-    private int warning;
+    private int warning;			// warning code for drug
+	private String warningMessage;	// warning message for drug
     private double cost;
     private long reorderLevel;
     private long reorderQuantity;
@@ -38,6 +40,8 @@ public class Item
 	private PreparedStatement selectFromStoreInventory = connection.prepareStatement("SELECT * FROM store_inventory WHERE idstore = ? AND iditem = ?");
 	private PreparedStatement deleteStoreInventory = connection.prepareStatement("DELETE FROM store_inventory WHERE iditem = ?");
 	private PreparedStatement deleteWarehouseInventory = connection.prepareStatement("DELETE FROM warehouse_inventory WHERE iditem = ?");
+	private PreparedStatement getWarningMessage = connection.prepareStatement("SELECT warningmessage FROM warning WHERE warningcode = (SELECT warning FROM ITEM where iditem = ?)");
+
 
     public Item(int id) throws ClassNotFoundException, SQLException
     {
@@ -176,7 +180,7 @@ public class Item
 			return false;
 		}
     }
-    //Pre : This is a private static method. It is meant only for internal data verification
+    //Pre : This is a public static method. It is meant only for internal data verification
     //Post: Returns true if an item with the id exists, else returns false
     public static boolean verifyItem(int id) throws SQLException
     {
@@ -240,6 +244,18 @@ public class Item
                 else
                     item.companyStock = 0;
 
+				item.getWarningMessage.setInt(1, id);
+
+				Database.result = item.getWarningMessage.executeQuery();
+
+				if(Database.result.next())
+				{
+					item.warningMessage = Database.result.getString(1);
+				}
+
+				else
+					item.warningMessage = "";
+
 				return item;
 			}
 
@@ -256,10 +272,7 @@ public class Item
     {
 	return name;
     }
-    public int getWarning()
-    {
-	return warning;
-    }
+    public int getWarning() { return warning; }
     public double getCost()
     {
 	return cost;
@@ -278,7 +291,7 @@ public class Item
     {
 	return reorderQuantity;
     }
-
+	public String getWarningMessage() { return warningMessage; }
 	public String getDeliveryTime()
     {
 	return deliveryTime;
@@ -296,10 +309,7 @@ public class Item
     {
 	this.name = name;
     }
-    public void setWarning(int warning)
-    {
-	this.warning = warning;
-    }
+    public void setWarning(int warning) { this.warning = warning; }
     public void setCost(double cost)
     {
 	this.cost = cost;

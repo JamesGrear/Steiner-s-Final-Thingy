@@ -16,29 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `warehouse_inventory`
+-- Table structure for table `warning`
 --
 
-DROP TABLE IF EXISTS `warehouse_inventory`;
+DROP TABLE IF EXISTS `warning`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `warehouse_inventory` (
-  `iditem` int(11) unsigned zerofill NOT NULL,
-  `itemquantity` int(11) DEFAULT NULL,
-  `vendor` int(11) DEFAULT NULL,
-  PRIMARY KEY (`iditem`),
-  UNIQUE KEY `itemID_UNIQUE` (`iditem`)
+CREATE TABLE `warning` (
+  `warningcode` int(11) NOT NULL,
+  `warningmessage` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`warningcode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `warehouse_inventory`
+-- Dumping data for table `warning`
 --
 
-LOCK TABLES `warehouse_inventory` WRITE;
-/*!40000 ALTER TABLE `warehouse_inventory` DISABLE KEYS */;
-INSERT INTO `warehouse_inventory` VALUES (00000000002,1555,NULL),(00123456789,0,1234);
-/*!40000 ALTER TABLE `warehouse_inventory` ENABLE KEYS */;
+LOCK TABLES `warning` WRITE;
+/*!40000 ALTER TABLE `warning` DISABLE KEYS */;
+INSERT INTO `warning` VALUES (5,'WARNING: Ask your doctor if you experience erections lasting longer than 6hrs.'),(9,'CAUTION: Highly toxic'),(99,'CAUTION: Highly addictive, may cause death.');
+/*!40000 ALTER TABLE `warning` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
