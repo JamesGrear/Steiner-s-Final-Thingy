@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="636eb23e-c92c-4706-9bec-7f9ea15c8a60" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Database/Item.java" afterPath="$PROJECT_DIR$/src/Database/Item.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProductLookup/Admin Product Lookup.fxml" afterPath="$PROJECT_DIR$/src/ProductLookup/Admin Product Lookup.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ProductLookup/AdminLookup.java" afterPath="$PROJECT_DIR$/src/ProductLookup/AdminLookup.java" />
     </list>
     <ignored path="Drug Pharmacy Team 110.iws" />
@@ -66,138 +66,6 @@
       </PATH_ELEMENT>
     </PATH>
   </component>
-  <component name="DockManager">
-    <window id="12">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="Item.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Database/Item.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="6188">
-                    <caret line="372" column="17" selection-start-line="372" selection-start-column="17" selection-end-line="372" selection-end-column="17" />
-                    <folding>
-                      <marker date="1493369469406" expanded="true" signature="1035:1076" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="1156:1204" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="1278:1354" ph="UPDATE store... " />
-                      <marker date="1493369469406" expanded="true" signature="1427:1495" ph="UPDATE store... " />
-                      <marker date="1493369469406" expanded="true" signature="1578:1633" ph="INSERT INTO store_inventory... " />
-                      <marker date="1493369469406" expanded="true" signature="1716:1760" ph="DELETE FROM " />
-                      <marker date="1493369469406" expanded="true" signature="1847:1895" ph="DELETE FROM " />
-                      <marker date="1493369469406" expanded="true" signature="1968:2001" ph="DELETE FROM " />
-                      <marker date="1493369469406" expanded="true" signature="2101:2163" ph="SELECT * FRO... store_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="2243:2341" ph="SELECT warni... warning" />
-                      <marker date="1493369469406" expanded="true" signature="2299:2340" ph="SELECT warni... ITEM" />
-                      <marker date="1493369469406" expanded="true" signature="2423:2455" ph="SELECT cost " />
-                      <marker date="1493369469406" expanded="true" signature="2423:2488" ph="SELECT cost store_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="2570:2632" ph="SELECT SUM(i... store_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="2714:2780" ph="SELECT SUM(i... warehouse_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="3150:3463" ph="INSERT INTO item... " />
-                      <marker date="1493369469406" expanded="true" signature="4596:4665" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="4706:4777" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="4818:4899" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="4940:5027" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="5068:5149" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="5190:5266" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="6712:6785" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="7203:7254" ph="select idite... item" />
-                      <marker date="1493369469406" expanded="true" signature="10261:10412" ph="SELECT name,... item" />
-                      <marker date="1493369469406" expanded="true" signature="10938:11067" ph="SELECT itemq... store_inventory" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="11">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
-              <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/67dd852d-ebbe-405f-b8b2-65b97ed7694f/console.sql">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="0">
-                    <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="14">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="AdminLookup.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/ProductLookup/AdminLookup.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="278">
-                    <caret line="579" column="49" selection-start-line="579" selection-start-column="49" selection-end-line="579" selection-end-column="49" />
-                    <folding>
-                      <element signature="method#launchProductLookup#0;class#AdminLookup#0" expanded="false" />
-                      <element signature="method#convertIDToString#0;class#AdminLookup#0" expanded="false" />
-                      <element signature="method#closeWindow#0;class#AdminLookup#0" expanded="false" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="10">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="Item.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Database/Item.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="-2628">
-                    <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
-                    <folding>
-                      <marker date="1493369469406" expanded="true" signature="1035:1076" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="1156:1204" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="1278:1354" ph="UPDATE store... " />
-                      <marker date="1493369469406" expanded="true" signature="1427:1495" ph="UPDATE store... " />
-                      <marker date="1493369469406" expanded="true" signature="1578:1633" ph="INSERT INTO store_inventory... " />
-                      <marker date="1493369469406" expanded="true" signature="1716:1760" ph="DELETE FROM " />
-                      <marker date="1493369469406" expanded="true" signature="1847:1895" ph="DELETE FROM " />
-                      <marker date="1493369469406" expanded="true" signature="1968:2001" ph="DELETE FROM " />
-                      <marker date="1493369469406" expanded="true" signature="2101:2163" ph="SELECT * FRO... store_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="2243:2341" ph="SELECT warni... warning" />
-                      <marker date="1493369469406" expanded="true" signature="2299:2340" ph="SELECT warni... ITEM" />
-                      <marker date="1493369469406" expanded="true" signature="2423:2455" ph="SELECT cost " />
-                      <marker date="1493369469406" expanded="true" signature="2423:2488" ph="SELECT cost store_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="2570:2632" ph="SELECT SUM(i... store_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="2714:2780" ph="SELECT SUM(i... warehouse_inventory" />
-                      <marker date="1493369469406" expanded="true" signature="3150:3463" ph="INSERT INTO item... " />
-                      <marker date="1493369469406" expanded="true" signature="4596:4665" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="4706:4777" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="4818:4899" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="4940:5027" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="5068:5149" ph="Update item " />
-                      <marker date="1493369469406" expanded="true" signature="5190:5266" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="6712:6785" ph="UPDATE item " />
-                      <marker date="1493369469406" expanded="true" signature="7203:7254" ph="select idite... item" />
-                      <marker date="1493369469406" expanded="true" signature="10261:10412" ph="SELECT name,... item" />
-                      <marker date="1493369469406" expanded="true" signature="10938:11067" ph="SELECT itemq... store_inventory" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="ErrorTreeViewConfiguration">
     <option name="hideWarnings" value="true" />
     <option name="HIDE_WARNINGS" value="true" />
@@ -207,28 +75,7 @@
     <favorites_list name="Drug Pharmacy Team 110" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/67dd852d-ebbe-405f-b8b2-65b97ed7694f/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Menu.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Menu/Menu.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -276,8 +123,8 @@
         <option value="$PROJECT_DIR$/items.txt" />
         <option value="$PROJECT_DIR$/currentStore.txt" />
         <option value="$PROJECT_DIR$/src/Menu/Menu.java" />
-        <option value="$PROJECT_DIR$/src/Database/Item.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/67dd852d-ebbe-405f-b8b2-65b97ed7694f/console.sql" />
+        <option value="$PROJECT_DIR$/src/Database/Item.java" />
         <option value="$PROJECT_DIR$/src/ProductLookup/AdminLookup.java" />
       </list>
     </option>
@@ -1102,7 +949,7 @@
       <workItem from="1493237500006" duration="22050000" />
       <workItem from="1493269651791" duration="14648000" />
       <workItem from="1493313726069" duration="21781000" />
-      <workItem from="1493336809845" duration="32619000" />
+      <workItem from="1493336809845" duration="33906000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/rlarabell/Steiner-s-Final-Thingy&#10;&#10;# Conflicts:&#10;#&#9;Drug Pharmacy Team 110/deletedstores.txt&#10;">
       <created>1493318984899</created>
@@ -1122,7 +969,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="102467000" />
+    <option name="totallyTimeSpent" value="103754000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1134,8 +981,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.4974293" order="6" side_tool="false" content_ui="tabs" />
@@ -1144,7 +991,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5025707" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2678331" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2678331" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.49485862" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1238,8 +1085,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/Batch/BatchItemUpdate.java</url>
-          <line>189</line>
-          <properties class="Batch.BatchItemUpdate" method="addItem" />
+          <line>200</line>
+          <properties class="Batch.BatchItemUpdate" />
           <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
@@ -1416,37 +1263,37 @@
         <state relative-caret-position="2448">
           <caret line="176" column="5" selection-start-line="176" selection-start-column="5" selection-end-line="176" selection-end-column="5" />
           <folding>
-            <element signature="e#0#5514#0" expanded="false" />
+            <element signature="e#0#6561#0" expanded="false" />
             <element signature="imports" expanded="false" />
-            <element signature="e#4722#4723#0" expanded="false" />
-            <element signature="e#4743#4744#0" expanded="false" />
-            <element signature="e#4783#4784#0" expanded="false" />
-            <element signature="e#4803#4804#0" expanded="false" />
-            <element signature="e#4851#4852#0" expanded="false" />
-            <element signature="e#4878#4879#0" expanded="false" />
-            <element signature="e#4929#4930#0" expanded="false" />
-            <element signature="e#4959#4960#0" expanded="false" />
-            <element signature="e#5007#5008#0" expanded="false" />
-            <element signature="e#5034#5035#0" expanded="false" />
-            <element signature="e#5085#5086#0" expanded="false" />
-            <element signature="e#5115#5116#0" expanded="false" />
-            <element signature="e#5149#5150#0" expanded="false" />
-            <element signature="e#5172#5173#0" expanded="false" />
-            <element signature="e#5205#5206#0" expanded="false" />
-            <element signature="e#5227#5228#0" expanded="false" />
-            <element signature="e#5338#5339#0" expanded="false" />
-            <element signature="e#5369#5370#0" expanded="false" />
-            <element signature="e#5409#5410#0" expanded="false" />
-            <element signature="e#5437#5438#0" expanded="false" />
-            <element signature="e#5480#5481#0" expanded="false" />
-            <element signature="e#5511#5512#0" expanded="false" />
-            <marker date="1493081522309" expanded="true" signature="1102:1375" ph="INSERT INTO store_inventory... " />
-            <marker date="1493081522309" expanded="true" signature="2083:2189" ph="SELECT itemq... store_inventory" />
-            <marker date="1493081522309" expanded="true" signature="2387:2514" ph="UPDATE store... " />
-            <marker date="1493081522309" expanded="true" signature="2760:2859" ph="SELECT idite... store_inventory" />
-            <marker date="1493081522309" expanded="true" signature="3250:3378" ph="SELECT itemq... store_inventory" />
-            <marker date="1493081522309" expanded="true" signature="3688:3779" ph="DELETE FROM " />
-            <marker date="1493081522309" expanded="true" signature="4069:4203" ph="SELECT idite... store_inventory" />
+            <element signature="e#5654#5655#0" expanded="false" />
+            <element signature="e#5735#5736#0" expanded="false" />
+            <element signature="e#5783#5784#0" expanded="false" />
+            <element signature="e#5810#5811#0" expanded="false" />
+            <element signature="e#5861#5862#0" expanded="false" />
+            <element signature="e#5891#5892#0" expanded="false" />
+            <element signature="e#5939#5940#0" expanded="false" />
+            <element signature="e#5966#5967#0" expanded="false" />
+            <element signature="e#6017#6018#0" expanded="false" />
+            <element signature="e#6047#6048#0" expanded="false" />
+            <element signature="e#6089#6090#0" expanded="false" />
+            <element signature="e#6108#6109#0" expanded="false" />
+            <element signature="e#6198#6199#0" expanded="false" />
+            <element signature="e#6220#6221#0" expanded="false" />
+            <element signature="e#6260#6261#0" expanded="false" />
+            <element signature="e#6288#6289#0" expanded="false" />
+            <element signature="e#6402#6403#0" expanded="false" />
+            <element signature="e#6430#6431#0" expanded="false" />
+            <element signature="e#6473#6474#0" expanded="false" />
+            <element signature="e#6504#6505#0" expanded="false" />
+            <element signature="e#6538#6539#0" expanded="false" />
+            <element signature="e#6558#6559#0" expanded="false" />
+            <marker date="1493370185777" expanded="true" signature="1102:1375" ph="INSERT INTO store_inventory... " />
+            <marker date="1493370185777" expanded="true" signature="2083:2189" ph="SELECT itemq... store_inventory" />
+            <marker date="1493370185777" expanded="true" signature="2387:2514" ph="UPDATE store... " />
+            <marker date="1493370185777" expanded="true" signature="2760:2859" ph="SELECT idite... store_inventory" />
+            <marker date="1493370185777" expanded="true" signature="3250:3378" ph="SELECT itemq... store_inventory" />
+            <marker date="1493370185777" expanded="true" signature="3688:3779" ph="DELETE FROM " />
+            <marker date="1493370185777" expanded="true" signature="4069:4203" ph="SELECT idite... store_inventory" />
           </folding>
         </state>
       </provider>
@@ -1653,9 +1500,9 @@
         <state relative-caret-position="646">
           <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
-            <marker date="1493350024314" expanded="true" signature="821:1011" ph="INSERT INTO sales... " />
-            <marker date="1493350024314" expanded="true" signature="1416:1515" ph="SELECT idsto... sales" />
-            <marker date="1493350024314" expanded="true" signature="2220:2320" ph="SELECT idite... sales" />
+            <marker date="1493370185770" expanded="true" signature="821:1011" ph="INSERT INTO sales... " />
+            <marker date="1493370185770" expanded="true" signature="1416:1515" ph="SELECT idsto... sales" />
+            <marker date="1493370185770" expanded="true" signature="2139:2239" ph="SELECT idite... sales" />
           </folding>
         </state>
       </provider>
@@ -1708,25 +1555,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Database/Warehouse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="74" column="13" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="13" />
-          <folding>
-            <marker date="1493279752848" expanded="true" signature="610:700" ph="SELECT itemq... warehouse_inventory" />
-            <marker date="1493279752848" expanded="true" signature="1020:1097" ph="SELECT idite... warehouse_inventory" />
-            <marker date="1493279752848" expanded="true" signature="1899:1977" ph="SELECT itemq... warehouse_inventory" />
-            <marker date="1493279752848" expanded="true" signature="2176:2273" ph="UPDATE wareh... " />
-            <marker date="1493279752848" expanded="true" signature="2963:3097" ph="INSERT INTO warehouse_inventory... " />
-            <marker date="1493279752848" expanded="true" signature="3440:3506" ph="select idite... warehouse_inventory" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Menu/Menu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
+        <state relative-caret-position="306">
+          <caret line="64" column="25" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
           <folding />
         </state>
       </provider>
@@ -1739,18 +1571,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Database/Warehouse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1396">
+          <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
+          <folding>
+            <marker date="1493279752848" expanded="true" signature="610:700" ph="SELECT itemq... warehouse_inventory" />
+            <marker date="1493279752848" expanded="true" signature="1020:1097" ph="SELECT idite... warehouse_inventory" />
+            <marker date="1493279752848" expanded="true" signature="1899:1977" ph="SELECT itemq... warehouse_inventory" />
+            <marker date="1493279752848" expanded="true" signature="2176:2273" ph="UPDATE wareh... " />
+            <marker date="1493279752848" expanded="true" signature="2963:3097" ph="INSERT INTO warehouse_inventory... " />
+            <marker date="1493279752848" expanded="true" signature="3440:3506" ph="select idite... warehouse_inventory" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/67dd852d-ebbe-405f-b8b2-65b97ed7694f/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
+          <caret line="0" column="33" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ProductLookup/AdminLookup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="579" column="49" selection-start-line="579" selection-start-column="49" selection-end-line="579" selection-end-column="49" />
+        <state relative-caret-position="479">
+          <caret line="189" column="33" selection-start-line="189" selection-start-column="33" selection-end-line="189" selection-end-column="33" />
           <folding>
             <element signature="method#launchProductLookup#0;class#AdminLookup#0" expanded="false" />
             <element signature="method#convertIDToString#0;class#AdminLookup#0" expanded="false" />
@@ -1761,35 +1608,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Database/Item.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2628">
-          <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
+        <state relative-caret-position="-1754">
+          <caret line="260" column="8" selection-start-line="260" selection-start-column="8" selection-end-line="260" selection-end-column="8" />
           <folding>
-            <marker date="1493369469406" expanded="true" signature="1035:1076" ph="UPDATE item " />
-            <marker date="1493369469406" expanded="true" signature="1156:1204" ph="UPDATE item " />
-            <marker date="1493369469406" expanded="true" signature="1278:1354" ph="UPDATE store... " />
-            <marker date="1493369469406" expanded="true" signature="1427:1495" ph="UPDATE store... " />
-            <marker date="1493369469406" expanded="true" signature="1578:1633" ph="INSERT INTO store_inventory... " />
-            <marker date="1493369469406" expanded="true" signature="1716:1760" ph="DELETE FROM " />
-            <marker date="1493369469406" expanded="true" signature="1847:1895" ph="DELETE FROM " />
-            <marker date="1493369469406" expanded="true" signature="1968:2001" ph="DELETE FROM " />
-            <marker date="1493369469406" expanded="true" signature="2101:2163" ph="SELECT * FRO... store_inventory" />
-            <marker date="1493369469406" expanded="true" signature="2243:2341" ph="SELECT warni... warning" />
-            <marker date="1493369469406" expanded="true" signature="2299:2340" ph="SELECT warni... ITEM" />
-            <marker date="1493369469406" expanded="true" signature="2423:2455" ph="SELECT cost " />
-            <marker date="1493369469406" expanded="true" signature="2423:2488" ph="SELECT cost store_inventory" />
-            <marker date="1493369469406" expanded="true" signature="2570:2632" ph="SELECT SUM(i... store_inventory" />
-            <marker date="1493369469406" expanded="true" signature="2714:2780" ph="SELECT SUM(i... warehouse_inventory" />
-            <marker date="1493369469406" expanded="true" signature="3150:3463" ph="INSERT INTO item... " />
-            <marker date="1493369469406" expanded="true" signature="4596:4665" ph="Update item " />
-            <marker date="1493369469406" expanded="true" signature="4706:4777" ph="Update item " />
-            <marker date="1493369469406" expanded="true" signature="4818:4899" ph="Update item " />
-            <marker date="1493369469406" expanded="true" signature="4940:5027" ph="Update item " />
-            <marker date="1493369469406" expanded="true" signature="5068:5149" ph="Update item " />
-            <marker date="1493369469406" expanded="true" signature="5190:5266" ph="UPDATE item " />
-            <marker date="1493369469406" expanded="true" signature="6712:6785" ph="UPDATE item " />
-            <marker date="1493369469406" expanded="true" signature="7203:7254" ph="select idite... item" />
-            <marker date="1493369469406" expanded="true" signature="10261:10412" ph="SELECT name,... item" />
-            <marker date="1493369469406" expanded="true" signature="10938:11067" ph="SELECT itemq... store_inventory" />
+            <marker date="1493371177661" expanded="true" signature="1035:1076" ph="UPDATE item " />
+            <marker date="1493371177661" expanded="true" signature="1156:1204" ph="UPDATE item " />
+            <marker date="1493371177661" expanded="true" signature="1278:1354" ph="UPDATE store... " />
+            <marker date="1493371177661" expanded="true" signature="1427:1495" ph="UPDATE store... " />
+            <marker date="1493371177661" expanded="true" signature="1578:1633" ph="INSERT INTO store_inventory... " />
+            <marker date="1493371177661" expanded="true" signature="1716:1760" ph="DELETE FROM " />
+            <marker date="1493371177661" expanded="true" signature="1847:1895" ph="DELETE FROM " />
+            <marker date="1493371177661" expanded="true" signature="1968:2001" ph="DELETE FROM " />
+            <marker date="1493371177661" expanded="true" signature="2101:2163" ph="SELECT * FRO... store_inventory" />
+            <marker date="1493371177661" expanded="true" signature="2243:2341" ph="SELECT warni... warning" />
+            <marker date="1493371177661" expanded="true" signature="2299:2340" ph="SELECT warni... ITEM" />
+            <marker date="1493371177661" expanded="true" signature="2423:2455" ph="SELECT cost " />
+            <marker date="1493371177661" expanded="true" signature="2423:2488" ph="SELECT cost store_inventory" />
+            <marker date="1493371177661" expanded="true" signature="2570:2632" ph="SELECT SUM(i... store_inventory" />
+            <marker date="1493371177661" expanded="true" signature="2714:2780" ph="SELECT SUM(i... warehouse_inventory" />
+            <marker date="1493371177661" expanded="true" signature="3150:3463" ph="INSERT INTO item... " />
+            <marker date="1493371177661" expanded="true" signature="4596:4665" ph="Update item " />
+            <marker date="1493371177661" expanded="true" signature="4706:4777" ph="Update item " />
+            <marker date="1493371177661" expanded="true" signature="4818:4899" ph="Update item " />
+            <marker date="1493371177661" expanded="true" signature="4940:5027" ph="Update item " />
+            <marker date="1493371177661" expanded="true" signature="5068:5149" ph="Update item " />
+            <marker date="1493371177661" expanded="true" signature="5190:5266" ph="UPDATE item " />
+            <marker date="1493371177661" expanded="true" signature="6712:6785" ph="UPDATE item " />
+            <marker date="1493371177661" expanded="true" signature="7203:7254" ph="select idite... item" />
+            <marker date="1493371177661" expanded="true" signature="10397:10548" ph="SELECT name,... item" />
+            <marker date="1493371177661" expanded="true" signature="11074:11203" ph="SELECT itemq... store_inventory" />
           </folding>
         </state>
       </provider>

@@ -213,12 +213,13 @@ public class Item
 		}
     }
 
-    public boolean deleteItemStore() throws SQLException
+    public boolean deleteItemStore() throws SQLException, ClassNotFoundException
 	{
 		if(itemExistsInStore())
 		{
 			if(getStoreStock() > 0)
 			{
+				Warehouse.registerNewInventory(id, vendorCode, 0); // will add item in warehouse if item doesnt exist there
 				Warehouse.updateInventory(id, getStoreStock());
 			}
 

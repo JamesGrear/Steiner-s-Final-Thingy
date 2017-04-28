@@ -187,6 +187,8 @@ public class AdminLookup
         doseButton.setVisible(false);
         prodDoseCheck.setText("");
 
+        notInStoreLabel.setText("");
+
         item = null;
     }
 
@@ -232,47 +234,52 @@ public class AdminLookup
 
     @FXML private void updatePrice() throws SQLException
     {
-        try
-        {
-            String input = productPriceBox.getText();
+        if(item.itemExistsInStore()) {
+            try {
+                String input = productPriceBox.getText();
 
-            input = input.replace("$", "");
+                input = input.replace("$", "");
 
-            Double updatedPrice = Double.parseDouble(input);
+                Double updatedPrice = Double.parseDouble(input);
 
-            if(updatedPrice >= 0)
-            {
-                item.setCost(updatedPrice);
+                if (updatedPrice >= 0) {
+                    item.setCost(updatedPrice);
 
-                item.updateItem();
+                    item.updateItem();
 
-                // Display formatted price
-                productPriceBox.setText(String.format("$%.2f", item.getCost()));
+                    // Display formatted price
+                    productPriceBox.setText(String.format("$%.2f", item.getCost()));
 
-                prodPriceCheck.setText("✓");
-            }
+                    prodPriceCheck.setText("✓");
+                } else if (input.length() > 0) {
+                    Alert invalidPrice = new Alert(Alert.AlertType.WARNING);
+                    invalidPrice.initStyle(StageStyle.UTILITY);
+                    invalidPrice.setTitle(null);
+                    invalidPrice.setHeaderText("Invalid price");
+                    invalidPrice.setContentText("The price you have entered is too low.\n\nWe're in the business of making money, not giving it away!");
 
-            else if (input.length() > 0)
-            {
+                    invalidPrice.showAndWait();
+                }
+            } catch (NumberFormatException ex) {
                 Alert invalidPrice = new Alert(Alert.AlertType.WARNING);
                 invalidPrice.initStyle(StageStyle.UTILITY);
                 invalidPrice.setTitle(null);
                 invalidPrice.setHeaderText("Invalid price");
-                invalidPrice.setContentText("The price you have entered is too low.\n\nWe're in the business of making money, not giving it away!");
+                invalidPrice.setContentText("The price you have entered is not formatted properly.\n\nDouble check that the price is actually a number.");
 
                 invalidPrice.showAndWait();
             }
         }
 
-        catch (NumberFormatException ex)
+        else
         {
-            Alert invalidPrice = new Alert(Alert.AlertType.WARNING);
-            invalidPrice.initStyle(StageStyle.UTILITY);
-            invalidPrice.setTitle(null);
-            invalidPrice.setHeaderText("Invalid price");
-            invalidPrice.setContentText("The price you have entered is not formatted properly.\n\nDouble check that the price is actually a number.");
+            Alert itemNotInStore = new Alert(Alert.AlertType.WARNING);
+            itemNotInStore.initStyle(StageStyle.UTILITY);
+            itemNotInStore.setTitle(null);
+            itemNotInStore.setHeaderText("The item you are trying to update is not in the store.");
+            itemNotInStore.setContentText("Price is a store level attribute, it can't be updated until item is registered to store.");
 
-            invalidPrice.showAndWait();
+            itemNotInStore.showAndWait();
         }
 
 
@@ -280,44 +287,49 @@ public class AdminLookup
 
     @FXML private void updateStore() throws SQLException
     {
-        try
-        {
-            int updatedStock = Integer.parseInt(productStockBox.getText());
+        if(item.itemExistsInStore()) {
+            try {
+                int updatedStock = Integer.parseInt(productStockBox.getText());
 
-            if(updatedStock >= 0)
-            {
-                item.setStoreStock(updatedStock);
+                if (updatedStock >= 0) {
+                    item.setStoreStock(updatedStock);
 
-                item.updateItem();
+                    item.updateItem();
 
-                storeStockCheck.setText("✓");
+                    storeStockCheck.setText("✓");
 
-                // Display updated company-wide stock after stock update
-                productCompanyStockBox.setText(Integer.toString(item.getCompanyStock()));
-            }
+                    // Display updated company-wide stock after stock update
+                    productCompanyStockBox.setText(Integer.toString(item.getCompanyStock()));
+                } else {
+                    Alert invalidPrice = new Alert(Alert.AlertType.WARNING);
+                    invalidPrice.initStyle(StageStyle.UTILITY);
+                    invalidPrice.setTitle(null);
+                    invalidPrice.setHeaderText("Invalid stock amount");
+                    invalidPrice.setContentText("The stock amount you have entered defies logic.\n\nWe can't have negative stock, that's impossible!");
 
-            else
-            {
+                    invalidPrice.showAndWait();
+                }
+
+            } catch (NumberFormatException ex) {
                 Alert invalidPrice = new Alert(Alert.AlertType.WARNING);
                 invalidPrice.initStyle(StageStyle.UTILITY);
                 invalidPrice.setTitle(null);
                 invalidPrice.setHeaderText("Invalid stock amount");
-                invalidPrice.setContentText("The stock amount you have entered defies logic.\n\nWe can't have negative stock, that's impossible!");
+                invalidPrice.setContentText("The stock amount you have entered is not formatted properly.\n\nDouble check that the amount is actually a number.");
 
                 invalidPrice.showAndWait();
             }
-
         }
 
-        catch (NumberFormatException ex)
+        else
         {
-            Alert invalidPrice = new Alert(Alert.AlertType.WARNING);
-            invalidPrice.initStyle(StageStyle.UTILITY);
-            invalidPrice.setTitle(null);
-            invalidPrice.setHeaderText("Invalid stock amount");
-            invalidPrice.setContentText("The stock amount you have entered is not formatted properly.\n\nDouble check that the amount is actually a number.");
+            Alert itemNotInStore = new Alert(Alert.AlertType.WARNING);
+            itemNotInStore.initStyle(StageStyle.UTILITY);
+            itemNotInStore.setTitle(null);
+            itemNotInStore.setHeaderText("The item you are trying to update is not in the store.");
+            itemNotInStore.setContentText("Store stock amount is a store level attribute, it can't be updated until item is registered to store.");
 
-            invalidPrice.showAndWait();
+            itemNotInStore.showAndWait();
         }
     }
 
@@ -325,17 +337,13 @@ public class AdminLookup
     {
         String updatedDescription = productDescriptionBox.getText();
 
-        if(updatedDescription.length() <= 100)
-        {
+        if (updatedDescription.length() <= 100) {
             item.setDescription(updatedDescription);
 
             item.updateItem();
 
             prodDescriptionCheck.setText("✓");
-        }
-
-        else if(updatedDescription.length() > 0)
-        {
+        } else if (updatedDescription.length() > 0) {
             Alert descriptionTooLong = new Alert(Alert.AlertType.WARNING);
             descriptionTooLong.initStyle(StageStyle.UTILITY);
             descriptionTooLong.setTitle(null);
