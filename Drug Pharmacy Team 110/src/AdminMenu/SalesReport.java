@@ -258,7 +258,7 @@ public class SalesReport
 			dailyTotal = 0;
 			
 			//START NEXT DAY
-			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())));  
+			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())) + "\n");  
 		    }
 		    
 		    text = (String.format("%15s", format.format(x.getDate()))
@@ -714,7 +714,7 @@ public class SalesReport
 			dailyTotal = 0;
 			
 			//START NEXT DAY
-			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())));  
+			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())) + "\n");  
 		    }
 		    
 		    text = (String.format("%15s", format.format(x.getDate()))
@@ -1039,7 +1039,7 @@ public class SalesReport
 	    
 	    textBox.appendText(String.format("%80s", "YEARLY SALES REPORT FOR STORE #") + id + "\n\n");
 	    textBox.appendText(String.format("%15s", "DATE"));
-	    textBox.appendText(String.format("%20s", "SITEM ID")); //pad with spaces
+	    textBox.appendText(String.format("%20s", "ITEM ID")); //pad with spaces
 	    textBox.appendText(String.format("%25s", "QUANTITY SOLD"));
 	    textBox.appendText(String.format("%30s", "TOTAL PRICE"));
 	    textBox.appendText("\n\n");

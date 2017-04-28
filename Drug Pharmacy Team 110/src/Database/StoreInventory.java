@@ -20,6 +20,7 @@ public class StoreInventory
     private long defaultQuantity;
     private long reorderLevel;
     private long reorderQuantity;
+    private double cost;
     
     // Pre: The id of the item has already been registered into the Item table
     //Post: if the item id exists in the item table but not the store_inventory table, the item and quantity are entered into the warehouse and returns true
@@ -34,7 +35,6 @@ public class StoreInventory
                       + "VALUES('" + storeID + "','" + itemID + "','" + itemQuantity + "','" + defaultQuantity + "','" + reorderLevel + "','" + reorderQuantity + "')");
             
               return true;
-            
           }
         
           else
@@ -139,6 +139,31 @@ public class StoreInventory
 	
 	return list;
     }
+    public static ArrayList<StoreInventory> readAllInventoryForItem(int itemID) throws SQLException
+    {
+	ArrayList<StoreInventory> list = new ArrayList();
+	StoreInventory inventory;
+	
+	Database.result = Database.statement.executeQuery("SELECT idstore, itemquantity, defaultquantity, reorderlevel, reorderquantity, cost"
+		+ " FROM store_inventory WHERE (iditem = '" + itemID + "')");
+	
+	while (Database.result.next())
+	{
+	    inventory = new StoreInventory();
+	    
+	    inventory.setItemID(itemID);
+	    inventory.setStoreID(Database.result.getInt(1));
+	    inventory.setItemQuantity(Database.result.getLong(2));
+	    inventory.setDefaultQuantity(Database.result.getLong(3));
+            inventory.setReorderLevel(Database.result.getLong(4));
+	    inventory.setReorderQuantity(Database.result.getLong(5));
+	    inventory.setCost(Database.result.getDouble(6));
+	    
+	    list.add(inventory);
+	}
+	
+	return list;
+    }
     public void setStoreID(int id)
     {
 	storeID = id;
@@ -163,6 +188,10 @@ public class StoreInventory
     {
 	reorderQuantity = num;
     }
+    public void setCost(double num)
+    {
+	cost = num;
+    }
     public int getStoreID()
     {
 	return storeID;
@@ -186,5 +215,9 @@ public class StoreInventory
     public long getReorderQuantity()
     {
 	return reorderQuantity;
+    }
+    public double getCost()
+    {
+	return cost;
     }
 }

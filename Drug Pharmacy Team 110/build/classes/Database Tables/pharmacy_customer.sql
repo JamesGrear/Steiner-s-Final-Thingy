@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: pharmacy
 -- ------------------------------------------------------
--- Server version	5.7.16-log
+-- Server version	5.7.17-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -38,7 +38,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Brian','30602',0),(2,'Scott','Everywhere',0);
+INSERT INTO `customer` VALUES (1,'Johnathon, Couch','123 Fake St',2147483647),(2,'JOHNATHON, COUCH','123 Fake St.',0);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-24 21:33:02
+-- Dump completed on 2017-04-27 23:18:54

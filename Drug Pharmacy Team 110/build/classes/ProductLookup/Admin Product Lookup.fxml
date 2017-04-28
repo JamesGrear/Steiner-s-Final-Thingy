@@ -6,11 +6,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleEnterKeyPressed" prefHeight="587.0" prefWidth="617.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ProductLookup.AdminLookup">
    <children>
-      <Button cancelButton="true" layoutX="19.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleCancelClick" prefHeight="34.0" prefWidth="79.0" text="Cancel" />
-      <Button layoutX="505.0" layoutY="479.0" mnemonicParsing="false" onAction="#updateAll" prefHeight="34.0" prefWidth="79.0" text="Update All" />
+      <Button cancelButton="true" layoutX="19.0" layoutY="539.0" mnemonicParsing="false" onAction="#handleCancelClick" prefHeight="34.0" prefWidth="79.0" text="Cancel" />
+      <Button layoutX="513.0" layoutY="539.0" mnemonicParsing="false" onAction="#updateAll" prefHeight="34.0" prefWidth="79.0" text="Update All" />
       <Text layoutX="43.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product Search" />
       <TextField fx:id="productSearchBox" layoutX="193.0" layoutY="45.0" prefHeight="25.0" prefWidth="225.0" promptText="Enter Item ID..." />
       <Text layoutX="43.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Product ID:" />
@@ -50,7 +49,7 @@
       <Button fx:id="priceButton" layoutX="439.0" layoutY="192.0" mnemonicParsing="false" onAction="#updatePrice" prefHeight="25.0" prefWidth="74.0" text="Update" visible="false" />
       <Button fx:id="storeButton" layoutX="439.0" layoutY="236.0" mnemonicParsing="false" onAction="#updateStore" prefHeight="25.0" prefWidth="74.0" text="Update" visible="false" />
       <Button fx:id="descriptionButton" layoutX="439.0" layoutY="322.0" mnemonicParsing="false" onAction="#updateDescription" prefHeight="25.0" prefWidth="74.0" text="Update" visible="false" />
-      <Button cancelButton="true" layoutX="251.0" layoutY="479.0" mnemonicParsing="false" onAction="#resetScreen" prefHeight="34.0" prefWidth="79.0" text="Reset" />
+      <Button cancelButton="true" layoutX="280.0" layoutY="539.0" mnemonicParsing="false" onAction="#resetScreen" prefHeight="34.0" prefWidth="79.0" text="Reset" />
       <Text layoutX="41.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dosage:" wrappingWidth="48.21875" />
       <TextField fx:id="productDoseBox" layoutX="193.0" layoutY="157.0" prefHeight="25.0" prefWidth="225.0" visible="false" />
       <Button fx:id="doseButton" layoutX="439.0" layoutY="157.0" mnemonicParsing="false" onAction="#updateDose" prefHeight="25.0" prefWidth="74.0" text="Update" visible="false" />
@@ -59,5 +58,9 @@
             <Font size="23.0" />
          </font>
       </Label>
+      <Button layoutX="249.0" layoutY="486.0" mnemonicParsing="false" onAction="#registerItemToStore" prefHeight="34.0" prefWidth="141.0" text="Register Item to Store" wrapText="true" />
+      <Label fx:id="notInStoreLabel" layoutX="432.0" layoutY="82.0" />
+      <Button layoutX="18.0" layoutY="486.0" mnemonicParsing="false" onAction="#deleteItemCompany" prefHeight="34.0" prefWidth="168.0" text="Delete Item From Company" />
+      <Button layoutX="439.0" layoutY="486.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="168.0" text="Delete Item From Store" />
    </children>
 </AnchorPane>
