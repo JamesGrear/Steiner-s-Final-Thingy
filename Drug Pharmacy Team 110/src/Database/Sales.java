@@ -39,7 +39,6 @@ public class Sales
 	ArrayList<Sales> sales = new ArrayList<>();
 	Item item;
 	Sales sale;
-	
 
 	Database.result2 = Database.statement2.executeQuery("SELECT idstore, quantity, totalprice, date"
 							+ " FROM sales WHERE (iditem = '" + itemID + "')");

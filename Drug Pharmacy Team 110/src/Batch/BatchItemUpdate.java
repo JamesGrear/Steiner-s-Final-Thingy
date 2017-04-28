@@ -163,7 +163,8 @@ public class BatchItemUpdate extends BatchFileReader
 			}
 			catch(Exception e)
 			{
-			    error.writeToLog("INCORRECT FORMAT FOR ADD COUNT LINE");
+				e.printStackTrace();
+			   // error.writeToLog("INCORRECT FORMAT FOR ADD COUNT LINE");
 			}
 		    }
 		}
@@ -221,7 +222,6 @@ public class BatchItemUpdate extends BatchFileReader
 	try
 	{
 	    item = new Item(Integer.parseInt(id));
-	    item.setCost(5); //default cost for all items, change online if needed
 	    item.setName(name);
 	    item.setDescription(description);
 	    item.setDosage(dosage);
@@ -235,7 +235,7 @@ public class BatchItemUpdate extends BatchFileReader
 	    
 	    if(!item.registerNewItem())
 	    {
-		error.writeToLog("ITEM #" + id + " ALREADY EXISTS");
+			error.writeToLog("ITEM #" + id + " ALREADY EXISTS");
 	    }
 	}
 	catch(ClassNotFoundException e)//|SQLException e)

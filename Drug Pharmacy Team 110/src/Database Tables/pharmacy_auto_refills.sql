@@ -29,7 +29,7 @@ CREATE TABLE `auto_refills` (
   `daysuntil` int(11) DEFAULT NULL,
   `remainingrefills` int(11) DEFAULT NULL,
   `idcustomer` int(11) DEFAULT NULL,
-  `ammount` int(11) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL,
   PRIMARY KEY (`idrefill`),
   UNIQUE KEY `idrefill_UNIQUE` (`idrefill`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-04-27 20:07:27
+-- Dump completed on 2017-04-27 23:18:55
