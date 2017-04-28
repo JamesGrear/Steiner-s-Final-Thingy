@@ -56,8 +56,35 @@ public class Sales
 	    System.out.println(sale.storeID);
 	    System.out.println(sale.date);
 	    
-	    item = Item.readItem(Database.result2.getInt(1)); //read the item id and create an item object with correct variables
+	    item = new Item(itemID);
 	    sale.item = item; 
+	    sales.add(sale);
+	}
+	
+	return sales;
+    }
+    public static ArrayList<Sales> readAllSalesForStore(int storeID) throws SQLException, ClassNotFoundException
+    {
+	ArrayList<Sales> sales = new ArrayList<>();
+	Item item;
+	Sales sale;
+	
+
+	Database.result2 = Database.statement2.executeQuery("SELECT iditem, quantity, totalprice, date"
+							+ " FROM sales WHERE (idstore = '" + storeID + "')");
+	
+	while(Database.result2.next())
+	{
+	    sale = new Sales(); 
+	    
+	    item = new Item(Database.result2.getInt(1));
+	    sale.quantity = Database.result2.getInt(2);
+	    sale.totalPrice = Database.result2.getDouble(3);
+	    sale.date = Database.result2.getDate(4);
+	    
+	    sale.item = item;
+	    sale.storeID = storeID;
+
 	    sales.add(sale);
 	}
 	

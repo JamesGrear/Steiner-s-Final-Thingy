@@ -53,7 +53,7 @@ public class Batch
 		report.readFile();
 		
 		
-		try
+		/*try
 		{
 		    FileSequence.incrementDeletedStoreToWarehouseInventory();
 		    FileSequence.incrementInventoryOrder();
@@ -66,6 +66,6 @@ public class Batch
 		catch(SQLException e)
 		{
 		    e.printStackTrace();
-		}
+		}*/
      }
 }
