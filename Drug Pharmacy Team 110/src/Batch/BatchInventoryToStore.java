@@ -68,9 +68,20 @@ public class BatchInventoryToStore extends BatchFileReader
 	//**************************************************************
 	if (!readHeader())
 	{
-	    System.out.println("Failed to read the Header");
+	    error.writeToLog("FAILED TO READ THE HEADER");
 	    return false;
 	}
+	else
+	{
+	    try
+	    {
+		FileSequence.incrementInventoryToStore();
+	    }
+	    catch(Exception e)
+	    {
+		error.writeToLog("DATABASE ERROR. CHECK YOUR DATABASE AND TRY AGAIN.");
+	    }
+	}	
 	//**************************************************************
 	//******************READ THE CONTENT****************************
 	//**************************************************************

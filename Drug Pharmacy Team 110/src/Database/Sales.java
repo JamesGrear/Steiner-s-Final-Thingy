@@ -52,9 +52,6 @@ public class Sales
 	    sale.totalPrice = Database.result2.getDouble(3);
 	    sale.date = Database.result2.getDate(4);
 	    
-	    System.out.println(sale.storeID);
-	    System.out.println(sale.date);
-	    
 	    item = new Item(itemID);
 	    sale.item = item; 
 	    sales.add(sale);

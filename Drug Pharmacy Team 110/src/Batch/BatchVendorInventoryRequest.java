@@ -56,7 +56,7 @@ public class BatchVendorInventoryRequest
 	String vendorCode;
 	String itemID;
 	String quantity;
-	ArrayList<Warehouse> inventory = new ArrayList<>();
+	ArrayList<Warehouse> inventory;
 	Item item;
 	
 	writeHeader();
@@ -93,6 +93,14 @@ public class BatchVendorInventoryRequest
 	}
 	    
 	writeTrailer();
+	try
+	{
+	    FileSequence.incrementInventoryOrder();
+	}
+	catch(Exception e)
+	{
+	    error.writeToLog("DATABASE ERROR");
+	}
     }
     private void writeHeader()
     {

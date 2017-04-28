@@ -16,32 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `auto_refills`
+-- Table structure for table `warning`
 --
 
-DROP TABLE IF EXISTS `auto_refills`;
+DROP TABLE IF EXISTS `warning`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `auto_refills` (
-  `idrefill` int(11) NOT NULL AUTO_INCREMENT,
-  `iditem` int(11) DEFAULT NULL,
-  `frequency` int(11) DEFAULT NULL,
-  `daysuntil` int(11) DEFAULT NULL,
-  `remainingrefills` int(11) DEFAULT NULL,
-  `idcustomer` int(11) DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL,
-  PRIMARY KEY (`idrefill`),
-  UNIQUE KEY `idrefill_UNIQUE` (`idrefill`)
+CREATE TABLE `warning` (
+  `warningcode` int(11) NOT NULL,
+  `warningmessage` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`warningcode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `auto_refills`
+-- Dumping data for table `warning`
 --
 
-LOCK TABLES `auto_refills` WRITE;
-/*!40000 ALTER TABLE `auto_refills` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auto_refills` ENABLE KEYS */;
+LOCK TABLES `warning` WRITE;
+/*!40000 ALTER TABLE `warning` DISABLE KEYS */;
+INSERT INTO `warning` VALUES (5,'WARNING: Ask your doctor if you experience erections lasting longer than 6hrs.'),(9,'CAUTION: Highly toxic'),(99,'CAUTION: Highly addictive, may cause death.');
+/*!40000 ALTER TABLE `warning` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

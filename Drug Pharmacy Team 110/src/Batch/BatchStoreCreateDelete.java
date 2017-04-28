@@ -99,8 +99,19 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	//**************************************************************
 	if (!readHeader())
 	{
-	    System.out.println("Failed to read the Header");
+	    error.writeToLog("FAILED TO READ THE HEADER");
 	    return false;
+	}
+	else
+	{
+	    try
+	    {
+		FileSequence.incrementStoreCreateDelete();
+	    }
+	    catch(Exception e)
+	    {
+		error.writeToLog("DATABASE ERROR. CHECK YOUR DATABASE AND TRY AGAIN.");
+	    }
 	}
 	//**************************************************************
 	//******************READ THE CONTENT****************************
@@ -202,6 +213,10 @@ public class BatchStoreCreateDelete extends BatchFileReader
 			return Integer.parseInt(storeID);
 		    }
 		    
+		}
+		catch(SQLException e)
+		{
+		    error.writeToLog("DATABASE ERROR");
 		}
 		catch(Exception e) //bad formating/values in file
 		{
