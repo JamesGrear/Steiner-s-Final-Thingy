@@ -5,7 +5,7 @@
 ERROR: CANNOT DELETE ITEM #1000. ITEM DOES NOT EXIST
 ERROR: CANNOT DELETE ITEM #301020304. ITEM DOES NOT EXIST
 ERROR: CANNOT DELETE ITEM #2030. ITEM DOES NOT EXIST
-ERROR: ITEM #123456789 ALREADY EXISTS
+ERROR: ITEM #000009991 DOESN'T EXIST AND CAN'T BE CHANGED
 ERROR: ITEM #123456789 ALREADY EXISTS
 ERROR: ITEM #123456789 ALREADY EXISTS
 ******************************************************************************************************
@@ -14,10 +14,12 @@ ERROR: ITEM #123456789 ALREADY EXISTS
 
 ERROR: STORE WITH ID '6' ALREADY EXISTS
 ERROR: INCORRECT TRAILER
+
 ******************************************************************************************************
 ***********************************INVENTORY TO WAREHOUSE***********************************
 ******************************************************************************************************
 
+ERROR: TRAILER LINE EMPTY
 ******************************************************************************************************
 ***********************************AUTO REFILLS***********************************
 ******************************************************************************************************
@@ -27,13 +29,21 @@ ERROR: INCORRECT TRAILER
 ******************************************************************************************************
 
 ERROR: TRAILER LINE EMPTY
+
 ERROR: TRAILER FOR onlinestorerequest.txt IS INCORRECT
 ERROR: ITEM #123 DOESN'T EXIST
+
+ERROR: TRAILER FOR newstores.txt IS INCORRECT
+ERROR: COULD NOT READ HEADER FOR onlinestorerequest.txt
+ERROR: COULD NOT READ HEADER FOR storeupdate.txt
+
 ******************************************************************************************************
 ***********************************VENDOR INVENTORY REQUEST***********************************
 ******************************************************************************************************
 
 ERROR: Item #2 DOES NOT EXIST IN ITEM TABLE
+=======
+
 ******************************************************************************************************
 ***********************************YEARLY REPORTS***********************************
 ******************************************************************************************************

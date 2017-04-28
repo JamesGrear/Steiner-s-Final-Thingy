@@ -3,13 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/AdminMenu/AdminMenu.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/BatchCalculateSalesReport.java</file>
             <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/AdminMenu/ItemRequest.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/AdminMenu/AdminMenu.java</file>
             <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/Batch.java</file>
-            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/ProductLookup/Lookup.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Database/Sales.java</file>
             <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Transaction/CustomerLogin.java</file>
-            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/AdminMenu/Admin%20Menu.fxml</file>
-            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/BatchInventoryToStore.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/ErrorReport.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/Batch/BatchItemUpdate.java</file>
+            <file>file:/C:/Users/Brian/Documents/GitHub/Steiner-s-Final-Thingy/Drug%20Pharmacy%20Team%20110/src/AdminMenu/SalesReport.java</file>
         </group>
     </open-files>
 </project-private>

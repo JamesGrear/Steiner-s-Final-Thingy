@@ -225,7 +225,7 @@ public class BatchStoreCreateDelete extends BatchFileReader
 	
 	if(input.length() != 40) //line not formatted correctly
 	{
-	    error.writeToLog("ITEM FOR STORE WITH ID '" + id + "' IS NOT INCORRECT"); 
+	    error.writeToLog("FORMAT FOR ADDING ITEM TO STORE WITH ID #" + id + " IS INCORRECT"); 
 	    return;
 	}
 	
