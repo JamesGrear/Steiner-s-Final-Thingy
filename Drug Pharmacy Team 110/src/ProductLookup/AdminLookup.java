@@ -70,6 +70,8 @@ public class AdminLookup
     @FXML private Label prodDescriptionCheck;
     @FXML private Label prodDoseCheck;
 
+    @FXML private Label notInStoreLabel;
+
     private static Employee User; // The user that is currently logged in
 
     // Public no-args constructor
@@ -381,7 +383,7 @@ public class AdminLookup
         }
     }
 
-    @FXML private void registerItemToStore() throws SQLException
+    @FXML private void registerItemToStore() throws SQLException, ClassNotFoundException
     {
         if(item != null)
         {
@@ -394,6 +396,8 @@ public class AdminLookup
                 invalidLength.setContentText(String.format("Your Store (Store #%d)\n\nNow carries item %s\nItem ID: %s", Store.getCurrentStoreID(), item.getName(), item.getID()));
 
                 invalidLength.showAndWait();
+
+                tryLookup();
             }
 
             else
@@ -420,7 +424,37 @@ public class AdminLookup
         }
     }
 
-    @FXML private void deleteItemCompany() throws SQLException
+    @FXML private void deleteItemStore() throws SQLException, ClassNotFoundException
+    {
+        if(item != null)
+        {
+            if(item.deleteItemStore())
+            {
+                Alert invalidLength = new Alert(Alert.AlertType.INFORMATION);
+                invalidLength.initStyle(StageStyle.UTILITY);
+                invalidLength.setTitle(null);
+                invalidLength.setHeaderText("Item has been deleted from store");
+                invalidLength.setContentText(String.format("Your Store (Store #%d)\n\nNo longer carries item %s\nItem ID: %s", Store.getCurrentStoreID(), item.getName(), item.getID()));
+
+                invalidLength.showAndWait();
+
+                tryLookup();
+            }
+
+            else
+            {
+                Alert invalidLength = new Alert(Alert.AlertType.WARNING);
+                invalidLength.initStyle(StageStyle.UTILITY);
+                invalidLength.setTitle(null);
+                invalidLength.setHeaderText("Item could not be deleted at store level");
+                invalidLength.setContentText("This item is not carried by your store, and thus can not be deleted");
+
+                invalidLength.showAndWait();
+            }
+        }
+    }
+
+    @FXML private void deleteItemCompany() throws SQLException, ClassNotFoundException
     {
         if(item != null)
         {
@@ -444,6 +478,8 @@ public class AdminLookup
                 invalidLength.setContentText(String.format("Your company\nno longer carries item %s\nItem ID: %s", item.getName(), item.getID()));
 
                 invalidLength.showAndWait();
+
+                tryLookup();
             }
 
         }
@@ -534,6 +570,14 @@ public class AdminLookup
                     productDoseBox.setText(item.getDosage());
                     prodDoseCheck.setText("");
                     doseButton.setVisible(true);
+
+                    if(!item.itemExistsInStore())
+                    {
+                        notInStoreLabel.setText("Item is not in store.");
+                    }
+
+                    else
+                        notInStoreLabel.setText("");
                 }
 
                 else
@@ -560,6 +604,8 @@ public class AdminLookup
                         item.setVendorCode(1);
 
                         item.registerNewItem();
+
+                        tryLookup();
                     }
                 }
             }

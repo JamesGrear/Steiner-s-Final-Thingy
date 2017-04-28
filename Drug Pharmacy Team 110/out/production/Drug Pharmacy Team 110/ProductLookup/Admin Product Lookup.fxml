@@ -61,6 +61,6 @@
       <Button layoutX="249.0" layoutY="486.0" mnemonicParsing="false" onAction="#registerItemToStore" prefHeight="34.0" prefWidth="141.0" text="Register Item to Store" wrapText="true" />
       <Label fx:id="notInStoreLabel" layoutX="432.0" layoutY="82.0" />
       <Button layoutX="18.0" layoutY="486.0" mnemonicParsing="false" onAction="#deleteItemCompany" prefHeight="34.0" prefWidth="168.0" text="Delete Item From Company" />
-      <Button layoutX="439.0" layoutY="486.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="168.0" text="Delete Item From Store" />
+      <Button layoutX="439.0" layoutY="486.0" mnemonicParsing="false" onAction="#deleteItemStore" prefHeight="34.0" prefWidth="168.0" text="Delete Item From Store" />
    </children>
 </AnchorPane>
