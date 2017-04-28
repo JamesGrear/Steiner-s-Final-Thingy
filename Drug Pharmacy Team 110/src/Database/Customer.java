@@ -116,6 +116,11 @@ public class Customer
 			currentPoints =  Database.result.getInt(1);
 			newPoints = currentPoints + points;
 
+			if(newPoints < 0)
+			{
+				newPoints = Integer.MAX_VALUE;
+			}
+
 			Database.statement.executeUpdate("UPDATE customer SET rewardpoints = '" + (newPoints) + "' WHERE idcustomer = '" + id + "'");
 		}
 
