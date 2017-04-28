@@ -2,6 +2,7 @@ package ProductLookup;
 
 import Database.Employee;
 import Database.Item;
+import Database.Store;
 import Menu.Menu;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,9 +21,21 @@ import javafx.stage.Window;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 
 /**
  * Created by Robert on 4/24/2017.
+ *
+   ▒▒▒▒▒▒▒▒█▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+ ▒▒▒▒▒▒▒█░▒▒▒▒▒▒▒▓▒▒▓▒▒▒▒▒▒▒░█
+ ▒▒▒▒▒▒▒█░▒▒▓▒▒▒▒▒▒▒▒▒▄▄▒▓▒▒░█░▄▄
+ ▒▒▄▀▀▄▄█░▒▒▒▒▒▒▓▒▒▒▒█░░▀▄▄▄▄▄▀░░█
+ ▒▒█░░░░█░▒▒▒▒▒▒▒▒▒▒▒█░░░░░░░░░░░█
+ ▒▒▒▀▀▄▄█░▒▒▒▒▓▒▒▒▓▒█░░░█▒░░░░█▒░░█
+ ▒▒▒▒▒▒▒█░▒▓▒▒▒▒▓▒▒▒█░░░░░░░▀░░░░░█
+ ▒▒▒▒▒▄▄█░▒▒▒▓▒▒▒▒▒▒▒█░░█▄▄█▄▄█░░█
+ ▒▒▒▒█░░░█▄▄▄▄▄▄▄▄▄▄█░█▄▄▄▄▄▄▄▄▄█
+ ▒▒▒▒█▄▄█░░█▄▄█░░░░░░█▄▄█░░█▄▄
  */
 
 public class AdminLookup
@@ -368,6 +381,85 @@ public class AdminLookup
         }
     }
 
+    @FXML private void registerItemToStore() throws SQLException
+    {
+        if(item != null)
+        {
+            if (item.assignToStore())
+            {
+                Alert invalidLength = new Alert(Alert.AlertType.INFORMATION);
+                invalidLength.initStyle(StageStyle.UTILITY);
+                invalidLength.setTitle(null);
+                invalidLength.setHeaderText("Item has been registered to store");
+                invalidLength.setContentText(String.format("Your Store (Store #%d)\n\nNow carries item %s\nItem ID: %s", Store.getCurrentStoreID(), item.getName(), item.getID()));
+
+                invalidLength.showAndWait();
+            }
+
+            else
+            {
+                Alert invalidLength = new Alert(Alert.AlertType.WARNING);
+                invalidLength.initStyle(StageStyle.UTILITY);
+                invalidLength.setTitle(null);
+                invalidLength.setHeaderText("Item could not be registered to store");
+                invalidLength.setContentText("You already carry this item in your store");
+
+                invalidLength.showAndWait();
+            }
+        }
+
+        else
+        {
+            Alert invalidLength = new Alert(Alert.AlertType.WARNING);
+            invalidLength.initStyle(StageStyle.UTILITY);
+            invalidLength.setTitle(null);
+            invalidLength.setHeaderText("No item selected");
+            invalidLength.setContentText("You have to select an item first!");
+
+            invalidLength.showAndWait();
+        }
+    }
+
+    @FXML private void deleteItemCompany() throws SQLException
+    {
+        if(item != null)
+        {
+            if(item.deleteItemCompany() == false)
+            {
+                Alert invalidLength = new Alert(Alert.AlertType.WARNING);
+                invalidLength.initStyle(StageStyle.UTILITY);
+                invalidLength.setTitle(null);
+                invalidLength.setHeaderText("Item could not be deleted at company level");
+                invalidLength.setContentText("This item is in the warehouse or other stores, it can't be deleted");
+
+                invalidLength.showAndWait();
+            }
+
+            else
+            {
+                Alert invalidLength = new Alert(Alert.AlertType.INFORMATION);
+                invalidLength.initStyle(StageStyle.UTILITY);
+                invalidLength.setTitle(null);
+                invalidLength.setHeaderText("Item has been deleted from company");
+                invalidLength.setContentText(String.format("Your company\nno longer carries item %s\nItem ID: %s", item.getName(), item.getID()));
+
+                invalidLength.showAndWait();
+            }
+
+        }
+
+        else
+        {
+            Alert invalidLength = new Alert(Alert.AlertType.WARNING);
+            invalidLength.initStyle(StageStyle.UTILITY);
+            invalidLength.setTitle(null);
+            invalidLength.setHeaderText("No item selected");
+            invalidLength.setContentText("You have to select an item first!");
+
+            invalidLength.showAndWait();
+        }
+    }
+
     private void tryLookup() throws ClassNotFoundException, SQLException
     // Attempts to find item with matching ID in database -- if user entered something other than a number
     // An error message will be displayed. If the item doesn't exist, an error message will also be displayed.
@@ -446,13 +538,29 @@ public class AdminLookup
 
                 else
                 {
-                    Alert noItemFound = new Alert(Alert.AlertType.WARNING);
+                    Alert noItemFound = new Alert(Alert.AlertType.CONFIRMATION);
                     noItemFound.initStyle(StageStyle.UTILITY);
                     noItemFound.setTitle(null);
                     noItemFound.setHeaderText("No items found");
-                    noItemFound.setContentText(String.format("There is no item with matching ID: %s.\n\nDouble check that the ID was entered correctly.", itemIDAsString));
+                    noItemFound.setContentText(String.format("There is no item with matching ID: %s registered to the company.\n\nDo you wish to create a new item with ID #%s?\n Item will contain default values so you must manually update after registering item.", itemIDAsString, itemIDAsString));
 
-                    noItemFound.showAndWait();
+                    Optional<ButtonType> result = noItemFound.showAndWait();
+
+                    if(result.get() == ButtonType.OK)
+                    {
+                        item = new Item(itemID);
+
+                        item.setName("Default Name");
+                        item.setDescription("Default Description");
+                        item.setDosage("0 mg");
+                        item.setWarning(0);
+                        item.setReorderLevel(10000);
+                        item.setReorderQuantity(10000);
+                        item.setDeliveryTime("One Week");
+                        item.setVendorCode(1);
+
+                        item.registerNewItem();
+                    }
                 }
             }
         }

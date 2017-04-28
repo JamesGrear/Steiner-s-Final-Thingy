@@ -39,14 +39,16 @@ public class Item
 	private PreparedStatement updateDescription = connection.prepareStatement("UPDATE item SET description = ? WHERE iditem = ?");
 	private PreparedStatement updateStock = connection.prepareStatement("UPDATE store_inventory SET itemquantity = ? WHERE idstore = ? AND iditem = ?");
 	private PreparedStatement updateCost = connection.prepareStatement("UPDATE store_inventory SET cost = ? WHERE idstore = ? AND iditem = ?");
-	private PreparedStatement insertStoreInventory = connection.prepareStatement("INSERT INTO store_inventory VALUES(?, ?, ?, ?, ?, ?)");
+	private PreparedStatement insertStoreInventory = connection.prepareStatement("INSERT INTO store_inventory VALUES(?, ?, ?, ?, ?, ?, ?)");
 	private PreparedStatement deleteStoreInventory = connection.prepareStatement("DELETE FROM store_inventory WHERE iditem = ?");
 	private PreparedStatement deleteWarehouseInventory = connection.prepareStatement("DELETE FROM warehouse_inventory WHERE iditem = ?");
+	private PreparedStatement deleteItem = connection.prepareStatement("DELETE FROM item WHERE iditem = ?");
 
 	// Queries
 	private PreparedStatement selectFromStoreInventory = connection.prepareStatement("SELECT * FROM store_inventory WHERE idstore = ? AND iditem = ?");
 	private PreparedStatement getWarningMessage = connection.prepareStatement("SELECT warningmessage FROM warning WHERE warningcode = (SELECT warning FROM ITEM where iditem = ?)");
 	private PreparedStatement selectCostFromStore = connection.prepareStatement("SELECT cost FROM store_inventory WHERE idstore = ? AND iditem = ?");
+	private PreparedStatement selectCompanyStock = connection.prepareStatement("SELECT (SELECT SUM(itemquantity) FROM store_inventory WHERE iditem = ?) + (SELECT SUM(itemquantity) FROM warehouse_inventory WHERE iditem = ?)");
 
 
     public Item(int id) throws ClassNotFoundException, SQLException
@@ -77,7 +79,8 @@ public class Item
     {
 		if(verifyItem(id))
 		{
-			Database.statement.executeUpdate("DELETE FROM item WHERE iditem = '" + id + "'");
+			deleteItem.setInt(1, id);
+			deleteItem.executeUpdate();
 
 			deleteStoreInventory.setInt(1, id);
 			deleteStoreInventory.executeUpdate();
@@ -111,7 +114,6 @@ public class Item
 
 			Database.statement.executeUpdate("Update item Set dosage = '" + dosage + "' WHERE iditem = '" + id + "'");
 			Database.statement.executeUpdate("Update item Set warning = '" + warning + "' WHERE iditem = '" + id + "'");
-			//Database.statement.executeUpdate("Update item Set cost = '" + cost + "' WHERE iditem = '" + id + "'");
 			Database.statement.executeUpdate("Update item Set reorderlevel = '" + reorderLevel + "' WHERE iditem = '" + id + "'");
 			Database.statement.executeUpdate("Update item Set reorderquantity = '" + reorderQuantity + "' WHERE iditem = '" + id + "'");
 			Database.statement.executeUpdate("Update item Set deliverytime = '" + deliveryTime + "' WHERE iditem = '" + id + "'");
@@ -130,16 +132,18 @@ public class Item
 				updateStock.setInt(2, Store.getCurrentStoreID());
 				updateStock.setInt(3, id);
 				updateStock.executeUpdate();
+
+				updateCost.setDouble(1, cost);
+				updateCost.setInt(2, Store.getCurrentStoreID());
+				updateCost.setInt(3, id);
+
+				updateCost.executeUpdate();
 			}
 
-			updateCost.setDouble(1, cost);
-			updateCost.setInt(2, Store.getCurrentStoreID());
-			updateCost.setInt(3, id);
+			selectCompanyStock.setInt(1, id);
+			selectCompanyStock.setInt(2, id);
 
-			updateCost.executeUpdate();
-
-
-			Database.result = Database.statement.executeQuery("SELECT SUM(itemquantity) FROM store_inventory WHERE (iditem = '" + id + "')");
+			Database.result = selectCompanyStock.executeQuery();
 
 			if (Database.result.next())
 			{
@@ -201,20 +205,87 @@ public class Item
 		}
     }
 
+    public boolean deleteItemCompany() throws SQLException
+	{
+		if(itemStockExistsInCompany() == false)
+		{
+			deleteItem.setInt(1, id);
+			deleteItem.executeUpdate();
+
+			deleteStoreInventory.setInt(1, id);
+			deleteStoreInventory.executeUpdate();
+
+			deleteWarehouseInventory.setInt(1, id);
+			deleteWarehouseInventory.executeUpdate();
+
+			return true;
+		}
+
+		else
+			return false;
+	}
+
+    // returns true if item stock exists anywhere in company
+    public boolean itemStockExistsInCompany() throws SQLException
+	{
+		int total;
+
+		selectCompanyStock.setInt(1, id);
+		selectCompanyStock.setInt(2, id);
+
+		Database.result = selectCompanyStock.executeQuery();
+
+		if(Database.result.next())
+		{
+			total = Database.result.getInt(1);
+
+			if(total != 0)
+				return true;
+
+			else
+				return false;
+
+		}
+
+		else
+			return false;
+
+	}
+
+    // returns true if item exists is registered to store already
+    public boolean itemExistsInStore() throws SQLException
+	{
+		// check to see if item already exists in store_inventory
+		selectFromStoreInventory.setInt(1, Store.getCurrentStoreID());
+		selectFromStoreInventory.setInt(2, id);
+
+		Database.result = selectFromStoreInventory.executeQuery();
+
+		return Database.result.next();
+	}
+
     public boolean assignToStore() throws SQLException
 	{
 		if(verifyItem(id))
 		{
-			// insert stock in store_inventory table
-			insertStoreInventory.setInt(1, Store.getCurrentStoreID());
-			insertStoreInventory.setInt(2, id);
-			insertStoreInventory.setInt(3, storeStock);
-			insertStoreInventory.setNull(4, Types.BIGINT);
-			insertStoreInventory.setNull(5, Types.BIGINT);
-			insertStoreInventory.setNull(6, Types.BIGINT);
-			insertStoreInventory.executeUpdate();
+			if(itemExistsInStore() == false)
+			{
+				// insert stock in store_inventory table
+				insertStoreInventory.setInt(1, Store.getCurrentStoreID());
+				insertStoreInventory.setInt(2, id);
+				insertStoreInventory.setInt(3, storeStock);
+				insertStoreInventory.setNull(4, Types.BIGINT);
+				insertStoreInventory.setNull(5, Types.BIGINT);
+				insertStoreInventory.setNull(6, Types.BIGINT);
+				insertStoreInventory.setDouble(7, cost);
+				insertStoreInventory.executeUpdate();
 
-			return true;
+				return true;
+			}
+
+			else
+				return false;
+
 		}
 
 		else
@@ -242,7 +313,6 @@ public class Item
 				item.description = Database.result.getString(2);
 				item.dosage = Database.result.getString(3);
 				item.warning = Database.result.getInt(4);
-				//item.cost = Database.result.getDouble(5);
 				item.reorderLevel = Database.result.getLong(5);
 				item.reorderQuantity = Database.result.getLong(6);
 				item.deliveryTime = Database.result.getString(7);
@@ -281,7 +351,7 @@ public class Item
 				}
 
 				else
-					item.cost = 0;
+					item.cost = 5;
 
 				// Get warning message for drug
 				item.getWarningMessage.setInt(1, id);
@@ -344,6 +414,7 @@ public class Item
 	return dosage;
     }
 
+    public void setId(int id) {this.id = id;}
     public void setName(String name)
     {
 	this.name = name;
