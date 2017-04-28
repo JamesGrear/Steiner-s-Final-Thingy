@@ -258,7 +258,7 @@ public class SalesReport
 			dailyTotal = 0;
 			
 			//START NEXT DAY
-			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())));  
+			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())) + "\n");  
 		    }
 		    
 		    text = (String.format("%15s", format.format(x.getDate()))
@@ -714,7 +714,7 @@ public class SalesReport
 			dailyTotal = 0;
 			
 			//START NEXT DAY
-			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())));  
+			textBox.appendText(String.format("%80s", (currentDay.getMonth() + "/" + currentDay.getDayOfMonth() + "/" + currentDay.getYear())) + "\n");  
 		    }
 		    
 		    text = (String.format("%15s", format.format(x.getDate()))
