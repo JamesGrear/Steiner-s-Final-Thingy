@@ -3,18 +3,15 @@ D000001000
 D301020304
 D000002030
 ND 0003
-C000009991drug                description                                                                                         dose                987654321012340123456789Monday
+C123456789name                description                                                                                         dose                987654321012340123456789Monday
 C123456789name                description                                                                                         dose                987654321012340123456789Monday
 C123456789name                description                                                                                         dose                987654321012340123456789Monday                                          
 NC 0003
-
-A123456789name                description                                                                                         dose                987654321012340123456789Monday              
-A123456789name                description                                                                                         dose                987654321012340123456789Monday              
-A123456789name                description                                                                                         dose                987654321012340123456789Monday              
-
-A000009991drug                description                                                                                         dose                987654321012340123456789Monday
-A123456789name                description                                                                                         dose                987654321012340123456789Monday
-A123456789name                description                                                                                         dose                987654321012340123456789Monday                                          
-
-NA 0003
-T 0009
+A000000000Item                I'm an item! yaaaaaaaaay Look at me being an item!                                                  dose                987654321012340123456789Monday              
+A000000001Java                Delicious.                                                                                          9999mg              987654321012340123456789Monday              
+A000000002Placebo             I wonder who falls for this, I mean it says placebo right on the bottle!                            0mg                 987654321012340123456789Monday              
+A000000003Waffles             Waffles are a drug, right?                                                                          3 of them           987654321012340123456789Monday              
+A000000004Caffeine Pills      For them late nights.                                                                               200mg               987654321012340123456789Monday              
+A000000005name                description                                                                                         dose                987654321012340123456789Monday                                          
+NA 0006
+T 0012

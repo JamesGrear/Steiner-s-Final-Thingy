@@ -6,6 +6,11 @@ ERROR: CANNOT DELETE ITEM #1000. ITEM DOES NOT EXIST
 ERROR: CANNOT DELETE ITEM #301020304. ITEM DOES NOT EXIST
 ERROR: CANNOT DELETE ITEM #2030. ITEM DOES NOT EXIST
 ERROR: INCORRECT FORMAT FOR ADD ITEM LINE
+ERROR: ITEM #000000001 ALREADY EXISTS
+ERROR: ITEM #000000002 ALREADY EXISTS
+ERROR: ITEM #000000003 ALREADY EXISTS
+ERROR: ITEM #000000004 ALREADY EXISTS
+ERROR: ITEM #000000005 ALREADY EXISTS
 ******************************************************************************************************
 ***********************************ADD/DELETE STORE***********************************
 ******************************************************************************************************
