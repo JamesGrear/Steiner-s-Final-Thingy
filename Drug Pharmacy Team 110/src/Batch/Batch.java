@@ -51,21 +51,5 @@ public class Batch
 		
 		BatchCalculateSalesReport report = new BatchCalculateSalesReport();
 		report.readFile();
-		
-		
-		/*try
-		{
-		    FileSequence.incrementDeletedStoreToWarehouseInventory();
-		    FileSequence.incrementInventoryOrder();
-		    FileSequence.incrementInventoryToStore();
-		    FileSequence.incrementInventoryToWarehouse();
-		    FileSequence.incrementItemUpdate();
-		    FileSequence.incrementStoreCreateDelete();
-		    FileSequence.incrementYearlySales();
-		}
-		catch(SQLException e)
-		{
-		    e.printStackTrace();
-		}*/
      }
 }
