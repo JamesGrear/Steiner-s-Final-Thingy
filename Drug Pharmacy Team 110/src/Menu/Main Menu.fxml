@@ -6,26 +6,26 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Menu">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="913.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menu.Menu">
    <children>
-      <Text layoutX="121.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu" textAlignment="CENTER" wrappingWidth="334.13671875">
+      <Text layoutX="281.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu" textAlignment="CENTER" wrappingWidth="334.13671875">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="49.0" layoutY="175.0" mnemonicParsing="false" onAction="#launchPOS" prefHeight="25.0" prefWidth="168.0" text="Enter" />
-      <Button layoutX="49.0" layoutY="267.0" mnemonicParsing="false" onAction="#launchAdminMenu" prefHeight="25.0" prefWidth="168.0" text="Enter" />
-      <Button layoutX="371.0" layoutY="175.0" mnemonicParsing="false" onAction="#launchProductLookup" prefHeight="25.0" prefWidth="168.0" text="Enter" />
-      <Button layoutX="371.0" layoutY="267.0" mnemonicParsing="false" onAction="#launchBatchProcessing" prefHeight="25.0" prefWidth="168.0" text="Enter" />
-      <Text layoutX="49.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transactions" textAlignment="CENTER" wrappingWidth="168.0" />
-      <Text layoutX="49.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administration" textAlignment="CENTER" wrappingWidth="168.0" />
-      <Text layoutX="371.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Lookup" textAlignment="CENTER" wrappingWidth="168.0" />
-      <Text layoutX="371.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Batch Processing" textAlignment="CENTER" wrappingWidth="168.0" />
-      <ImageView fitHeight="63.0" fitWidth="292.0" layoutX="257.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+      <Button layoutX="187.0" layoutY="357.0" mnemonicParsing="false" onAction="#launchPOS" prefHeight="25.0" prefWidth="168.0" text="Enter" />
+      <Button layoutX="187.0" layoutY="449.0" mnemonicParsing="false" onAction="#launchAdminMenu" prefHeight="25.0" prefWidth="168.0" text="Enter" />
+      <Button layoutX="509.0" layoutY="357.0" mnemonicParsing="false" onAction="#launchProductLookup" prefHeight="25.0" prefWidth="168.0" text="Enter" />
+      <Button layoutX="509.0" layoutY="449.0" mnemonicParsing="false" onAction="#launchBatchProcessing" prefHeight="25.0" prefWidth="168.0" text="Enter" />
+      <Text layoutX="187.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transactions" textAlignment="CENTER" wrappingWidth="168.0" />
+      <Text layoutX="187.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administration" textAlignment="CENTER" wrappingWidth="168.0" />
+      <Text layoutX="509.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Lookup" textAlignment="CENTER" wrappingWidth="168.0" />
+      <Text layoutX="509.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Batch Processing" textAlignment="CENTER" wrappingWidth="168.0" />
+      <ImageView fitHeight="209.0" fitWidth="470.0" layoutX="292.0" layoutY="81.0" onMouseClicked="#THEBIGREDBUTTON" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Downloads/Pharmacy%20logo%20(2).png" />
+            <Image url="@../Images/Red%20Button.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="225.0" layoutY="322.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="151.0" text="Logout" />
+      <Button layoutX="363.0" layoutY="504.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="151.0" text="Logout" />
    </children>
 </AnchorPane>

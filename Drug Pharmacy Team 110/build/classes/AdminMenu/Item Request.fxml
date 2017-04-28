@@ -5,15 +5,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminMenu.ItemRequest">
    <children>
-      <Text layoutX="170.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item ID:" />
-      <Text layoutX="119.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Amount:" />
       <Text layoutX="186.0" layoutY="65.0" scaleX="2.0" scaleY="2.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Request Inventory From Warehouse" />
-      <TextField fx:id="itemIDBox" layoutX="219.0" layoutY="137.0" />
-      <TextField fx:id="itemAmountBox" layoutX="219.0" layoutY="176.0" />
-      <Button layoutX="268.0" layoutY="210.0" mnemonicParsing="false" onAction="#sendRequest" text="Confirm" />
       <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#handleCancelClick" prefHeight="25.0" prefWidth="49.0" text="Back" />
+      <Button layoutX="188.0" layoutY="179.0" mnemonicParsing="false" onAction="#orderLowInventory" scaleX="2.0" scaleY="2.0" text="REORDER ALL LOW INVENTORY" />
    </children>
 </AnchorPane>

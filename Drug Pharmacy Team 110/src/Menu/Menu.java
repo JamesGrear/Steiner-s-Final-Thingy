@@ -31,16 +31,20 @@ import javafx.stage.Window;
 
 import javafx.event.ActionEvent;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.fxml.Initializable;
 
 public class Menu
 {
     private static Employee User;
+    static private Window menu;
 
     // Public no-args constructor
     public Menu()
     {
     }
-
+    
     // Launches the menu screen and closes whatever screen was previously open
     public static void launchMenu(Employee user, Window prevScreen)
     {
@@ -57,6 +61,8 @@ public class Menu
             stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
+	    
+	    menu = scene.getWindow();
 
             prevScreen.hide(); // Closes the previous screen
         }
@@ -149,5 +155,9 @@ public class Menu
         {
             ex.printStackTrace();
         }
+    }
+    @FXML private void THEBIGREDBUTTON()
+    {
+	Fired.youAreFired(User, menu);
     }
 }

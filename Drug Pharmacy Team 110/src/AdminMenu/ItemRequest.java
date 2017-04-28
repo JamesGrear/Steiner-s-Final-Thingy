@@ -9,6 +9,7 @@ import Database.Employee;
 import Database.FileSequence;
 import Database.Item;
 import Database.Store;
+import Database.StoreInventory;
 import Menu.Menu;
 import java.io.BufferedReader;
 import java.io.File;
@@ -20,6 +21,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,6 +48,8 @@ public class ItemRequest
     private Date date;
     private DateFormat format;
     private static Employee User;
+    private boolean ordered = false;
+    private int trailerCount;
      
     @FXML TextField itemIDBox;
     @FXML TextField itemAmountBox;
@@ -69,7 +73,9 @@ public class ItemRequest
 	    else
 	    {
 		reader = new BufferedReader(new FileReader(fileName));
-		writer = new PrintWriter(new FileWriter(fileName, true));
+		writer = new PrintWriter(new FileWriter(fileName, false));
+		writer.println("HD " + String.format("%04d", FileSequence.readInventoryToStore()) + "      " + format.format(date));
+		writer.flush();
 	    }
 	}
 	catch(IOException | SQLException e)
@@ -120,79 +126,49 @@ public class ItemRequest
 	    e.printStackTrace();
 	}
     }
-	
-    @FXML private void sendRequest()
+    @FXML private void orderLowInventory()
     {
-	long amount;
-	int itemID;
+	ArrayList<StoreInventory> inventories;
 	
-	Alert emptyField = new Alert(Alert.AlertType.WARNING);
-        emptyField.initStyle(StageStyle.UTILITY);
-        emptyField.setTitle(null);
-        emptyField.setHeaderText("Empty Field.");
-	emptyField.setContentText("Please make sure to fill in every Text Field.");
-	    
-	Alert badData = new Alert(Alert.AlertType.WARNING);
-	badData.initStyle(StageStyle.UTILITY);
-	badData.setTitle(null);
-	badData.setHeaderText("You have entered invalid data.");
-	badData.setContentText("Please check your input and try again.");
+	Alert buttonPressed = new Alert(Alert.AlertType.WARNING);
+        buttonPressed.initStyle(StageStyle.UTILITY);
+        buttonPressed.setTitle(null);
+        buttonPressed.setHeaderText("Careful!");
+	buttonPressed.setContentText("You seemed to have accidentally clicked this button again!" 
+		+(" If you keep clicking so much, you might hurt your finger!"));
 	
-	Alert invalidID = new Alert(Alert.AlertType.WARNING);
-	invalidID.initStyle(StageStyle.UTILITY);
-	invalidID.setTitle(null);
-	invalidID.setHeaderText("Invalid Item ID.");
-	invalidID.setContentText("The Item ID you have entered is not in our system. Please check your input and try again.");
+	Alert order = new Alert(Alert.AlertType.WARNING);
+        order.initStyle(StageStyle.UTILITY);
+        order.setTitle(null);
+        order.setHeaderText("Order Successful!");
+	order.setContentText("You've sent an order to replinsh all low inventory! Don't believe me? Go check the file, silly!");
 	
-	Alert dbError = new Alert(Alert.AlertType.WARNING);
-	dbError.initStyle(StageStyle.UTILITY);
-	dbError.setTitle(null);
-	dbError.setHeaderText("Major Database Error.");
-	dbError.setContentText("Please check your Database and try again later.");
-	
-	Alert success = new Alert(Alert.AlertType.WARNING);
-	success.initStyle(StageStyle.UTILITY);
-	success.setTitle(null);
-	    
-	if(itemIDBox.getText().isEmpty() || itemAmountBox.getText().isEmpty())
+	if(ordered)
 	{
-            emptyField.showAndWait();
+	    buttonPressed.showAndWait();
 	    return;
 	}
 	
 	try
 	{
-	    itemID = Integer.parseInt(itemIDBox.getText());
-	    amount = Long.parseLong(itemAmountBox.getText());
+	    inventories = StoreInventory.readAllInventory(Store.getCurrentStoreID());
 	    
-	    if(!Item.verifyItem(itemID))
+	    for(StoreInventory x: inventories)
 	    {
-		invalidID.showAndWait();
-		return;
+		if(x.getItemQuantity() <= x.getReorderLevel())
+		{
+		    writeToFile(x.getItemID(), x.getReorderQuantity());
+		    trailerCount++;
+		}
 	    }
 	    
-	    if(amount <= 0)
-	    {
-		badData.showAndWait();
-		return;
-	    }
-	    
-	    if(writeToFile(itemID, amount))
-	    {
-		success.setHeaderText("Your Request has been sent.");
-		success.setContentText("A request has been sent for " + amount + " of item #" + itemID +".");
-		success.showAndWait();
-	    }
-	}
-	catch(IllegalArgumentException e)
-	{
-	    badData.showAndWait();
-	    return;
+	    ordered = true;
+	    order.showAndWait();
+	    writeTrailer();
 	}
 	catch(SQLException e)
 	{
-	    dbError.showAndWait();
-	    return;
+	    e.printStackTrace();
 	}
     }
     private boolean writeToFile(int itemID, long amount)
@@ -213,6 +189,11 @@ public class ItemRequest
 	    return false;
 	}
 	return true;
+    }
+    private void writeTrailer()
+    {
+	writer.println("T " + String.format("%04d", trailerCount));
+	writer.flush();
     }
     @FXML private void handleCancelClick(ActionEvent event)
     // Call closeWindow function on lookup screen if cancel button is clicked or ESC key is pressed
