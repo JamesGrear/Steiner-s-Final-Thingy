@@ -13,9 +13,15 @@ import Database.Sales;
 import Database.Store;
 import Database.StoreInventory;
 import Menu.Menu;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -807,6 +813,7 @@ public class Transaction implements Initializable
 					}
 
 					customer.addRewardPoints((int)(item[i].getCost() * quantity[i] *.1));
+					printPrescription(item[i]);
 				}
 
 				if(processRefill[i])
@@ -843,6 +850,50 @@ public class Transaction implements Initializable
 		closeWindow(lookupScreen);
     }
 
+    private void printPrescription(Item item)
+    {
+	final File fileName = new File("Prescription Labels.txt");
+	PrintWriter writer;
+	Date date = new Date();
+	DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+	try
+	{
+	    if (!fileName.exists())
+	    {
+		writer = new PrintWriter(fileName);
+		fileName.createNewFile();
+		writer.println("ALL PRESCRIPTIONS FROM THE START OF TIME!!!");
+		writer.println();
+		writer.println();
+		writer.flush();
+	    }
+	    else
+	    {
+		writer = new PrintWriter(new FileWriter(fileName, true));
+	    }
+	    
+	    writer.println("*****************************************************");
+	    writer.println("CUSTOMER NAME: " + customer.getName());
+	    writer.println("CUSTOMER ADDRESS: " + customer.getAddress());
+	    writer.println("PRESCRIPTION: " + item.getDosage() + " " + item.getName());
+	    writer.println("DESCRIPTION: " + item.getDescription());
+	    if(!item.getWarningMessage().isEmpty())
+	    {
+		writer.println("WARNING: " + item.getWarningMessage());
+	    }
+	    writer.println("*****************************************************");
+	    writer.flush();
+	}
+	catch(FileNotFoundException e)
+	{
+	    System.out.println(fileName + " Not Found!");
+	}
+	catch(IOException e)
+	{
+	    e.printStackTrace();
+	}
+    }
     private void closeWindow(Window lookupScreen)
     // Returns user to main menu and exits the product lookup screen
     {

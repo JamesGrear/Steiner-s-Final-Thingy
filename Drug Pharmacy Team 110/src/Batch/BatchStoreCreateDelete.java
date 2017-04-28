@@ -214,6 +214,10 @@ public class BatchStoreCreateDelete extends BatchFileReader
 		    }
 		    
 		}
+		catch(SQLException e)
+		{
+		    error.writeToLog("DATABASE ERROR");
+		}
 		catch(Exception e) //bad formating/values in file
 		{
 		    error.writeToLog("INCORRECT VALUES FOR ADD STORE WITH ID '" + Integer.parseInt(new String(storeID)) + "'");
